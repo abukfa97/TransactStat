@@ -20,8 +20,8 @@ public class Wallet {
         return transactionList;
     }
 
-    public void addTransaction(){
-        throw new UnsupportedOperationException();
+    public void addTransaction(Transaction transaction){
+        transactionList.add(transaction);
     }
 
     public void update(){
