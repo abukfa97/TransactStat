@@ -11,8 +11,8 @@ import java.util.UUID;
 public class Wallet {
     private List<Transaction> transactionList = new ArrayList<>();
 
-    public Transaction getTransaction(UUID id){
-        throw new UnsupportedOperationException();
+    public Transaction getTransactionById(UUID id){
+        return transactionList.stream().filter(transaction -> transaction.getId = id).findFirst();
     }
     public void addTransaction(){
         throw new UnsupportedOperationException();
