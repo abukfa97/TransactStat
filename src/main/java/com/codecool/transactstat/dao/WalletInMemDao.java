@@ -11,8 +11,12 @@ import java.util.UUID;
 @Repository
 public class WalletInMemDao implements WalletDao {
 
+    final Wallet wallet;
+
     @Autowired
-    Wallet wallet;
+    public WalletInMemDao(Wallet wallet) {
+        this.wallet = wallet;
+    }
 
 
     @Override
