@@ -24,7 +24,12 @@ public class Wallet {
         transactionList.add(transaction);
     }
 
-    public void update(){
-        throw new UnsupportedOperationException();
+    public void update(Transaction transaction){
+        getTransactionById(transaction.getId) = transaction;
+        transactionToUpdate.setTitle(transaction.getTitle);
+        transactionToUpdate.setAmount(transaction.getAmount);
+        transactionToUpdate.setDateOfTransaction(transaction.getDateOfTransaction);
+        transactionToUpdate.setTransactionCategory(transaction.getTransactionCategory);
+        transactionToUpdate.setPaymentType(transaction.getPaymentType);
     }
 }
