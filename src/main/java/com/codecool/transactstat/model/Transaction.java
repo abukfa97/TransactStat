@@ -1,6 +1,13 @@
 package com.codecool.transactstat.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jdk8.LongStreamSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import org.springframework.cglib.core.Local;
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -8,13 +15,14 @@ public class Transaction {
     private final UUID id;
     private String title;
     private BigDecimal amount;
-    private LocalDateTime dateOfTransaction;
+
+    private LocalDate dateOfTransaction;
     private String transactionCategory;
     private  PaymentType paymentType;
 
     public Transaction(String title,
                        BigDecimal amount,
-                       LocalDateTime dateOfTransaction,
+                       LocalDate dateOfTransaction,
                        String transactionCategory,
                        PaymentType paymentType) {
         this.id = UUID.randomUUID();
@@ -46,11 +54,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public LocalDateTime getDateOfTransaction() {
+    public LocalDate getDateOfTransaction() {
         return dateOfTransaction;
     }
 
-    public void setDateOfTransaction(LocalDateTime dateOfTransaction) {
+    public void setDateOfTransaction(LocalDate dateOfTransaction) {
         this.dateOfTransaction = dateOfTransaction;
     }
 
