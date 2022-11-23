@@ -26,7 +26,7 @@ public class WalletInMemDao implements WalletDao {
 
     @Override
     public Transaction getTransaction(UUID id) {
-        return wallet.getTransactionById(id).orElse(null);
+        return wallet.getTransactionById(id);
     }
 
     @Override
