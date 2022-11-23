@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -12,8 +13,8 @@ public class Wallet {
 
     private List<Transaction> transactionList = new ArrayList<>();
 
-    public Transaction getTransactionById(UUID id){
-        return transactionList.stream().filter(transaction -> transaction.getId = id).findFirst();
+    public Optional<Transaction> getTransactionById(UUID id){
+        return transactionList.stream().filter(transaction -> transaction.getId().equals(id)).findFirst();
     }
 
     public List<Transaction> getAllTransactions(){
@@ -25,11 +26,15 @@ public class Wallet {
     }
 
     public void update(Transaction transaction){
-        getTransactionById(transaction.getId) = transaction;
-        transactionToUpdate.setTitle(transaction.getTitle);
-        transactionToUpdate.setAmount(transaction.getAmount);
-        transactionToUpdate.setDateOfTransaction(transaction.getDateOfTransaction);
-        transactionToUpdate.setTransactionCategory(transaction.getTransactionCategory);
-        transactionToUpdate.setPaymentType(transaction.getPaymentType);
+        try {
+            Transaction transactionToUpdate = getTransactionById(transaction.getId()).orElse(null);
+            transactionToUpdate.setTitle(transaction.getTitle());
+            transactionToUpdate.setAmount(transaction.getAmount());
+            transactionToUpdate.setDateOfTransaction(transaction.getDateOfTransaction());
+            transactionToUpdate.setTransactionCategory(transaction.getTransactionCategory());
+            transactionToUpdate.setPaymentType(transaction.getPaymentType());
+        } catch (Exception e) {
+            throw  new IllegalArgumentException("Can not find this transaction");
+        }
     }
 }
