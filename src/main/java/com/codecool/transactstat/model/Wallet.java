@@ -9,14 +9,21 @@ import java.util.UUID;
 
 @Component
 public class Wallet {
+
     private List<Transaction> transactionList = new ArrayList<>();
 
     public Transaction getTransactionById(UUID id){
         return transactionList.stream().filter(transaction -> transaction.getId = id).findFirst();
     }
+
+    public List<Transaction> getAllTransactions(){
+        return transactionList;
+    }
+
     public void addTransaction(){
         throw new UnsupportedOperationException();
     }
+
     public void update(){
         throw new UnsupportedOperationException();
     }
