@@ -30,7 +30,7 @@ public class WalletService {
         walletDao.addTransaction(transaction);
     }
 
-    public void updateTransaction(Transaction transaction){
-        walletDao.updateTransaction(transaction);
+    public void updateTransaction(Transaction transaction, UUID id){
+        walletDao.updateTransaction(transaction, id);
     }
 }

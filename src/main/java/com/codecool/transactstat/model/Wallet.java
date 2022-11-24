@@ -13,8 +13,8 @@ public class Wallet {
 
     private List<Transaction> transactionList = new ArrayList<>();
 
-    public Transaction getTransactionById(UUID id){
-        return transactionList.stream().filter(transaction -> transaction.getId().equals(id)).findFirst().get();
+    public Optional<Transaction> getTransactionById(UUID id){
+        return transactionList.stream().filter(transaction -> transaction.getId().equals(id)).findFirst();
     }
 
     public List<Transaction> getAllTransactions(){
@@ -25,14 +25,18 @@ public class Wallet {
         transactionList.add(transaction);
     }
 
-    public void update(Transaction transaction){
-        Transaction transactionToUpdate = getTransactionById(transaction.getId());
-        if (transactionToUpdate != null) {
+    public void update(Transaction transaction, UUID id){
+        getTransactionById(id).ifPresent(transactionToUpdate -> {
             transactionToUpdate.setTitle(transaction.getTitle());
             transactionToUpdate.setAmount(transaction.getAmount());
             transactionToUpdate.setDateOfTransaction(transaction.getDateOfTransaction());
             transactionToUpdate.setTransactionCategory(transaction.getTransactionCategory());
             transactionToUpdate.setPaymentType(transaction.getPaymentType());
-        }
+        });
+
+    }
+
+    public void delete(UUID id){
+        getTransactionById(id).ifPresent(transactionToDelete -> transactionList.remove(transactionToDelete));
     }
 }
