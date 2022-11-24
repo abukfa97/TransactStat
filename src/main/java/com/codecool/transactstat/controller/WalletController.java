@@ -38,4 +38,9 @@ public class WalletController {
     public void updateTransaction(@PathVariable(name = "transactionId") UUID id,@RequestBody Transaction transaction){
         walletService.updateTransaction(transaction, id);
     }
+
+    @DeleteMapping("/api/wallet/transactions/{transactionId}")
+    public void deleteTransaction(@PathVariable(name = "transactionId") UUID id){
+        walletService.
+    }
 }
