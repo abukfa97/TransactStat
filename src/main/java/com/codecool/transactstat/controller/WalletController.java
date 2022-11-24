@@ -43,4 +43,9 @@ public class WalletController {
     public void deleteTransaction(@PathVariable(name = "transactionId") UUID id){
         walletService.deleteTransaction(id);
     }
+
+    @GetMapping("/api/wallet/transactions/get-expenses")
+    public List<Transaction> getExpenses(){
+        return walletService.getExpenses();
+    }
 }
