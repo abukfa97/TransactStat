@@ -40,6 +40,13 @@ public class WalletService {
         walletDao.deleteTransaction(id);
     }
 
+    public List<Transaction> getExpenses () {
+        return getTransactions()
+                .stream()
+                .filter(transaction -> transaction.getAmount().compareTo(BigDecimal.ZERO) == -1)
+                .collect(Collectors.toList());
+    }
+
     public List<Transaction> getTransactionsByDate(LocalDate date){
         return walletDao.getTransactions()
                 .stream()

@@ -52,6 +52,11 @@ public class WalletController {
         walletService.deleteTransaction(id);
     }
 
+    @GetMapping("/api/wallet/transactions/get-expenses")
+    public List<Transaction> getExpenses(){
+        return walletService.getExpenses();
+    }
+
     @GetMapping("/api/wallet/transactions/get-biggest-transaction")
     public Transaction getBiggestTransaction(){
         return walletService.getBiggestTransaction();
