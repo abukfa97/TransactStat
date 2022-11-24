@@ -41,6 +41,6 @@ public class WalletController {
 
     @DeleteMapping("/api/wallet/transactions/{transactionId}")
     public void deleteTransaction(@PathVariable(name = "transactionId") UUID id){
-        walletService.
+        walletService.deleteTransaction(id);
     }
 }
