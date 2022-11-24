@@ -5,6 +5,7 @@ import com.codecool.transactstat.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -44,5 +45,21 @@ public class WalletService {
                 .stream()
                 .filter((transaction -> transaction.getDateOfTransaction().equals(date)))
                 .collect(Collectors.toList());
+    }
+
+    public Transaction getBiggestTransaction() {
+        List<Transaction> transactions = getTransactions();
+        Transaction biggestTransaction = null;
+        BigDecimal baseValue = new BigDecimal(0);
+        for (Transaction transaction :
+                transactions) {
+           int res = transaction.getAmount().compareTo(baseValue);
+           if(res == 1){
+                baseValue = transaction.getAmount();
+                biggestTransaction = transaction;
+           }
+        }
+        return biggestTransaction;
+
     }
 }
