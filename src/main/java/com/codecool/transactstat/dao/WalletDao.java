@@ -10,4 +10,5 @@ public interface WalletDao {
     Transaction getTransaction(UUID id);
     void addTransaction(Transaction transaction);
     void updateTransaction(Transaction transaction, UUID id);
+    void deleteTransaction(UUID id);
 }

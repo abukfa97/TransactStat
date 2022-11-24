@@ -38,4 +38,9 @@ public class WalletInMemDao implements WalletDao {
     public void updateTransaction(Transaction transaction, UUID id) {
         wallet.update(transaction, id);
     }
+
+    @Override
+    public void deleteTransaction(UUID id) {
+        wallet.delete(id);
+    }
 }

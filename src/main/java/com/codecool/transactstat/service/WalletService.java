@@ -33,4 +33,7 @@ public class WalletService {
     public void updateTransaction(Transaction transaction, UUID id){
         walletDao.updateTransaction(transaction, id);
     }
+    public void  deleteTransaction(UUID id){
+        walletDao.deleteTransaction(id);
+    }
 }
