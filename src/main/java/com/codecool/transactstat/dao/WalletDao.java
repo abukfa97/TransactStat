@@ -9,5 +9,5 @@ public interface WalletDao {
     List<Transaction> getTransactions();
     Transaction getTransaction(UUID id);
     void addTransaction(Transaction transaction);
-    void updateTransaction(Transaction transaction);
+    void updateTransaction(Transaction transaction, UUID id);
 }
