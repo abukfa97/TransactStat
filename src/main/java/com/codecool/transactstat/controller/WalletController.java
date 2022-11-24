@@ -28,9 +28,14 @@ public class WalletController {
         walletService.addTransaction(transaction);
     }
 
-    @GetMapping("api/transactions/{transactionId}")
+    @GetMapping("/api/wallet/transactions/{transactionId}")
     public Transaction getById(@PathVariable(name = "transactionId") String id){
         UUID uuid = UUID.fromString(id);
         return walletService.getTransaction(uuid);
+    }
+
+    @PutMapping("/api/wallet/transactions/update")
+    public void updateTransaction(@RequestBody Transaction transaction){
+        walletService.updateTransaction(transaction);
     }
 }
