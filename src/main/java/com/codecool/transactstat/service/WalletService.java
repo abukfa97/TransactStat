@@ -39,16 +39,16 @@ public class WalletService {
     }
 
     public Transaction getBiggestTransaction() {
-        List<Transaction> transactions = walletDao.getTransactions();
+        List<Transaction> transactions = getTransactions();
         Transaction biggestTransaction = null;
         BigDecimal baseValue = new BigDecimal(0);
         for (Transaction transaction :
                 transactions) {
            int res = transaction.getAmount().compareTo(baseValue);
-            if(res == 1){
+           if(res == 1){
                 baseValue = transaction.getAmount();
                 biggestTransaction = transaction;
-            }
+           }
         }
         return biggestTransaction;
 
