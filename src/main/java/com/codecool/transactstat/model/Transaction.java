@@ -77,4 +77,8 @@ public class Transaction {
     public void setPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
     }
+
+    public boolean isExpense(){
+        return this.getAmount().compareTo(BigDecimal.ZERO) < 0;
+    }
 }

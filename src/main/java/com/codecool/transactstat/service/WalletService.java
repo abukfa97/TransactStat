@@ -5,9 +5,10 @@ import com.codecool.transactstat.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -43,7 +44,7 @@ public class WalletService {
     public List<Transaction> getExpenses () {
         return getTransactions()
                 .stream()
-                .filter(transaction -> transaction.getAmount().compareTo(BigDecimal.ZERO) == -1)
+                .filter(Transaction::isExpense)
                 .collect(Collectors.toList());
     }
 
@@ -54,19 +55,11 @@ public class WalletService {
                 .collect(Collectors.toList());
     }
 
-    public Transaction getBiggestTransaction() {
+    public Optional<Transaction> getBiggestTransaction() {
         List<Transaction> transactions = getTransactions();
-        Transaction biggestTransaction = null;
-        BigDecimal baseValue = new BigDecimal(0);
-        for (Transaction transaction :
-                transactions) {
-           int res = transaction.getAmount().compareTo(baseValue);
-           if(res == 1){
-                baseValue = transaction.getAmount();
-                biggestTransaction = transaction;
-           }
-        }
-        return biggestTransaction;
+
+        return transactions.stream().max(Comparator.comparing(Transaction::getAmount));
+
 
     }
 }
