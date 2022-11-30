@@ -4,6 +4,7 @@ import com.codecool.transactstat.model.Transaction;
 import com.codecool.transactstat.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -60,6 +61,11 @@ public class WalletController {
     @GetMapping("/api/wallet/transactions/get-biggest-transaction")
     public Transaction getBiggestTransaction(){
         return walletService.getBiggestTransaction();
+    }
+
+    @ExceptionHandler(TransactionNotFoundException.class)
+    public ResponseEntity<?> handleMissingTransaction(){
+        return ResponseEntity.notFound().build();
     }
 
 }
