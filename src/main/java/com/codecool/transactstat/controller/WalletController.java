@@ -3,9 +3,9 @@ package com.codecool.transactstat.controller;
 import com.codecool.transactstat.model.Transaction;
 import com.codecool.transactstat.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -62,4 +62,6 @@ public class WalletController {
         return walletService.getBiggestTransaction();
     }
 
+    @GetMapping("api/wallet/get-current-balance")
+    public BigDecimal getCurrentBalance(){return walletService.getCurrentBalance();}
 }

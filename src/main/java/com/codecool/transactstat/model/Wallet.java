@@ -2,6 +2,7 @@ package com.codecool.transactstat.model;
 
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,9 @@ import java.util.UUID;
 public class Wallet {
 
     private List<Transaction> transactionList = new ArrayList<>();
+
+    private BigDecimal balance = BigDecimal.valueOf(38);
+    //TODO: implement constructor to get starting balance
 
     public Optional<Transaction> getTransactionById(UUID id){
         return transactionList.stream().filter(transaction -> transaction.getId().equals(id)).findFirst();
@@ -38,5 +42,9 @@ public class Wallet {
 
     public void delete(UUID id){
         getTransactionById(id).ifPresent(transactionToDelete -> transactionList.remove(transactionToDelete));
+    }
+
+    public BigDecimal getCurrentBalance() {
+        return balance;
     }
 }
