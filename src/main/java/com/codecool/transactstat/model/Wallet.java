@@ -17,6 +17,10 @@ public class Wallet {
     private BigDecimal balance = BigDecimal.valueOf(38);
     //TODO: implement constructor to get starting balance
 
+    public BigDecimal getCurrentBalance() {
+        return balance;
+    }
+
     public Optional<Transaction> getTransactionById(UUID id){
         return transactionList.stream().filter(transaction -> transaction.getId().equals(id)).findFirst();
     }
@@ -44,7 +48,4 @@ public class Wallet {
         getTransactionById(id).ifPresent(transactionToDelete -> transactionList.remove(transactionToDelete));
     }
 
-    public BigDecimal getCurrentBalance() {
-        return balance;
-    }
 }
