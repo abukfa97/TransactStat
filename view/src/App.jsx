@@ -24,7 +24,7 @@ function App() {
     setTransactions({...savedTransactions})
   }
 
-    useEffect(async () => {
+  useEffect(async () => {
       await getApi('/api/wallet/transactions')
     }, [transactions]);
 
