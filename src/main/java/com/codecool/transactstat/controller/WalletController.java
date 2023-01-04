@@ -58,6 +58,11 @@ public class WalletController {
         return walletService.getExpenses();
     }
 
+    @GetMapping("/api/wallet/transactions/incomes")
+    public List<Transaction> getIncomes(){
+        return walletService.getIncomes();
+    }
+
     @GetMapping("/api/wallet/transactions/get-biggest-transaction")
     public Transaction getBiggestTransaction(){
         return walletService.getBiggestTransaction();
