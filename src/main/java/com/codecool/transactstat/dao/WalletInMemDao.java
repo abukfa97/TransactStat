@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -26,8 +27,8 @@ public class WalletInMemDao implements WalletDao {
     }
 
     @Override
-    public Transaction getTransaction(UUID id) {
-        return wallet.getTransactionById(id).get();
+    public Optional<Transaction> getTransaction(UUID id) {
+        return wallet.getTransactionById(id);
     }
 
     @Override

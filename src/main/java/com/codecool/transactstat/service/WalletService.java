@@ -1,5 +1,6 @@
 package com.codecool.transactstat.service;
 
+import com.codecool.transactstat.controller.TransactionNotFoundException;
 import com.codecool.transactstat.dao.WalletDao;
 import com.codecool.transactstat.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class WalletService {
     }
 
     public Transaction getTransaction(UUID id){
-        return walletDao.getTransaction(id);
+        return walletDao.getTransaction(id).orElseThrow(TransactionNotFoundException::new);
     }
 
     public void addTransaction(Transaction transaction){
