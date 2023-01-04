@@ -5,6 +5,7 @@ import com.codecool.transactstat.model.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -43,5 +44,10 @@ public class WalletInMemDao implements WalletDao {
     @Override
     public void deleteTransaction(UUID id) {
         wallet.delete(id);
+    }
+
+    @Override
+    public BigDecimal getCurrentBalance() {
+        return wallet.getCurrentBalance();
     }
 }

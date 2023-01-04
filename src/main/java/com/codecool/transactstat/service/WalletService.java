@@ -77,4 +77,8 @@ public class WalletService {
         return biggestTransaction;
 
     }
+
+    public BigDecimal getCurrentBalance() {
+        return walletDao.getCurrentBalance();
+    }
 }

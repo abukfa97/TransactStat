@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -53,7 +54,7 @@ public class WalletController {
         walletService.deleteTransaction(id);
     }
 
-    @GetMapping("/api/wallet/transactions/get-expenses")
+    @GetMapping("/api/wallet/transactions/expenses")
     public List<Transaction> getExpenses(){
         return walletService.getExpenses();
     }
@@ -63,14 +64,18 @@ public class WalletController {
         return walletService.getIncomes();
     }
 
-    @GetMapping("/api/wallet/transactions/get-biggest-transaction")
+    @GetMapping("/api/wallet/transactions/biggest-transaction")
     public Transaction getBiggestTransaction(){
         return walletService.getBiggestTransaction();
     }
+
+    @GetMapping("api/wallet/current-balance")
+    public BigDecimal getCurrentBalance(){return walletService.getCurrentBalance();}
 
     @ExceptionHandler(TransactionNotFoundException.class)
     public ResponseEntity<?> handleMissingTransaction(){
         return ResponseEntity.notFound().build();
     }
+
 
 }
