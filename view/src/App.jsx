@@ -3,6 +3,10 @@ import Transaction from "./components/Transaction";
 import {useEffect, useState} from "react";
 
 function App() {
+  const menuOptions = [
+      "Wallets" ,"Profile", "Settings", "Log Out"
+  ]
+
   const exampleTransactions = [
     {
       amount: 350000,
@@ -31,6 +35,10 @@ function App() {
 
   return (
     <div className="App">
+      // navbar
+      {transactions.map((transaction, index) => (
+          <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
+      ))}
         {transactions.map((transaction, index) => (
       <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
         ))}
