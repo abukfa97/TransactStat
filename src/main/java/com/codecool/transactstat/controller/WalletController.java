@@ -54,12 +54,12 @@ public class WalletController {
         walletService.deleteTransaction(id);
     }
 
-    @GetMapping("/api/wallet/transactions/get-expenses")
+    @GetMapping("/api/wallet/transactions/expenses")
     public List<Transaction> getExpenses(){
         return walletService.getExpenses();
     }
 
-    @GetMapping("/api/wallet/transactions/get-biggest-transaction")
+    @GetMapping("/api/wallet/transactions/biggest-transaction")
     public Transaction getBiggestTransaction(){
         return walletService.getBiggestTransaction();
     }
@@ -69,6 +69,6 @@ public class WalletController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("api/wallet/get-current-balance")
+    @GetMapping("api/wallet/current-balance")
     public BigDecimal getCurrentBalance(){return walletService.getCurrentBalance();}
 }

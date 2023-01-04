@@ -14,7 +14,7 @@ public class Wallet {
 
     private List<Transaction> transactionList = new ArrayList<>();
 
-    private BigDecimal balance = BigDecimal.valueOf(1);
+    private BigDecimal balance = BigDecimal.valueOf(0);
     //TODO: implement constructor to get starting balance
 
     public BigDecimal getCurrentBalance() {
@@ -31,13 +31,13 @@ public class Wallet {
 
     public void addTransaction(Transaction transaction){
         transactionList.add(transaction);
-        updateBalance(transaction.getAmount(), "add");
+        addAmountToBalance(transaction.getAmount());
     }
 
     public void update(Transaction transaction, UUID id){
         getTransactionById(id).ifPresent(transactionToUpdate -> {
-            updateBalance(transactionToUpdate.getAmount(), "subtract");
-            updateBalance(transaction.getAmount(), "add");
+            subtractAmountFromBalance(transactionToUpdate.getAmount());
+            addAmountToBalance(transaction.getAmount());
             transactionToUpdate.setTitle(transaction.getTitle());
             transactionToUpdate.setAmount(transaction.getAmount());
             transactionToUpdate.setDateOfTransaction(transaction.getDateOfTransaction());
@@ -49,16 +49,19 @@ public class Wallet {
 
     public void delete(UUID id){
         getTransactionById(id).ifPresent(transactionToDelete -> {
-            updateBalance(transactionToDelete.getAmount(), "subtract");
+            subtractAmountFromBalance(transactionToDelete.getAmount());
+            addAmountToBalance(transactionToDelete.getAmount());
             transactionList.remove(transactionToDelete);
         });
     }
 
-    private void updateBalance(BigDecimal amount, String updateType) {
-        switch (updateType) {
-            case "add" -> balance = balance.add(amount);
-            case "subtract" -> balance = balance.subtract(amount);
-        }
+    private void addAmountToBalance(BigDecimal amount) {
+        balance = balance.add(amount);
     }
+
+    private void subtractAmountFromBalance(BigDecimal amount) {
+        balance = balance.subtract(amount);
+    }
+
 
 }
