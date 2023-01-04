@@ -1,5 +1,6 @@
 import './App.css'
 import Transaction from "./components/Transaction";
+import TransactionList from "./components/TransactionList";
 import {useEffect, useState} from "react";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       name: "Transaction 2"
     }
   ]
-  const [transactions, setTransactions] = useState(exampleTransactions)
+  const [transactions, setTransactions] = useState(exampleTransactions);
 
 
 
@@ -24,16 +25,14 @@ function App() {
     setTransactions({...savedTransactions})
   }
 
-  useEffect(async () => {
+  /*useEffect(async () => {
       await getApi('/api/wallet/transactions')
-    }, [transactions]);
+    }, [transactions]); */
 
 
   return (
     <div className="App">
-        {transactions.map((transaction, index) => (
-      <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
-        ))}
+      <TransactionList  transactions={transactions}/>
     </div>
   )
 }
