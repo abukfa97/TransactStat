@@ -1,32 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import Transaction from "./components/Transaction";
+import {useEffect, useState} from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const exampleTransactions = [
+    {
+      amount: 350000,
+      name: "Transaction 1"
+    },
+    {
+      amount: 6500,
+      name: "Transaction 2"
+    }
+  ]
+  const [transactions, setTransactions] = useState(exampleTransactions)
+
+
+
+  //get data from API and update transactions
+  const getApi = async (url) => {
+    let response = await fetch(url);
+    let savedTransactions = await response.json();
+    setTransactions({...savedTransactions})
+  }
+
+    useEffect(async () => {
+      await getApi('/api/wallet/transactions')
+    }, [transactions]);
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        {transactions.map((transaction, index) => (
+      <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
+        ))}
     </div>
   )
 }
