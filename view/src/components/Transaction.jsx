@@ -1,7 +1,10 @@
-const Transaction = ({ name }) => {
+const Transaction = ({ name, amount }) => {
     return (
         <div>
-            <li>{name}</li>
+            <li>
+                <p className="transaction-amount">{amount}</p>
+                <p className="transaction-name">{name}</p>
+            </li>
         </div>
     )
 }
