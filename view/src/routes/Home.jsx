@@ -1,10 +1,11 @@
 import TransactionList from "../components/TransactionList.jsx";
+import {Link} from "react-router-dom";
 
 const Home = ({ transactions }) => {
     return (
         <div>
             <TransactionList  transactions={transactions}/>
-            <button>Add Transaction</button>
+            <Link to="/add">Add Transaction</Link>
         </div>
     )
 }
