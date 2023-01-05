@@ -4,6 +4,9 @@ import {useState} from "react";
 const AddTransaction = () => {
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState('');
+    const [dateOfTransaction, setDate] = useState('');
+    const [transactionCategory, setCategory] = useState('');
+    const [paymentType, setPaymentType] = useState(''); // select menu -> CARD/CASH
 
     const handleSubmit = async (e) => {
         // to prevent page refresh
@@ -12,6 +15,7 @@ const AddTransaction = () => {
         console.log(transfer)
         await fetch('/api/wallet/transactions',
             {
+                target: 'http://localhost:8080',
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(transfer)
@@ -42,9 +46,38 @@ const AddTransaction = () => {
                     setAmount(e.target.value)}
                     }
                 />
+                <label>Date Of Transaction</label>
+                <input
+                    type="date"
+                    required
+                    value={dateOfTransaction}
+                    onChange={(e) => {
+                        setDate(e.target.value)}
+                    }
+                />
+                <label>Category</label>
+                <select
+                    value={transactionCategory}
+                    onChange={(e) => setCategory(e.target.value)}
+                >
+                    <option value="CASH">Cash</option>
+                    <option value="CARD">Card</option>
+                </select>
+                <label>Payment Type</label>
+                <input
+                    type="text"
+                    required
+                    value={paymentType}
+                    onChange={(e) => {
+                        setPaymentType(e.target.value)}
+                    }
+                />
                 <button>Add Transaction</button>
                 <p>{title}</p>
                 <p>{amount}</p>
+                <p>{dateOfTransaction}</p>
+                <p>{paymentType}</p>
+                <p>{transactionCategory}</p>
             </form>
         </div>
     )

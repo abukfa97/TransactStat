@@ -5,7 +5,7 @@ function TransactionList({ transactions }) {
        <div>
             <ul>
                 {transactions.map((transaction, index) =>
-                    <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
+                    <Transaction key={index} name={transaction.title} amount={transaction.amount}/>
                 )}
             </ul>
        </div>
