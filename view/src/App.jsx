@@ -32,11 +32,20 @@ function App() {
       getApi('/api/wallet/transactions').catch(console.error)
     }, [transactions]);
 
+   async function getIncomes(){
+     useEffect(() => {
+       getApi('localhost:8080/api/transactions/incomes').catch(console.error)
+     }, [transactions])
+     return transactions;
+   }
 
   return (
     <div className="App">
       <Sidebar/>
       <TransactionList  transactions={transactions}/>
+      <TransactionList transactions={async () => {
+        return await getIncomes()
+      }}/>
     </div>
   )
 }
