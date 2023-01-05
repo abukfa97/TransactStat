@@ -10,9 +10,9 @@ const Sidebar = ({ option }) => {
     return (
         <div>
             <h2 className="logo">TransactStat</h2>
-            <ul>
+            <ul className='list-group'>
                 {menuOptions.map((menuOption) =>
-                    <li key={menuOption}>
+                    <li className='btn' key={menuOption}>
                         {menuOption}
                     </li>
                 )}

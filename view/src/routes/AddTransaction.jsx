@@ -1,5 +1,8 @@
 import TransactionList from "../components/TransactionList.jsx";
 import {useState} from "react";
+import {Form} from "react-bootstrap";
+
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
 
 const AddTransaction = () => {
     const [title, setTitle] = useState('');
@@ -11,11 +14,10 @@ const AddTransaction = () => {
     const handleSubmit = async (e) => {
         // to prevent page refresh
         e.preventDefault();
-        const transfer = { title, amount }
-        console.log(transfer)
+        const transfer = { title, amount, dateOfTransaction, transactionCategory, paymentType }
+
         await fetch('/api/wallet/transactions',
             {
-                target: 'http://localhost:8080',
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(transfer)
@@ -27,27 +29,32 @@ const AddTransaction = () => {
     return (
         <div>
             <h2>Add New Transaction</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Transaction Title</label>
-                <input
-                    type="text"
-                    required
-                    value={title}
-                    onChange={(e) => {
-                        setTitle(e.target.value)}
-                    }
-                />
-                <label>Amount</label>
-                <input
-                    type="number"
-                    required
-                    value={amount}
-                    onChange={(e) => {
-                    setAmount(e.target.value)}
-                    }
-                />
-                <label>Date Of Transaction</label>
-                <input
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label>Transaction Title</Form.Label>
+                    <Form.Control
+                        type="text"
+                        required
+                        value={title}
+                        onChange={(e) => {
+                            setTitle(e.target.value)}
+                        }
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Amount</Form.Label>
+                    <Form.Control
+                        type="number"
+                        required
+                        value={amount}
+                        onChange={(e) => {
+                        setAmount(e.target.value)}
+                        }
+                    />
+                </Form.Group>
+                <Form.Group>
+                <Form.Label>Date Of Transaction</Form.Label>
+                <Form.Control
                     type="date"
                     required
                     value={dateOfTransaction}
@@ -55,30 +62,37 @@ const AddTransaction = () => {
                         setDate(e.target.value)}
                     }
                 />
-                <label>Category</label>
+                </Form.Group>
+                <Form.Group>
+                <Form.Label>Payment Type</Form.Label>
                 <select
-                    value={transactionCategory}
-                    onChange={(e) => setCategory(e.target.value)}
+                    value={paymentType}
+                    onChange={(e) => setPaymentType(e.target.value)}
                 >
                     <option value="CASH">Cash</option>
                     <option value="CARD">Card</option>
                 </select>
-                <label>Payment Type</label>
-                <input
+                </Form.Group>
+                <Form.Group>
+
+                <Form.Label>Category</Form.Label>
+                <Form.Control
                     type="text"
                     required
-                    value={paymentType}
+                    value={transactionCategory}
                     onChange={(e) => {
-                        setPaymentType(e.target.value)}
+                        setCategory(e.target.value)}
                     }
                 />
+
+                </Form.Group>
                 <button>Add Transaction</button>
                 <p>{title}</p>
                 <p>{amount}</p>
                 <p>{dateOfTransaction}</p>
                 <p>{paymentType}</p>
                 <p>{transactionCategory}</p>
-            </form>
+            </Form>
         </div>
     )
 }

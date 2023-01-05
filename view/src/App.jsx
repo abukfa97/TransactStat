@@ -6,6 +6,8 @@ import Sidebar from "./components/Sidebar.jsx";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
+import {Button} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
 
 function App() {
   const exampleTransactions = [
@@ -18,7 +20,7 @@ function App() {
       name: "Transaction 2"
     }
   ]
-  const [transactions, setTransactions] = useState(exampleTransactions)
+  const [transactions, setTransactions] = useState([exampleTransactions])
 
   const loadForm = () => {
     return (
@@ -34,7 +36,7 @@ function App() {
   const getApi = async (url) => {
     let response = await fetch(url);
     let savedTransactions = await response.json();
-    setTransactions({...savedTransactions})
+    setTransactions([...savedTransactions])
   }
 
   //get data from API and update transactions
@@ -47,7 +49,8 @@ function App() {
   return (
       <Router>
         <div className="App">
-          <Sidebar/>
+          <Button>Hello</Button>
+          <Sidebar />
           <div className="content">
             <Switch>
               <Route exact path="/">

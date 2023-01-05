@@ -1,7 +1,7 @@
 const Sidebar = ({ option }) => {
     return (
         <div>
-            <li>{option}</li>
+            <li className="list-group-item">{option}</li>
         </div>
     )
 }
