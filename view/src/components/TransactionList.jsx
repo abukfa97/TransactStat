@@ -1,14 +1,13 @@
 import Transaction from "./Transaction.jsx";
 
-function TransactionList({transactions}) {
-
+function TransactionList({ transactions }) {
     return(
        <div>
-            <ol>
-                {transactions.map((transaction, index) => {
+            <ul>
+                {transactions.map((transaction, index) =>
                     <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
-                })}
-            </ol>
+                )}
+            </ul>
        </div>
     )
 }
