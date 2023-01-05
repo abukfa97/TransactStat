@@ -1,6 +1,8 @@
 import './App.css'
 import Transaction from "./components/Transaction";
+import TransactionList from "./components/TransactionList";
 import {useEffect, useState} from "react";
+import Sidebar from "./components/Sidebar.jsx";
 
 function App() {
   const exampleTransactions = [
@@ -24,16 +26,20 @@ function App() {
     setTransactions({...savedTransactions})
   }
 
-  useEffect(async () => {
-      await getApi('/api/wallet/transactions')
+  //get data from API and update transactions
+
+    useEffect( () => {
+      getApi('/api/wallet/transactions').catch(console.error)
     }, [transactions]);
 
 
   return (
     <div className="App">
-        {transactions.map((transaction, index) => (
-      <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
-        ))}
+      <Sidebar/>
+        {
+          transactions.map((transaction, index) =>
+      <TransactionList  transactions={transactions}/>
+          )}
     </div>
   )
 }
