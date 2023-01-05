@@ -3,6 +3,9 @@ import Transaction from "./components/Transaction";
 import TransactionList from "./components/TransactionList";
 import {useEffect, useState} from "react";
 import Sidebar from "./components/Sidebar.jsx";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Home from "./routes/Home.jsx";
+import AddTransaction from "./routes/AddTransaction.jsx";
 
 function App() {
   const exampleTransactions = [
@@ -16,6 +19,14 @@ function App() {
     }
   ]
   const [transactions, setTransactions] = useState(exampleTransactions)
+
+  const loadForm = () => {
+    return (
+        <div>
+          <p>This is a new page</p>
+        </div>
+    )
+  }
 
 
 
@@ -34,10 +45,21 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Sidebar/>
-      <TransactionList  transactions={transactions}/>
-    </div>
+      <Router>
+        <div className="App">
+          <Sidebar/>
+          <div className="content">
+            <Switch>
+              <Route exact path="/">
+                <Home transactions={transactions}/>
+              </Route>
+              <Route exact path="/add">
+                <AddTransaction/>
+              </Route>
+            </Switch>
+          </div>
+        </div>
+      </Router>
   )
 }
 
