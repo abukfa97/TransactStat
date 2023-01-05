@@ -1,10 +1,10 @@
 import './App.css'
 import Transaction from "./components/Transaction";
+import TransactionList from "./components/TransactionList";
 import {useEffect, useState} from "react";
 import Sidebar from "./components/Sidebar.jsx";
 
 function App() {
-
   const exampleTransactions = [
     {
       amount: 350000,
@@ -17,6 +17,9 @@ function App() {
   ]
   const [transactions, setTransactions] = useState(exampleTransactions)
 
+
+
+  //get data from API and update transactions
   const getApi = async (url) => {
     let response = await fetch(url);
     let savedTransactions = await response.json();
@@ -34,8 +37,7 @@ function App() {
     <div className="App">
       <Sidebar/>
         {transactions.map((transaction, index) => (
-      <Transaction key={index} name={transaction.name} amount={transaction.amount}/>
-        ))}
+      <TransactionList  transactions={transactions}/>
     </div>
   )
 }
