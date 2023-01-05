@@ -2,13 +2,21 @@ import MenuOption from "./MenuOption.jsx";
 
 
 const Sidebar = ({ option }) => {
+
+    const menuOptions = [
+        "Wallets" ,"Profile", "Settings", "Log Out"
+    ]
+
     return (
         <div>
             <h2 className="logo">TransactStat</h2>
-            <MenuOption title="Settings"/>
-            <MenuOption title="Wallets"/>
-            <MenuOption title="Profile"/>
-            <MenuOption title="Log Out"/>
+            <ul>
+                {menuOptions.map((menuOption) =>
+                    <li key={menuOption}>
+                        {menuOption}
+                    </li>
+                )}
+            </ul>
         </div>
     )
 }
