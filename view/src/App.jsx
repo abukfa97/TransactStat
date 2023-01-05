@@ -36,10 +36,7 @@ function App() {
   return (
     <div className="App">
       <Sidebar/>
-        {
-          transactions.map((transaction, index) =>
       <TransactionList  transactions={transactions}/>
-          )}
     </div>
   )
 }
