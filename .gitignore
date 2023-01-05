@@ -1,4 +1,5 @@
 .DS_Store
 .idea
 target
-node_modules
+view/node_modules
+.vite
