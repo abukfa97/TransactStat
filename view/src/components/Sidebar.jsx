@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Link} from "react-router-dom";
 
 
-const Sidebar = ({ option }) => {
+const Sidebar = ({ option, menuRoute, urlRoute }) => {
 
     const menuOptions = [
         "Wallets" ,"Profile", "Settings"
@@ -14,14 +14,14 @@ const Sidebar = ({ option }) => {
 
     return (
         <div>
-            <Navbar bg="light" expand="lg">
-                <Container>
-                    <Navbar.Brand href="#home">TransactStat</Navbar.Brand>
+            <Navbar bg="light" expand="lg" className="sidebar">
+                <Container >
+                    <Navbar.Brand><Link to="/">TransactStat</Link><Link to={urlRoute}><span className='transparent'>{menuRoute}</span></Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link><Link to='/'>Home</Link></Nav.Link>
-                            <NavDropdown title="Menu" id="basic-nav-dropdown">
+                            <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
                                 <ul className='list-group'>
                                     {menuOptions.map((menuOption) =>
                                         <NavDropdown.Item href="#action/3.1">{menuOption}</NavDropdown.Item>
@@ -33,7 +33,7 @@ const Sidebar = ({ option }) => {
                                 </NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                    </Navbar.Collapse>
+                    </Navbar>
                 </Container>
             </Navbar>
         </div>

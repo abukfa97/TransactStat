@@ -12,6 +12,8 @@ import'bootstrap/dist/css/bootstrap.min.css';
 import{Container,ListGroup,Col}from'react-bootstrap';
 
 function App() {
+  const menuRoute = '/Dashboard'
+  const urlRoute = '/'
   const exampleTransactions = [
     {
       amount: 350000,
@@ -51,7 +53,6 @@ function App() {
   return (
       <Router>
         <div className="App">
-          <Sidebar />
           <div className="content">
             <Switch>
               <Route exact path="/">
