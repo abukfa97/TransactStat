@@ -1,8 +1,11 @@
 import TransactionList from "../components/TransactionList.jsx";
 import {useState} from "react";
 import {Form} from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import {Link} from "react-router-dom";
 
 const AddTransaction = () => {
     const [title, setTitle] = useState('');
@@ -28,9 +31,9 @@ const AddTransaction = () => {
 
     return (
         <div>
-            <h2>Add New Transaction</h2>
+            <h2 className='transaction-header'>Add New Transaction</h2>
             <Form onSubmit={handleSubmit}>
-                <Form.Group>
+                <Form.Group className="group">
                     <Form.Label>Transaction Title</Form.Label>
                     <Form.Control
                         type="text"
@@ -41,7 +44,7 @@ const AddTransaction = () => {
                         }
                     />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="group">
                     <Form.Label>Amount</Form.Label>
                     <Form.Control
                         type="number"
@@ -52,7 +55,7 @@ const AddTransaction = () => {
                         }
                     />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="group">
                 <Form.Label>Date Of Transaction</Form.Label>
                 <Form.Control
                     type="date"
@@ -63,9 +66,10 @@ const AddTransaction = () => {
                     }
                 />
                 </Form.Group>
-                <Form.Group>
-                <Form.Label>Payment Type</Form.Label>
-                <select
+                <Form.Group className="group">
+                    <div> <Form.Label>Payment Type</Form.Label></div>
+
+                <select className='select'
                     value={paymentType}
                     onChange={(e) => setPaymentType(e.target.value)}
                 >
@@ -73,7 +77,7 @@ const AddTransaction = () => {
                     <option value="CARD">Card</option>
                 </select>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="group">
 
                 <Form.Label>Category</Form.Label>
                 <Form.Control
@@ -86,12 +90,8 @@ const AddTransaction = () => {
                 />
 
                 </Form.Group>
-                <button>Add Transaction</button>
-                <p>{title}</p>
-                <p>{amount}</p>
-                <p>{dateOfTransaction}</p>
-                <p>{paymentType}</p>
-                <p>{transactionCategory}</p>
+                <button className="group">Add Transaction</button>
+                <Link className="group" to='/'>Home</Link>
             </Form>
         </div>
     )

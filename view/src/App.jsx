@@ -8,6 +8,8 @@ import Home from "./routes/Home.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
 import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import'bootstrap/dist/css/bootstrap.min.css';
+import{Container,ListGroup,Col}from'react-bootstrap';
 
 function App() {
   const exampleTransactions = [
@@ -49,7 +51,6 @@ function App() {
   return (
       <Router>
         <div className="App">
-          <Button>Hello</Button>
           <Sidebar />
           <div className="content">
             <Switch>

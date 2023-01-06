@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.transaction-header{
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.group {
+  margin-top: 20px;
+}
+
+.select{
+  padding: 5px 15px
+}
