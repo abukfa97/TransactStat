@@ -1,42 +1,99 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+}
+
+html, body, #app, #app>div {
+  height: 100%
+}
+
+
+
+.group {
+  margin-top: 20px;
+}
+
+.select{
+  padding: 5px 15px
+}
+
+.App{
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.sidebar{
+  width: 100%;
+  height: 100%  ;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flex-between {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.red{
+  color: indianred;
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+.transparent {
+  color: rgba(2, 1, 1, 0.19);
+  font-size: 19px;
 }
 
-.read-the-docs {
-  color: #888;
+/*positioning*/
+
+.thirty {
+  margin-left: 17%;
+  margin-top: 5%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.width-83 {
+  width: 66%;
+}
+
+.width-20 {
+  width: 20%;
+}
+
+.top-5 {
+  margin-top: 5%;
+}
+.top-2 {
+  margin-top: 2%;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.card-grey {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+}
+
+.margin-10 {
+  padding: 3%;
+  margin: 5%;
+  width: 95%;
+}
+
+html{
+  background-color: #1a1a1a;
+}
+
+.dark {
+  background-color: #242424;
+}
+
+.light-text {
+  color: #e8e8e8;
 }
