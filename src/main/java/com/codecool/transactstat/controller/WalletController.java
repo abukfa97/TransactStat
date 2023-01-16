@@ -1,9 +1,8 @@
 package com.codecool.transactstat.controller;
 
 import com.codecool.transactstat.model.Transaction;
-import com.codecool.transactstat.service.WalletService;
+import com.codecool.transactstat.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,67 +14,14 @@ import java.util.UUID;
 @RestController
 public class WalletController {
 
-    private final WalletService walletService;
+    private final TransactionService transactionService;
 
     @Autowired
-    public WalletController(WalletService walletService) {
-        this.walletService = walletService;
-    }
-
-    @GetMapping("/api/wallet/transactions")
-    public List<Transaction> getTransactions(){
-        return walletService.getTransactions();
-    }
-
-    @GetMapping("/api/wallet/transactions/date/{date}")
-    public List<Transaction> getTransactionsByDate(@PathVariable String date){
-        var localDate = LocalDate.parse(date);
-        return walletService.getTransactionsByDate(localDate);
-    }
-
-    @PostMapping("/api/wallet/transactions")
-    public void addTransaction(@RequestBody Transaction transaction){
-        walletService.addTransaction(transaction);
-    }
-
-    @GetMapping("/api/wallet/transactions/{transactionId}")
-    public Transaction getById(@PathVariable(name = "transactionId") String id){
-        UUID uuid = UUID.fromString(id);
-        return walletService.getTransaction(uuid);
-    }
-
-    @PutMapping("/api/wallet/transactions/{transactionId}")
-    public void updateTransaction(@PathVariable(name = "transactionId") UUID id,@RequestBody Transaction transaction){
-        walletService.updateTransaction(transaction, id);
-    }
-
-    @DeleteMapping("/api/wallet/transactions/{transactionId}")
-    public void deleteTransaction(@PathVariable(name = "transactionId") UUID id){
-        walletService.deleteTransaction(id);
-    }
-
-    @GetMapping("/api/wallet/transactions/expenses")
-    public List<Transaction> getExpenses(){
-        return walletService.getExpenses();
-    }
-
-    @GetMapping("/api/wallet/transactions/incomes")
-    public List<Transaction> getIncomes(){
-        return walletService.getIncomes();
-    }
-
-    @GetMapping("/api/wallet/transactions/biggest-transaction")
-    public Transaction getBiggestTransaction(){
-        return walletService.getBiggestTransaction();
+    public WalletController(TransactionService transactionService) {
+        this.transactionService = transactionService;
     }
 
     @GetMapping("api/wallet/current-balance")
-    public BigDecimal getCurrentBalance(){return walletService.getCurrentBalance();}
-
-    @ExceptionHandler(TransactionNotFoundException.class)
-    public ResponseEntity<?> handleMissingTransaction(){
-        return ResponseEntity.notFound().build();
-    }
-
+    public BigDecimal getCurrentBalance(){return transactionService.getCurrentBalance();}
 
 }

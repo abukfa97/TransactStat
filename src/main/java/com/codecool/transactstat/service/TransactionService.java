@@ -13,12 +13,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-public class WalletService {
+public class TransactionService {
 
     private final WalletDao walletDao;
 
     @Autowired
-    public WalletService(WalletDao walletDao) {
+    public TransactionService(WalletDao walletDao) {
         this.walletDao = walletDao;
     }
 
