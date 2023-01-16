@@ -22,6 +22,9 @@ public class WalletController {
     }
 
     @GetMapping("api/wallet/current-balance")
-    public BigDecimal getCurrentBalance(){return transactionService.getCurrentBalance();}
+    public BigDecimal getCurrentBalance(){
+        //TODO -> return transactionService.getCurrentBalance();
+        throw  new UnsupportedOperationException();
+    }
 
 }
