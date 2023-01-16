@@ -20,15 +20,15 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping("/wallet")
-    public List<Transaction> getTransactions(){
-        return transactionService.getTransactions();
+    @GetMapping("/{walletId}")
+    public List<Transaction> getTransactions(@PathVariable UUID walletId){
+        return transactionService.getTransactions(walletId);
     }
 
-    @GetMapping("/wallet/date/{date}")
-    public List<Transaction> getTransactionsByDate(@PathVariable String date){
+    @GetMapping("/{walletId}/date/{date}")
+    public List<Transaction> getTransactionsByDate(@PathVariable UUID walletId, @PathVariable String date){
         var localDate = LocalDate.parse(date);
-        return transactionService.getTransactionsByDate(localDate);
+        return transactionService.getTransactionsByDate(walletId, localDate);
     }
 
     @PostMapping("/wallet")
@@ -52,19 +52,19 @@ public class TransactionController {
         transactionService.deleteTransaction(id);
     }
 
-    @GetMapping("/wallet/expenses")
-    public List<Transaction> getExpenses(){
-        return transactionService.getExpenses();
+    @GetMapping("/{walletId}/expenses")
+    public List<Transaction> getExpenses(@PathVariable UUID walletId){
+        return transactionService.getExpenses(walletId);
     }
 
-    @GetMapping("/wallet/incomes")
-    public List<Transaction> getIncomes(){
-        return transactionService.getIncomes();
+    @GetMapping("/{walletId}/incomes")
+    public List<Transaction> getIncomes(@PathVariable UUID walletId){
+        return transactionService.getIncomes(walletId);
     }
 
-    @GetMapping("/wallet/biggest-transaction")
-    public Transaction getBiggestTransaction(){
-        return transactionService.getBiggestTransaction();
+    @GetMapping("/{walletId}/biggest-transaction")
+    public Transaction getBiggestTransaction(@PathVariable UUID walletId){
+        return transactionService.getBiggestTransaction(walletId);
     }
 
     @ExceptionHandler(TransactionNotFoundException.class)
