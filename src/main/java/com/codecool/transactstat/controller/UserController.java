@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users/{userId}")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
@@ -16,13 +16,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/{userId}")
     public User getUserById(@PathVariable Long userId){
         return userService.getUserById(userId);
     }
 
     @PostMapping
-    public void registerNewUser(@PathVariable Long userId, @RequestBody User user){
-        userService.updateUserById(userId, user);
+    public void registerNewUser(@RequestBody User user){
+        userService.addUser(user);
+    }
+
+    @PutMapping("/{userId}")
+    public void updateUserById(@PathVariable Long userId, @RequestBody User user){
+        userService.updateUserById(userId,user);
     }
 }
