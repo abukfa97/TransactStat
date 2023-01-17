@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -20,13 +19,13 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping("/{walletId}")
-    public List<Transaction> getTransactions(@PathVariable UUID walletId){
+    @GetMapping("/{walletId}/transactions")
+    public List<Transaction> getTransactions(@PathVariable Long walletId){
         return transactionService.getTransactions(walletId);
     }
 
     @GetMapping("/{walletId}/date/{date}")
-    public List<Transaction> getTransactionsByDate(@PathVariable UUID walletId, @PathVariable String date){
+    public List<Transaction> getTransactionsByDate(@PathVariable Long walletId, @PathVariable String date){
         var localDate = LocalDate.parse(date);
         return transactionService.getTransactionsByDate(walletId, localDate);
     }
@@ -37,33 +36,32 @@ public class TransactionController {
     }
 
     @GetMapping("/wallet/{transactionId}")
-    public Transaction getById(@PathVariable(name = "transactionId") String id){
-        UUID uuid = UUID.fromString(id);
-        return transactionService.getTransaction(uuid);
+    public Transaction getById(@PathVariable(name = "transactionId") Long id){
+        return transactionService.getTransaction(id);
     }
 
     @PutMapping("/wallet/{transactionId}")
-    public void updateTransaction(@PathVariable(name = "transactionId") UUID id,@RequestBody Transaction transaction){
+    public void updateTransaction(@PathVariable(name = "transactionId") Long id,@RequestBody Transaction transaction){
         transactionService.updateTransaction(transaction, id);
     }
 
     @DeleteMapping("/wallet/{transactionId}")
-    public void deleteTransaction(@PathVariable(name = "transactionId") UUID id){
+    public void deleteTransaction(@PathVariable(name = "transactionId") Long id){
         transactionService.deleteTransaction(id);
     }
 
     @GetMapping("/{walletId}/expenses")
-    public List<Transaction> getExpenses(@PathVariable UUID walletId){
+    public List<Transaction> getExpenses(@PathVariable Long walletId){
         return transactionService.getExpenses(walletId);
     }
 
     @GetMapping("/{walletId}/incomes")
-    public List<Transaction> getIncomes(@PathVariable UUID walletId){
+    public List<Transaction> getIncomes(@PathVariable Long walletId){
         return transactionService.getIncomes(walletId);
     }
 
     @GetMapping("/{walletId}/biggest-transaction")
-    public Transaction getBiggestTransaction(@PathVariable UUID walletId){
+    public Transaction getBiggestTransaction(@PathVariable Long walletId){
         return transactionService.getBiggestTransaction(walletId);
     }
 

@@ -6,9 +6,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
 
 @Getter
 @Setter
@@ -20,7 +17,7 @@ public class Wallet {
 
     @Id
     @GeneratedValue
-    private  UUID id;
+    private  Long id;
 
     @OneToMany(mappedBy = "wallet")
     private List<Transaction> transactionList = new ArrayList<>();

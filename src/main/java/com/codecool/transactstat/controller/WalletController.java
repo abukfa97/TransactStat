@@ -23,7 +23,7 @@ public class WalletController {
     }
 
     @GetMapping("api/{walletId}/balance")
-    public BigDecimal getCurrentBalance(@PathVariable UUID walletId){
+    public BigDecimal getCurrentBalance(@PathVariable Long walletId){
         return walletService.getBalanceByWalletId(walletId);
     }
 

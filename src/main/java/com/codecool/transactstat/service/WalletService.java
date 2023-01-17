@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Service
 public class WalletService {
@@ -18,12 +17,12 @@ public class WalletService {
         this.walletRepository = walletRepository;
     }
 
-    public Wallet getWalletById(UUID walletId){
+    public Wallet getWalletById(Long walletId){
         return walletRepository.getReferenceById(walletId);
     }
 
 
-    public BigDecimal getBalanceByWalletId(UUID walletId){
+    public BigDecimal getBalanceByWalletId(Long walletId){
         return  getWalletById(walletId).getBalance();
     }
 }
