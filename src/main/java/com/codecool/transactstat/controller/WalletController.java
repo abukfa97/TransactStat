@@ -2,6 +2,7 @@ package com.codecool.transactstat.controller;
 
 import com.codecool.transactstat.model.Transaction;
 import com.codecool.transactstat.service.TransactionService;
+import com.codecool.transactstat.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +15,16 @@ import java.util.UUID;
 @RestController
 public class WalletController {
 
-    private final TransactionService transactionService;
+    private final WalletService walletService;
 
     @Autowired
-    public WalletController(TransactionService transactionService) {
-        this.transactionService = transactionService;
+    public WalletController(WalletService walletService) {
+        this.walletService = walletService;
     }
 
-    @GetMapping("api/wallet/current-balance")
-    public BigDecimal getCurrentBalance(){
-        //TODO -> return transactionService.getCurrentBalance();
-        throw  new UnsupportedOperationException();
+    @GetMapping("api/{walletId}/balance")
+    public BigDecimal getCurrentBalance(@PathVariable UUID walletId){
+        return walletService.getBalanceByWalletId(walletId);
     }
 
 }
