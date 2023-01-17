@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,7 +30,7 @@ public class TransactionService {
         return transactionRepository.getTransactionsByWallet(walletRepository.getReferenceById(walletId));
     }
 
-    public Transaction getTransaction(UUID id){
+    public Transaction getTransaction(Long id){
         Optional<Transaction> transaction = Optional.of(transactionRepository.getReferenceById(id));
         return transaction.orElseThrow(TransactionNotFoundException::new);
     }
@@ -40,7 +39,7 @@ public class TransactionService {
         transactionRepository.save(transaction);
     }
 
-    public void updateTransaction(Transaction transaction, UUID id){
+    public void updateTransaction(Transaction transaction, Long id){
         Transaction transactionToUpdate = getTransaction(id);
         transactionToUpdate.setTitle(transaction.getTitle());
         transactionToUpdate.setAmount(transaction.getAmount());
@@ -49,7 +48,7 @@ public class TransactionService {
         transactionToUpdate.setDateOfTransaction(transaction.getDateOfTransaction());
         transactionRepository.save(transactionToUpdate);
     }
-    public void  deleteTransaction(UUID id){
+    public void  deleteTransaction(Long id){
         transactionRepository.deleteById(id);
     }
 
@@ -76,7 +75,4 @@ public class TransactionService {
         return transactionRepository.findTopByWalletOrderByAmount(wallet);
     }
 
-    /*public BigDecimal getCurrentBalance() {
-        return walletDao.getCurrentBalance();
-    }*/
 }
