@@ -3,13 +3,10 @@ package com.codecool.transactstat.controller;
 import com.codecool.transactstat.model.User;
 import com.codecool.transactstat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/users/{userId}")
 public class UserController {
 
     private final UserService userService;
@@ -19,8 +16,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping
     public User getUserById(@PathVariable Long userId){
         return userService.getUserById(userId);
+    }
+
+    @PostMapping
+    public void registerNewUser(@PathVariable Long userId, @RequestBody User user){
+        userService.updateUserById(userId, user);
     }
 }
