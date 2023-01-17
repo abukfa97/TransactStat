@@ -27,7 +27,7 @@ public class TransactionService {
         this.walletRepository = walletRepository;
     }
 
-    public List<Transaction> getTransactions(UUID walletId){
+    public List<Transaction> getTransactions(Long walletId){
         return transactionRepository.getTransactionsByWallet(walletRepository.getReferenceById(walletId));
     }
 
@@ -53,17 +53,17 @@ public class TransactionService {
         transactionRepository.deleteById(id);
     }
 
-    public List<Transaction> getExpenses (UUID walletId) {
+    public List<Transaction> getExpenses (Long walletId) {
         Wallet wallet = walletRepository.getReferenceById(walletId);
         return transactionRepository.getTransactionByWalletAndAmountLessThan(wallet, BigDecimal.ZERO);
     }
 
-    public List<Transaction> getIncomes(UUID walletId){
+    public List<Transaction> getIncomes(Long walletId){
         Wallet wallet = walletRepository.getReferenceById(walletId);
         return transactionRepository.getTransactionByWalletAndAmountGreaterThan(wallet,BigDecimal.ZERO);
     }
 
-    public List<Transaction> getTransactionsByDate(UUID walletId,LocalDate date){
+    public List<Transaction> getTransactionsByDate(Long walletId,LocalDate date){
         //TODO: FILTER in db-side
         return getTransactions(walletId)
                 .stream()
@@ -71,7 +71,7 @@ public class TransactionService {
                 .collect(Collectors.toList());
     }
 
-    public Transaction getBiggestTransaction(UUID walletId) {
+    public Transaction getBiggestTransaction(Long walletId) {
         Wallet wallet = walletRepository.getReferenceById(walletId);
         return transactionRepository.findTopByWalletOrderByAmount(wallet);
     }
