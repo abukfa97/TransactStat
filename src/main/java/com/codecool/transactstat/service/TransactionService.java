@@ -1,6 +1,7 @@
 package com.codecool.transactstat.service;
 
 import com.codecool.transactstat.controller.TransactionNotFoundException;
+import com.codecool.transactstat.model.Wallet;
 import com.codecool.transactstat.persistent.TransactionRepository;
 import com.codecool.transactstat.model.Transaction;
 import com.codecool.transactstat.persistent.WalletRepository;
@@ -27,7 +28,7 @@ public class TransactionService {
     }
 
     public List<Transaction> getTransactions(UUID walletId){
-        return transactionRepository.getTransactionByWallet(walletRepository.getReferenceById(walletId));
+        return transactionRepository.getTransactionsByWallet(walletRepository.getReferenceById(walletId));
     }
 
     public Transaction getTransaction(UUID id){
@@ -53,18 +54,13 @@ public class TransactionService {
     }
 
     public List<Transaction> getExpenses (UUID walletId) {
-        return getTransactions(walletId)
-                .stream()
-                .filter(transaction -> transaction.getAmount().compareTo(BigDecimal.ZERO) == -1)
-                .collect(Collectors.toList());
+        Wallet wallet = walletRepository.getReferenceById(walletId);
+        return transactionRepository.getTransactionByWalletAndAmountLessThan(wallet, BigDecimal.ZERO);
     }
 
     public List<Transaction> getIncomes(UUID walletId){
-        //TODO: FILTER in db-side
-        return getTransactions(walletId)
-                .stream()
-                .filter(transaction -> transaction.getAmount().compareTo(BigDecimal.ZERO) == 1)
-                .collect(Collectors.toList());
+        Wallet wallet = walletRepository.getReferenceById(walletId);
+        return transactionRepository.getTransactionByWalletAndAmountGreaterThan(wallet,BigDecimal.ZERO);
     }
 
     public List<Transaction> getTransactionsByDate(UUID walletId,LocalDate date){
@@ -76,19 +72,8 @@ public class TransactionService {
     }
 
     public Transaction getBiggestTransaction(UUID walletId) {
-        List<Transaction> transactions = getTransactions(walletId);
-        Transaction biggestTransaction = null;
-        BigDecimal baseValue = new BigDecimal(0);
-        for (Transaction transaction :
-                transactions) {
-           int res = transaction.getAmount().compareTo(baseValue);
-           if(res == 1){
-                baseValue = transaction.getAmount();
-                biggestTransaction = transaction;
-           }
-        }
-        return biggestTransaction;
-
+        Wallet wallet = walletRepository.getReferenceById(walletId);
+        return transactionRepository.findTopByWalletOrderByAmount(wallet);
     }
 
     /*public BigDecimal getCurrentBalance() {
