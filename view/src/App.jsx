@@ -24,17 +24,9 @@ function App() {
       name: "Transaction 2"
     }
   ]
-  const [transactions, setTransactions] = useState([exampleTransactions])
-
-  const loadForm = () => {
-    return (
-        <div>
-          <p>This is a new page</p>
-        </div>
-    )
-  }
-
-
+  const [transactions, setTransactions] = useState([])
+  const [expenses, setExpenses] = useState([])
+  const [incomes, setIncomes] = useState([])
 
   //get data from API and update transactions
   const getApi = async (url) => {

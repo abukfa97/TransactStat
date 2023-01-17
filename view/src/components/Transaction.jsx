@@ -1,4 +1,4 @@
-import{Container,ListGroup,Col}from'react-bootstrap';
+import{ListGroup}from'react-bootstrap';
 
 const Transaction = ({ name, amount }) => {
     return (

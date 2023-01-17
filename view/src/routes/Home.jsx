@@ -1,6 +1,7 @@
 import TransactionList from "../components/TransactionList.jsx";
-import {Link} from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = ({ transactions }) => {
     const menuRoute = '/DashBoard'
@@ -8,9 +9,17 @@ const Home = ({ transactions }) => {
     return (
         <div>
             <Sidebar menuRoute={menuRoute} urlRoute={urlRoute}/>
-            <TransactionList  transactions={transactions} isMain={false}/>
-            <TransactionList  transactions={transactions} isMain={false}/>
-            <TransactionList  transactions={transactions} isMain={true}/>
+            <div className="monthly-container">
+                <h3 className="this-month">This Month</h3>
+                <div className="expenses-and-incomes">
+                    <TransactionList  transactions={transactions} isMain={false} title="Expenses"/>
+                    <TransactionList  transactions={transactions} isMain={false} title="Incomes"/>
+                </div>
+
+            </div>
+            <div className="width-80">
+            <TransactionList  transactions={transactions} isMain={true} title="AllTransactions"/>
+            </div>
         </div>
     )
 }

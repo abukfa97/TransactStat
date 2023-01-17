@@ -2,17 +2,19 @@ import Transaction from "./Transaction.jsx";
 import{Container,ListGroup,Col}from'react-bootstrap';
 import {Link} from "react-router-dom";
 import DisplayOptions from "./DisplayOptions.jsx"
-function TransactionList({ transactions, isMain }) {
+import {useState} from "react";
+function TransactionList({ transactions, isMain, title }) {
+    const [transactions, setTransactions] = useState(transactions)
+
 
     return(
-        <>
+        <div className="transaction-list">
              {/*TODO should be another component*/}
             <div className='flex-container width-83 top-5'>
-                <h5>Transactions</h5>
-                <Link to="/add">Add Transaction</Link>
+                {/*<h5>{title}</h5>*/}
             </div>
 
-            <DisplayOptions></DisplayOptions>
+            <DisplayOptions isMain={isMain}></DisplayOptions>
 
             <Container className='p-4'>
                 <Col>
@@ -23,9 +25,12 @@ function TransactionList({ transactions, isMain }) {
                     </ListGroup>
                 </Col>
             </Container>
-        </>
+        </div>
 
     )
 }
 
 export default TransactionList;
+
+// onclick -> change color
+// onclick -> reload
