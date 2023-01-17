@@ -1,7 +1,9 @@
 import Transaction from "./Transaction.jsx";
 import{Container,ListGroup,Col}from'react-bootstrap';
 import {Link} from "react-router-dom";
-function TransactionList({ transactions }) {
+import DisplayOptions from "./DisplayOptions.jsx"
+function TransactionList({ transactions, isMain }) {
+
     return(
         <>
              {/*TODO should be another component*/}
@@ -9,6 +11,8 @@ function TransactionList({ transactions }) {
                 <h5>Transactions</h5>
                 <Link to="/add">Add Transaction</Link>
             </div>
+
+            <DisplayOptions></DisplayOptions>
 
             <Container className='p-4'>
                 <Col>

@@ -8,7 +8,9 @@ const Home = ({ transactions }) => {
     return (
         <div>
             <Sidebar menuRoute={menuRoute} urlRoute={urlRoute}/>
-            <TransactionList  transactions={transactions}/>
+            <TransactionList  transactions={transactions} isMain={false}/>
+            <TransactionList  transactions={transactions} isMain={false}/>
+            <TransactionList  transactions={transactions} isMain={true}/>
         </div>
     )
 }
