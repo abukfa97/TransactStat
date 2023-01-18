@@ -44,7 +44,7 @@ function App() {
   const getApiIncomes = async (url) => {
     let response = await fetch(url);
     let savedIncomes = await response.json();
-    setIncomes([...savedIncomes])
+    setIncomes([...sgavedIncomes])
   }
 
   //get data from API and update transactions
