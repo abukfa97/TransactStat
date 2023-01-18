@@ -1,6 +1,7 @@
 package com.codecool.transactstat.controller;
 
 import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.dto.UserDTO;
 import com.codecool.transactstat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public AppUser getUserById(@PathVariable Long userId){
+    public UserDTO getUserById(@PathVariable Long userId){
         return userService.getUserById(userId);
     }
 
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public void updateUserById(@PathVariable Long userId, @RequestBody AppUser appUser){
+    public void updateUserById(@PathVariable Long userId, @RequestBody UserDTO appUser){
         userService.updateUserById(userId, appUser);
     }
 
