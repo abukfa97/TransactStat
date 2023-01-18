@@ -4,13 +4,17 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Link} from "react-router-dom";
+import React from 'react';
+import Cookies from 'js-cookie';
 
 
 const Sidebar = ({ option, menuRoute, urlRoute }) => {
 
     const menuOptions = [
-        "Wallets" ,"Profile", "Settings"
+        "Profile", "Settings"
     ]
+
+    const users = Cookies.get('user');
 
     return (
         <div>
@@ -22,6 +26,13 @@ const Sidebar = ({ option, menuRoute, urlRoute }) => {
                         <Nav className="me-auto">
                             <Nav.Link><Link to='/'>Home</Link></Nav.Link>
                             <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
+                                // iterate over wallets
+                                <ul className='list-group'>
+                                    {users.map((user) =>
+                                        <NavDropdown.Item href="#action/3.1" data-id={user.id}>{user.name}</NavDropdown.Item>
+                                    )}
+                                </ul>
+                                // iterate over options
                                 <ul className='list-group'>
                                     {menuOptions.map((menuOption) =>
                                         <NavDropdown.Item href="#action/3.1">{menuOption}</NavDropdown.Item>
