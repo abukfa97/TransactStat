@@ -2,6 +2,7 @@ package com.codecool.transactstat.service;
 
 import com.codecool.transactstat.controller.TransactionNotFoundException;
 import com.codecool.transactstat.model.Wallet;
+import com.codecool.transactstat.model.dto.TransactionDTO;
 import com.codecool.transactstat.persistent.TransactionRepository;
 import com.codecool.transactstat.model.Transaction;
 import com.codecool.transactstat.persistent.WalletRepository;
@@ -26,20 +27,32 @@ public class TransactionService {
         this.walletRepository = walletRepository;
     }
 
-    public List<Transaction> getTransactions(Long walletId){
+    public List<Transaction> getTransactions(Long walletId) {
         return transactionRepository.getTransactionsByWallet(walletRepository.getReferenceById(walletId));
     }
 
-    public Transaction getTransaction(Long id){
+    public Transaction getTransaction(Long id) {
         Optional<Transaction> transaction = Optional.of(transactionRepository.getReferenceById(id));
         return transaction.orElseThrow(TransactionNotFoundException::new);
     }
 
-    public void addTransaction(Transaction transaction){
+    public void addTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
     }
 
-    public void updateTransaction(Transaction transaction, Long id){
+    public void addTransactionByWalletId(TransactionDTO transactionDTO) {
+        Transaction newTransaction = Transaction.builder()
+                .title(transactionDTO.getTitle())
+                .amount(transactionDTO.getAmount())
+                .transactionCategory(transactionDTO.getTransactionCategory())
+                .dateOfTransaction(transactionDTO.getDateOfTransaction())
+                .paymentType(transactionDTO.getPaymentType())
+                .wallet(walletRepository.getReferenceById(transactionDTO.getWalletId()))
+                .build();
+        addTransaction(newTransaction);
+    }
+
+    public void updateTransaction(Transaction transaction, Long id) {
         Transaction transactionToUpdate = getTransaction(id);
         transactionToUpdate.setTitle(transaction.getTitle());
         transactionToUpdate.setAmount(transaction.getAmount());
@@ -48,21 +61,22 @@ public class TransactionService {
         transactionToUpdate.setDateOfTransaction(transaction.getDateOfTransaction());
         transactionRepository.save(transactionToUpdate);
     }
-    public void  deleteTransaction(Long id){
+
+    public void deleteTransaction(Long id) {
         transactionRepository.deleteById(id);
     }
 
-    public List<Transaction> getExpenses (Long walletId) {
+    public List<Transaction> getExpenses(Long walletId) {
         Wallet wallet = walletRepository.getReferenceById(walletId);
         return transactionRepository.getTransactionByWalletAndAmountLessThan(wallet, BigDecimal.ZERO);
     }
 
-    public List<Transaction> getIncomes(Long walletId){
+    public List<Transaction> getIncomes(Long walletId) {
         Wallet wallet = walletRepository.getReferenceById(walletId);
-        return transactionRepository.getTransactionByWalletAndAmountGreaterThan(wallet,BigDecimal.ZERO);
+        return transactionRepository.getTransactionByWalletAndAmountGreaterThan(wallet, BigDecimal.ZERO);
     }
 
-    public List<Transaction> getTransactionsByDate(Long walletId,LocalDate date){
+    public List<Transaction> getTransactionsByDate(Long walletId, LocalDate date) {
         //TODO: FILTER in db-side
         return getTransactions(walletId)
                 .stream()

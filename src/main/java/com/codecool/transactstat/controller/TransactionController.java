@@ -1,6 +1,7 @@
 package com.codecool.transactstat.controller;
 
 import com.codecool.transactstat.model.Transaction;
+import com.codecool.transactstat.model.dto.TransactionDTO;
 import com.codecool.transactstat.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,22 +31,22 @@ public class TransactionController {
         return transactionService.getTransactionsByDate(walletId, localDate);
     }
 
-    @PostMapping("/wallet")
+    @PostMapping
     public void addTransaction(@RequestBody Transaction transaction){
         transactionService.addTransaction(transaction);
     }
 
-    @GetMapping("/wallet/{transactionId}")
+    @GetMapping("/{transactionId}")
     public Transaction getById(@PathVariable(name = "transactionId") Long id){
         return transactionService.getTransaction(id);
     }
 
-    @PutMapping("/wallet/{transactionId}")
+    @PutMapping("/{transactionId}")
     public void updateTransaction(@PathVariable(name = "transactionId") Long id,@RequestBody Transaction transaction){
         transactionService.updateTransaction(transaction, id);
     }
 
-    @DeleteMapping("/wallet/{transactionId}")
+    @DeleteMapping("/{transactionId}")
     public void deleteTransaction(@PathVariable(name = "transactionId") Long id){
         transactionService.deleteTransaction(id);
     }
@@ -63,6 +64,11 @@ public class TransactionController {
     @GetMapping("/{walletId}/biggest-transaction")
     public Transaction getBiggestTransaction(@PathVariable Long walletId){
         return transactionService.getBiggestTransaction(walletId);
+    }
+
+    @PutMapping("/wallet")
+    public void addNewTransactionByWalletId(@RequestBody TransactionDTO transactionDTO){
+        transactionService.addTransactionByWalletId(transactionDTO);
     }
 
     @ExceptionHandler(TransactionNotFoundException.class)
