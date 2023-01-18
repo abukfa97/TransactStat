@@ -3,12 +3,12 @@ import Sidebar from "../components/Sidebar.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 
-const Home = ({ transactions}) => {
+const Home = ({ transactions, wallets }) => {
     const menuRoute = '/DashBoard'
     const urlRoute = '/'
     return (
         <div>
-            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute}/>
+            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets}/>
             <div className="monthly-container">
                 <h3 className="this-month">This Month</h3>
                 <div className="expenses-and-incomes">

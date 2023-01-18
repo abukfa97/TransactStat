@@ -1,4 +1,3 @@
-import MenuOption from "./MenuOption.jsx";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,13 +7,16 @@ import React from 'react';
 import Cookies from 'js-cookie';
 
 
-const Sidebar = ({ option, menuRoute, urlRoute }) => {
+const Sidebar = ({ menuRoute, urlRoute, wallets }) => {
 
     const menuOptions = [
         "Profile", "Settings"
     ]
 
-    const users = Cookies.get('user');
+
+
+    // fetch wallets based on userId
+
 
     return (
         <div>
@@ -28,8 +30,8 @@ const Sidebar = ({ option, menuRoute, urlRoute }) => {
                             <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
                                 // iterate over wallets
                                 <ul className='list-group'>
-                                    {users.map((user) =>
-                                        <NavDropdown.Item href="#action/3.1" data-id={user.id}>{user.name}</NavDropdown.Item>
+                                    {wallets.map((wallet) =>
+                                        <NavDropdown.Item href="#action/3.1" data-id={wallet.id}>{wallet.name}</NavDropdown.Item>
                                     )}
                                 </ul>
                                 // iterate over options
