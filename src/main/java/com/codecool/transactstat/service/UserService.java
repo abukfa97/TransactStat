@@ -36,11 +36,11 @@ public class UserService {
         userRepository.delete(userRepository.getReferenceById(userId));
     }
 
-    public void updateUserById(Long id, AppUser appUser){
-        AppUser appUserToUpdate = getUserById(id);
+    public void updateUserById(Long id, UserDTO appUser){
+        AppUser appUserToUpdate = userRepository.getReferenceById(id);
+        appUserToUpdate.setUserName(appUser.getUserName());
         appUserToUpdate.setFirstName(appUser.getFirstName());
         appUserToUpdate.setLastName(appUser.getLastName());
-        appUserToUpdate.setWallets(appUser.getWallets());
     }
 
     public List<AppUser> getUsers() {
