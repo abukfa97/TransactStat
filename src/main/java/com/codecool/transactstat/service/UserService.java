@@ -1,9 +1,11 @@
 package com.codecool.transactstat.service;
 
-import com.codecool.transactstat.model.User;
+import com.codecool.transactstat.model.AppUser;
 import com.codecool.transactstat.persistent.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -15,22 +17,26 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUserById(Long id){
+    public AppUser getUserById(Long id){
         return userRepository.getReferenceById(id);
     }
 
-    public void addUser(User user){
-        userRepository.save(user);
+    public void addUser(AppUser appUser){
+        userRepository.save(appUser);
     }
 
     public void deleteUserById(Long userId){
         userRepository.delete(userRepository.getReferenceById(userId));
     }
 
-    public void updateUserById(Long id, User user){
-        User userToUpdate = getUserById(id);
-        userToUpdate.setFirstName(user.getFirstName());
-        userToUpdate.setLastName(user.getLastName());
-        userToUpdate.setWallets(user.getWallets());
+    public void updateUserById(Long id, AppUser appUser){
+        AppUser appUserToUpdate = getUserById(id);
+        appUserToUpdate.setFirstName(appUser.getFirstName());
+        appUserToUpdate.setLastName(appUser.getLastName());
+        appUserToUpdate.setWallets(appUser.getWallets());
+    }
+
+    public List<AppUser> getUsers() {
+        return userRepository.findAll();
     }
 }

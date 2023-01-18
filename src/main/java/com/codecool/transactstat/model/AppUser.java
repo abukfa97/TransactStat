@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class AppUser {
 
     @Id
     @GeneratedValue
@@ -24,6 +24,6 @@ public class User {
 
     private String lastName;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "appUser")
     private List<Wallet> wallets;
 }

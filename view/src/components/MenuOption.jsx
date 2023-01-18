@@ -1,4 +1,4 @@
-const Sidebar = ({ option }) => {
+const MenuOption = ({ option }) => {
     return (
         <div>
             <li className="list-group-item">{option}</li>
@@ -6,4 +6,4 @@ const Sidebar = ({ option }) => {
     )
 }
 
-export default Sidebar
+export default MenuOption

@@ -25,29 +25,41 @@ function App() {
     }
   ]
   const [transactions, setTransactions] = useState([exampleTransactions])
-
-  const loadForm = () => {
-    return (
-        <div>
-          <p>This is a new page</p>
-        </div>
-    )
-  }
-
+  const [incomes, setIncomes] = useState([exampleTransactions])
+  const [expenses, setExpenses] = useState([exampleTransactions])
+  const [user, setUser] = useState([])
 
 
   //get data from API and update transactions
-  const getApi = async (url) => {
+  const getApiTransactions = async (url) => {
     let response = await fetch(url);
     let savedTransactions = await response.json();
     setTransactions([...savedTransactions])
+  }
+  const getApiExpenses = async (url) => {
+    let response = await fetch(url);
+    let savedExpenses = await response.json();
+    setExpenses([...savedExpenses])
+  }
+  const getApiIncomes = async (url) => {
+    let response = await fetch(url);
+    let savedIncomes = await response.json();
+    setIncomes([...sgavedIncomes])
   }
 
   //get data from API and update transactions
 
     useEffect( () => {
-      getApi('/api/wallet/transactions').catch(console.error)
+      getApiTransactions('/api/transactions/{wallet-id}').catch(console.error)
     }, [transactions]);
+
+    useEffect( () => {
+      getApiExpenses('/api/transactions/{wallet-id}/expenses').catch(console.error)
+    }, [expenses]);
+
+    useEffect( () => {
+      getApiIncomes('/api/wallet/transactions/{wallet-id}/incomes').catch(console.error)
+    }, [incomes]);
 
 
   return (
@@ -56,7 +68,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home transactions={transactions}/>
+                <Home transactions={transactions} expenses={expenses} incomes={incomes}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>
@@ -69,3 +81,10 @@ function App() {
 }
 
 export default App
+
+// register new user (insomnia)
+// get wallet-id (insomnia)
+// fetch with that wallet-id
+// wallet id -> as dataset to dropdown select
+// based on id, different fetch
+
