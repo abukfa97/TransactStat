@@ -11,30 +11,39 @@ import Cookies from "js-cookie";
 
 function App() {
   const [transactions, setTransactions] = useState([])
+
+  const [transactionTypesToDisplay, setTransactionTypesToDisplay] = useState(transactions)
+
   const [wallets, setWallets] = useState([])
+
+  const [incomes, setIncomes] = useState([])
+  const [expenses, setExpenses] = useState([])
 
   const user = Cookies.get('user');
   const userId = user.id;
 
-  const getApiTransactions = async (url) => {
+  const getApi = async(url, setter) => {
     let response = await fetch(url);
-    let savedTransactions = await response.json();
-    setTransactions([...savedTransactions])
+    let data = await response.json();
+    setter([...data])
   }
 
-  const getApiWallets = async (url) => {
-    let response = await fetch(url);
-    let wallets = await response.json();
-    setWallets([...wallets])
-  }
+
   useEffect( () => {
-    getApiWallets(`/api/wallets/${userId}/`).catch(console.error)
+    getApi(`/api/wallets/${userId}/`, setWallets).catch(console.error)
   }, [wallets]);
 
+  useEffect( () => {
+    getApi('/api/transactions/1/transactions', setTransactions).catch(console.error)
+  }, [transactions]);
 
-    useEffect( () => {
-      getApiTransactions('/api/transactions/1/transactions').catch(console.error)
-    }, [transactions]);
+  useEffect( () => {
+    getApi('/api/transactions/{wallet-id}/expenses', setExpenses).catch(console.error)
+  }, [expenses]);
+
+  useEffect( () => {
+    getApi('/api/wallet/transactions/{wallet-id}/incomes', setIncomes).catch(console.error)
+  }, [incomes]);
 
   return (
       <Router>
@@ -42,7 +51,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home transactions={transactions} wallets={wallets}/>
+                <Home transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypesToDisplay}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>
