@@ -22,6 +22,9 @@ public class Wallet {
     @OneToMany(mappedBy = "wallet")
     private List<Transaction> transactionList = new ArrayList<>();
 
+    @ManyToOne
+    private User user;
+
     private BigDecimal balance;
 
 }
