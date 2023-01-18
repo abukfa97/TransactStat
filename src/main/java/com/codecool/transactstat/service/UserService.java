@@ -55,4 +55,9 @@ public class UserService {
                .map(this::createUserDTO)
                .collect(Collectors.toList());
     }
+
+    public Long authenticate(UserDTO user){
+        AppUser searched = userRepository.getAppUserByUserName(user.getUserName());
+        return searched.getId();
+    }
 }
