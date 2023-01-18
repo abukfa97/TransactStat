@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -20,11 +21,15 @@ public class UserService {
 
     public UserDTO getUserById(Long id){
         AppUser searchedUser = userRepository.getReferenceById(id);
+        return createUserDTO(searchedUser);
+    }
+
+    private UserDTO createUserDTO(AppUser user) {
         UserDTO userDTO = new UserDTO();
-        userDTO.setId(searchedUser.getId());
-        userDTO.setUserName(searchedUser.getUserName());
-        userDTO.setFirstName(searchedUser.getFirstName());
-        userDTO.setLastName(searchedUser.getLastName());
+        userDTO.setId(user.getId());
+        userDTO.setUserName(user.getUserName());
+        userDTO.setFirstName(user.getFirstName());
+        userDTO.setLastName(user.getLastName());
         return userDTO;
     }
 
@@ -44,7 +49,10 @@ public class UserService {
         appUserToUpdate.setLastName(appUser.getLastName());
     }
 
-    public List<AppUser> getUsers() {
-        return userRepository.findAll();
+    public List<UserDTO> getUsers() {
+       return userRepository.findAll()
+               .stream()
+               .map(this::createUserDTO)
+               .collect(Collectors.toList());
     }
 }
