@@ -29,7 +29,8 @@ public class UserService {
     }
 
     public void addUser(AppUser appUser){
-        userRepository.save(appUser);
+        boolean isExisting = userRepository.existsAppUserByUserName(appUser.getUserName());
+        if (!isExisting) userRepository.save(appUser);
     }
 
     public void deleteUserById(Long userId){
