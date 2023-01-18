@@ -12,17 +12,30 @@ import Cookies from "js-cookie";
 function App() {
   const [transactions, setTransactions] = useState([])
 
-  const [transactionTypesToDisplay, setTransactionTypesToDisplay] = useState(transactions)
+  const exampleWallets= [
+    {
+      name: "Hello",
+      id: 1,
+      transactionList: transactions,
+      user: 1,
+      balance: 2000
+    }
+  ]
 
-  const [wallets, setWallets] = useState([])
+  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState([])
+
+  const [wallets, setWallets] = useState(exampleWallets)
 
   const [currentWallet, setCurrentWallet] = useState(wallets[0])
 
   const [incomes, setIncomes] = useState([])
   const [expenses, setExpenses] = useState([])
 
-  const user = Cookies.get('user');
-  const userId = user.id;
+  // const user = Cookies.get('user');
+  // const userId = user.id;
+  const userId = 1;
+  const walletId = 1;
+  // const walletId = currentWallet.id;
 
   const getApi = async(url, setter) => {
     let response = await fetch(url);
@@ -31,9 +44,9 @@ function App() {
   }
 
 
-  useEffect( () => {
-    getApi(`/api/wallets/${userId}/`, setWallets).catch(console.error)
-  }, [wallets]);
+  // useEffect( () => {
+  //   getApi(`/api/wallets/${userId}/`, setWallets).catch(console.error)
+  // }, [wallets]);
 
   useEffect( () => {
     getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
@@ -53,7 +66,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypesToDisplay}/>
+                <Home setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>

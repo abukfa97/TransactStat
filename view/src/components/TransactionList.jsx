@@ -11,7 +11,7 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
             <Container className='p-4'>
                 <Col>
                     <ListGroup>
-                        {transactionTypeToDisplay.map((transaction, index) =>
+                        {transactions.map((transaction, index) =>
                             <Transaction key={index} name={transaction.title} amount={transaction.amount}/>
                         )}
                     </ListGroup>
