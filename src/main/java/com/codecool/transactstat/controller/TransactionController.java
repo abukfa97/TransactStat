@@ -30,22 +30,22 @@ public class TransactionController {
         return transactionService.getTransactionsByDate(walletId, localDate);
     }
 
-    @PostMapping("/wallet")
+    @PostMapping
     public void addTransaction(@RequestBody Transaction transaction){
         transactionService.addTransaction(transaction);
     }
 
-    @GetMapping("/wallet/{transactionId}")
+    @GetMapping("/{transactionId}")
     public Transaction getById(@PathVariable(name = "transactionId") Long id){
         return transactionService.getTransaction(id);
     }
 
-    @PutMapping("/wallet/{transactionId}")
+    @PutMapping("/{transactionId}")
     public void updateTransaction(@PathVariable(name = "transactionId") Long id,@RequestBody Transaction transaction){
         transactionService.updateTransaction(transaction, id);
     }
 
-    @DeleteMapping("/wallet/{transactionId}")
+    @DeleteMapping("/{transactionId}")
     public void deleteTransaction(@PathVariable(name = "transactionId") Long id){
         transactionService.deleteTransaction(id);
     }
