@@ -1,6 +1,7 @@
 package com.codecool.transactstat.controller;
 
 import com.codecool.transactstat.model.Transaction;
+import com.codecool.transactstat.model.dto.TransactionDTO;
 import com.codecool.transactstat.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -63,6 +64,11 @@ public class TransactionController {
     @GetMapping("/{walletId}/biggest-transaction")
     public Transaction getBiggestTransaction(@PathVariable Long walletId){
         return transactionService.getBiggestTransaction(walletId);
+    }
+
+    @PutMapping("/wallet")
+    public void addNewTransactionByWalletId(@RequestBody TransactionDTO transactionDTO){
+        transactionService.addTransactionByWalletId(transactionDTO);
     }
 
     @ExceptionHandler(TransactionNotFoundException.class)
