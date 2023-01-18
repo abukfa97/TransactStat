@@ -2,6 +2,7 @@ package com.codecool.transactstat.service;
 
 import com.codecool.transactstat.model.AppUser;
 import com.codecool.transactstat.model.Wallet;
+import com.codecool.transactstat.model.dto.WalletDTO;
 import com.codecool.transactstat.persistent.UserRepository;
 import com.codecool.transactstat.persistent.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,12 @@ public class WalletService {
 
     public BigDecimal getBalanceByWalletId(Long walletId){
         return  getWalletById(walletId).getBalance();
+    }
+
+    public void addWalletByUserId(WalletDTO walletDTO) {
+        Wallet wallet = Wallet.builder()
+                .appUser(userRepository.getReferenceById(walletDTO.getAppUserId()))
+                .balance(walletDTO.getBalance()).build();
+        walletRepository.save(wallet);
     }
 }

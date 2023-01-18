@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -19,8 +18,10 @@ public class Wallet {
     @GeneratedValue
     private  Long id;
 
+    private String title;
+
     @OneToMany(mappedBy = "wallet")
-    private List<Transaction> transactionList = new ArrayList<>();
+    private List<Transaction> transactionList;
 
     @ManyToOne
     private AppUser appUser;
