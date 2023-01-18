@@ -1,6 +1,6 @@
 package com.codecool.transactstat.service;
 
-import com.codecool.transactstat.model.User;
+import com.codecool.transactstat.model.AppUser;
 import com.codecool.transactstat.model.Wallet;
 import com.codecool.transactstat.persistent.UserRepository;
 import com.codecool.transactstat.persistent.WalletRepository;
@@ -23,8 +23,8 @@ public class WalletService {
     }
 
     public List<Wallet> getWalletsByUserId(Long userId){
-        User user = userRepository.getReferenceById(userId);
-        return walletRepository.getWalletsByUser(user);
+        AppUser appUser = userRepository.getReferenceById(userId);
+        return walletRepository.getWalletsByAppUser(appUser);
     }
 
     public Wallet getWalletById(Long walletId){

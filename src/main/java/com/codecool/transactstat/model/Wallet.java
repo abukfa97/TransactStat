@@ -23,7 +23,7 @@ public class Wallet {
     private List<Transaction> transactionList = new ArrayList<>();
 
     @ManyToOne
-    private User user;
+    private AppUser appUser;
 
     private BigDecimal balance;
 
