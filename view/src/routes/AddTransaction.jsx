@@ -25,7 +25,7 @@ const AddTransaction = () => {
         e.preventDefault();
         const transfer = { title, amount, dateOfTransaction, transactionCategory, paymentType }
 
-        await fetch('/api/wallet/transactions',
+        await fetch('/api/transactions/wallet',
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},

@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 
-const Home = ({ transactions, expenses, incomes }) => {
+const Home = ({ transactions}) => {
     const menuRoute = '/DashBoard'
     const urlRoute = '/'
     return (
@@ -18,7 +18,7 @@ const Home = ({ transactions, expenses, incomes }) => {
 
             </div>
             <div className="width-80">
-            <TransactionList  transactions={transactions} incomes={incomes} expenses={expenses} isMain={true} title="AllTransactions"/>
+            <TransactionList  transactions={transactions} isMain={true} title="AllTransactions"/>
             </div>
         </div>
     )

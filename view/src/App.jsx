@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 import{Container,ListGroup,Col}from'react-bootstrap';
 
+
 function App() {
   const menuRoute = '/Dashboard'
   const urlRoute = '/'
@@ -25,9 +26,13 @@ function App() {
     }
   ]
   const [transactions, setTransactions] = useState([exampleTransactions])
-  const [incomes, setIncomes] = useState([exampleTransactions])
-  const [expenses, setExpenses] = useState([exampleTransactions])
-  const [user, setUser] = useState([])
+  // const [incomes, setIncomes] = useState([exampleTransactions])
+  // const [expenses, setExpenses] = useState([exampleTransactions])
+
+  // get userId (or user TDO) from cookies
+  // getWallet id-s from user
+  // send wallet id-s up to sidebar and instead of wallet, iterate over wallet-s and display name+store id in them
+  // if user clicks, we go to the dashboard according to the wallet-id.
 
 
   //get data from API and update transactions
@@ -36,30 +41,32 @@ function App() {
     let savedTransactions = await response.json();
     setTransactions([...savedTransactions])
   }
-  const getApiExpenses = async (url) => {
-    let response = await fetch(url);
-    let savedExpenses = await response.json();
-    setExpenses([...savedExpenses])
-  }
-  const getApiIncomes = async (url) => {
-    let response = await fetch(url);
-    let savedIncomes = await response.json();
-    setIncomes([...sgavedIncomes])
-  }
+
+
+  // const getApiExpenses = async (url) => {
+  //   let response = await fetch(url);
+  //   let savedExpenses = await response.json();
+  //   setExpenses([...savedExpenses])
+  // }
+  // const getApiIncomes = async (url) => {
+  //   let response = await fetch(url);
+  //   let savedIncomes = await response.json();
+  //   setIncomes([...savedIncomes])
+  // }
 
   //get data from API and update transactions
 
     useEffect( () => {
-      getApiTransactions('/api/transactions/{wallet-id}').catch(console.error)
+      getApiTransactions('/api/transactions/1/transactions').catch(console.error)
     }, [transactions]);
 
-    useEffect( () => {
-      getApiExpenses('/api/transactions/{wallet-id}/expenses').catch(console.error)
-    }, [expenses]);
-
-    useEffect( () => {
-      getApiIncomes('/api/wallet/transactions/{wallet-id}/incomes').catch(console.error)
-    }, [incomes]);
+    // useEffect( () => {
+    //   getApiExpenses('/api/transactions/{wallet-id}/expenses').catch(console.error)
+    // }, [expenses]);
+    //
+    // useEffect( () => {
+    //   getApiIncomes('/api/wallet/transactions/{wallet-id}/incomes').catch(console.error)
+    // }, [incomes]);
 
 
   return (
@@ -68,7 +75,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home transactions={transactions} expenses={expenses} incomes={incomes}/>
+                <Home transactions={transactions}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>
