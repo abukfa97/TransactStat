@@ -3,8 +3,13 @@ import{Container,ListGroup,Col}from'react-bootstrap';
 import {Link} from "react-router-dom";
 import DisplayOptions from "./DisplayOptions.jsx"
 import {useState} from "react";
-function TransactionList({ transactions, isMain, title }) {
-    const [transactions, setTransactions] = useState(transactions)
+function TransactionList({ transactions, expenses, incomes, isMain, title }) {
+
+    const [transactionType, setTransactionType] = useState(transactions)
+    const handleOnClick = (transactionType) => {
+        setTransactionType(transactionType)
+    }
+
 
 
     return(
@@ -14,12 +19,12 @@ function TransactionList({ transactions, isMain, title }) {
                 {/*<h5>{title}</h5>*/}
             </div>
 
-            <DisplayOptions isMain={isMain}></DisplayOptions>
+            <DisplayOptions isMain={isMain} handleOnClick={handleOnClick} transaction={transactions} expenses={expenses} incomes={incomes}></DisplayOptions>
 
             <Container className='p-4'>
                 <Col>
                     <ListGroup>
-                        {transactions.map((transaction, index) =>
+                        {transactionType.map((transaction, index) =>
                             <Transaction key={index} name={transaction.title} amount={transaction.amount}/>
                         )}
                     </ListGroup>
@@ -31,6 +36,3 @@ function TransactionList({ transactions, isMain, title }) {
 }
 
 export default TransactionList;
-
-// onclick -> change color
-// onclick -> reload
