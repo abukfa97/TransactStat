@@ -16,6 +16,8 @@ function App() {
 
   const [wallets, setWallets] = useState([])
 
+  const [currentWallet, setCurrentWallet] = useState(wallets[0])
+
   const [incomes, setIncomes] = useState([])
   const [expenses, setExpenses] = useState([])
 
@@ -34,15 +36,15 @@ function App() {
   }, [wallets]);
 
   useEffect( () => {
-    getApi('/api/transactions/1/transactions', setTransactions).catch(console.error)
+    getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
   }, [transactions]);
 
   useEffect( () => {
-    getApi('/api/transactions/{wallet-id}/expenses', setExpenses).catch(console.error)
+    getApi(`/api/transactions/${walletId}/expenses`, setExpenses).catch(console.error)
   }, [expenses]);
 
   useEffect( () => {
-    getApi('/api/wallet/transactions/{wallet-id}/incomes', setIncomes).catch(console.error)
+    getApi(`/api/wallet/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
   }, [incomes]);
 
   return (
@@ -51,7 +53,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypesToDisplay}/>
+                <Home setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypesToDisplay}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>

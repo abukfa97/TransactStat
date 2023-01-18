@@ -7,7 +7,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 
 
-const Sidebar = ({ menuRoute, urlRoute, wallets }) => {
+const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
 
     const menuOptions = [
         "Profile", "Settings"
@@ -31,7 +31,7 @@ const Sidebar = ({ menuRoute, urlRoute, wallets }) => {
                                 // iterate over wallets
                                 <ul className='list-group'>
                                     {wallets.map((wallet) =>
-                                        <NavDropdown.Item href="#action/3.1" data-id={wallet.id}>{wallet.name}</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.1" data-id={wallet.id} onClick={() => setCurrentWallets(wallet)}>{wallet.name}</NavDropdown.Item>
                                     )}
                                 </ul>
                                 // iterate over options
