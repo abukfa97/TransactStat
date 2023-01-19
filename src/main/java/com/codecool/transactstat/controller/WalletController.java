@@ -31,7 +31,7 @@ public class WalletController {
     }
 
     @GetMapping("/{userId}")
-    public List<Wallet> getWalletsByUserId(@PathVariable Long userId){
+    public List<WalletDTO> getWalletsByUserId(@PathVariable Long userId){
         return walletService.getWalletsByUserId(userId);
     }
 
