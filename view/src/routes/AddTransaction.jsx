@@ -24,6 +24,7 @@ const AddTransaction = () => {
         // to prevent page refresh
         e.preventDefault();
         const transfer = { title, amount, dateOfTransaction, transactionCategory, paymentType }
+        //TODO need to add wallet id
 
         await fetch('/api/transactions/wallet',
             {

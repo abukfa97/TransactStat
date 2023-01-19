@@ -37,28 +37,32 @@ function App() {
   const walletId = 1;
   // const walletId = currentWallet.id;
 
+  // TODO get userId from cookies
+  // dashboard -> choose which wallet
+  // wallet dashboard
+
   const getApi = async(url, setter) => {
     let response = await fetch(url);
     let data = await response.json();
     setter([...data])
   }
 
-  //
-  // useEffect( () => {
-  //   getApi(`/api/wallets/${userId}/`p, setWallets).catch(console.error)
-  // }, [wallets]);
-  //
-  // useEffect( () => {
-  //   getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
-  // }, [transactions]);
-  //
-  // useEffect( () => {
-  //   getApi(`/api/transactions/${walletId}/expenses`, setExpenses).catch(console.error)
-  // }, [expenses]);
-  //
-  // useEffect( () => {
-  //   getApi(`/api/wallet/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
-  // }, [incomes]);
+
+  useEffect( () => {
+    getApi(`/api/wallets/${userId}/`, setWallets).catch(console.error)
+  }, [wallets]);
+
+  useEffect( () => {
+    getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
+  }, [transactions]);
+
+  useEffect( () => {
+    getApi(`/api/transactions/${walletId}/expenses`, setExpenses).catch(console.error)
+  }, [expenses]);
+
+  useEffect( () => {
+    getApi(`/api/wallet/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
+  }, [incomes]);
 
   return (
       <Router>
