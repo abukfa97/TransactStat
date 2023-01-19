@@ -1,6 +1,7 @@
 package com.codecool.transactstat.service;
 
 import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.dto.DtoFactory;
 import com.codecool.transactstat.model.dto.UserDTO;
 import com.codecool.transactstat.persistent.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +22,7 @@ public class UserService {
 
     public UserDTO getUserById(Long id){
         AppUser searchedUser = userRepository.getReferenceById(id);
-        return createUserDTO(searchedUser);
-    }
-
-    private UserDTO createUserDTO(AppUser user) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setUserName(user.getUserName());
-        userDTO.setFirstName(user.getFirstName());
-        userDTO.setLastName(user.getLastName());
-        return userDTO;
+        return DtoFactory.createDTO(searchedUser);
     }
 
     public void addUser(AppUser appUser){
@@ -52,7 +44,7 @@ public class UserService {
     public List<UserDTO> getUsers() {
        return userRepository.findAll()
                .stream()
-               .map(this::createUserDTO)
+               .map(DtoFactory::createDTO)
                .collect(Collectors.toList());
     }
 

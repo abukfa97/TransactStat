@@ -2,6 +2,7 @@ package com.codecool.transactstat.service;
 
 import com.codecool.transactstat.model.AppUser;
 import com.codecool.transactstat.model.Wallet;
+import com.codecool.transactstat.model.dto.DtoFactory;
 import com.codecool.transactstat.model.dto.WalletDTO;
 import com.codecool.transactstat.persistent.UserRepository;
 import com.codecool.transactstat.persistent.WalletRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WalletService {
@@ -23,13 +25,18 @@ public class WalletService {
         this.userRepository = userRepository;
     }
 
-    public List<Wallet> getWalletsByUserId(Long userId){
+    public List<WalletDTO> getWalletsByUserId(Long userId){
         AppUser appUser = userRepository.getReferenceById(userId);
-        return walletRepository.getWalletsByAppUser(appUser);
+        return walletRepository.getWalletsByAppUser(appUser)
+                .stream()
+                .map(DtoFactory::createDTO)
+                .collect(Collectors.toList());
     }
 
-    public Wallet getWalletById(Long walletId){
-        return walletRepository.getReferenceById(walletId);
+
+
+    public WalletDTO getWalletById(Long walletId){
+        return DtoFactory.createDTO(walletRepository.getReferenceById(walletId));
     }
 
 
