@@ -5,6 +5,9 @@ import Home from "./routes/Home.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
+import{Container,ListGroup,Col}from'react-bootstrap';
+import Login from "./routes/Login.jsx";
+import Register from "./routes/Register.jsx";
 import React from 'react';
 import Cookies from "js-cookie";
 
@@ -74,6 +77,12 @@ function App() {
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>
+              </Route>
+              <Route exact path="/Login">
+                <Login/>
+              </Route>
+              <Route exact path="/Register">
+                <Register/>
               </Route>
             </Switch>
           </div>

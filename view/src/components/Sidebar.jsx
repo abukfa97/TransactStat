@@ -37,7 +37,7 @@ const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallet }) => {
                                 {/*iterate over options*/}
                                 <ul className='list-group'>
                                     {menuOptions.map((menuOption) =>
-                                        <NavDropdown.Item href="#action/3.1">{menuOption}</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.1"><Link to={"/" + MenuOption}>{menuOption}</Link></NavDropdown.Item>
                                     )}
                                 </ul>
                                 <NavDropdown.Divider />
