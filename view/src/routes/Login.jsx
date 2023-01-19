@@ -12,9 +12,9 @@ const Login = ({  }) => {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(user)
             } )
-        if (response.status === 403) {
+        if (response.status === 202) {
             browserHistory.push("/");
-        } else if (response.status === 202) {
+        } else if (response.status === 403) {
             setError("There is something wrong!")
         }
             //reponse.status ==403 or 202

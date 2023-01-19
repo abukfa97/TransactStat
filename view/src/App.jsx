@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 import{Container,ListGroup,Col}from'react-bootstrap';
 import Login from "./routes/Login.jsx";
+import Register from "./routes/Register.jsx";
 
 function App() {
   const menuRoute = '/Dashboard'
@@ -78,7 +79,7 @@ function App() {
                 <Login/>
               </Route>
               <Route exact path="/Register">
-                <Login/>
+                <Register/>
               </Route>
             </Switch>
           </div>
