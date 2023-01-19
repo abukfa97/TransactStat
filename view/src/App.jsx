@@ -88,7 +88,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay}/>
+                <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction wallets={wallets} walletId={walletId}/>

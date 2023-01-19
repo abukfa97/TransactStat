@@ -2,10 +2,16 @@ import TransactionList from "../components/TransactionList.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
+import Login from "./Login.jsx";
 
-const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets}) => {
+const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets, userId}) => {
     const menuRoute = '/DashBoard'
     const urlRoute = '/'
+    if (userId === undefined){
+        return (
+            <Login />
+        )
+    }
     return (
         <div>
             <Sidebar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets} setCurrentWallets={setCurrentWallets}/>
