@@ -48,7 +48,7 @@ public class UserController {
         userService.deleteUserById(userId);
     }
 
-    @GetMapping("/auth")
+    @PostMapping("/auth")
     @ResponseBody
     public ResponseEntity<?> authenticate(@RequestBody UserDTO user, HttpServletResponse response){
         Long userId = userService.authenticate(user);
