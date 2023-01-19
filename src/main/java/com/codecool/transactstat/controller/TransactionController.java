@@ -52,12 +52,12 @@ public class TransactionController {
     }
 
     @GetMapping("/{walletId}/expenses")
-    public List<Transaction> getExpenses(@PathVariable Long walletId){
+    public List<TransactionDTO> getExpenses(@PathVariable Long walletId){
         return transactionService.getExpenses(walletId);
     }
 
     @GetMapping("/{walletId}/incomes")
-    public List<Transaction> getIncomes(@PathVariable Long walletId){
+    public List<TransactionDTO> getIncomes(@PathVariable Long walletId){
         return transactionService.getIncomes(walletId);
     }
 

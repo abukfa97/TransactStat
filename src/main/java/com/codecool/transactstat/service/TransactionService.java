@@ -78,14 +78,18 @@ public class TransactionService {
         transactionRepository.deleteById(id);
     }
 
-    public List<Transaction> getExpenses(Long walletId) {
+    public List<TransactionDTO> getExpenses(Long walletId) {
         Wallet wallet = walletRepository.getReferenceById(walletId);
-        return transactionRepository.getTransactionByWalletAndAmountLessThan(wallet, BigDecimal.ZERO);
+        return transactionRepository.getTransactionByWalletAndAmountLessThan(wallet, BigDecimal.ZERO)
+                .stream()
+                .map(DtoFactory::createDTO).collect(Collectors.toList());
     }
 
-    public List<Transaction> getIncomes(Long walletId) {
+    public List<TransactionDTO> getIncomes(Long walletId) {
         Wallet wallet = walletRepository.getReferenceById(walletId);
-        return transactionRepository.getTransactionByWalletAndAmountGreaterThan(wallet, BigDecimal.ZERO);
+        return transactionRepository.getTransactionByWalletAndAmountGreaterThan(wallet, BigDecimal.ZERO)
+                .stream()
+                .map(DtoFactory::createDTO).collect(Collectors.toList());
     }
 
     public List<TransactionDTO> getTransactionsByDate(Long walletId, LocalDate date) {

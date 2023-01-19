@@ -55,6 +55,7 @@ public class UserController {
         Optional<Long> userId = userService.authenticate(user);
         return userId.map((id) -> {
             Cookie cookie = new Cookie("userId",String.valueOf(id));
+            cookie.setPath("/");
             response.addCookie(cookie);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }).orElse(new ResponseEntity<>(HttpStatus.FORBIDDEN));

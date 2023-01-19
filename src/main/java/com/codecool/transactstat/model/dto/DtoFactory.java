@@ -21,6 +21,7 @@ public class DtoFactory {
     public static WalletDTO createDTO(Wallet wallet){
         WalletDTO dto = new WalletDTO();
         dto.setId(wallet.getId());
+        dto.setTitle(wallet.getTitle());
         dto.setAppUserId(wallet.getAppUser().getId());
         dto.setBalance(wallet.getBalance());
         return dto;
