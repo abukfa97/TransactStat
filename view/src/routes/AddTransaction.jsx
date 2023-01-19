@@ -30,7 +30,6 @@ const AddTransaction = ({ wallets, walletId }) => {
             "transactionCategory": transactionCategory,
             "paymentType": paymentType,
             "walletId": walletId }
-        //TODO need to add wallet id
 
         await fetch('/api/transactions',
             {

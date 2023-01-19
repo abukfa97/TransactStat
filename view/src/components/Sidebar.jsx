@@ -7,14 +7,16 @@ import React from 'react';
 import Cookies from 'js-cookie';
 
 
-const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallet }) => {
+const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
 
     const menuOptions = [
         "Profile", "Settings"
     ]
     console.log(wallets)
 
-
+    const handleClick = (wallet) => {
+        setCurrentWallets(wallet);
+    }
 
     // fetch wallets based on userId
 
@@ -32,7 +34,7 @@ const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallet }) => {
                                 {/*iterate over wallets*/}
                                 <ul className='list-group'>
                                     {!wallets ? "Loading..." : wallets.map((wallet) =>
-                                        <NavDropdown.Item href="#action/3.1" data-id={wallet.id} onClick={() => setCurrentWallet(wallet)}>{wallet.title}</NavDropdown.Item>
+                                        <NavDropdown.Item href={"#" + wallet.title} data-id={wallet.id} onClick={() => handleClick(wallet)}>{wallet.title}</NavDropdown.Item>
                                     )}
                                 </ul>
                                 {/*iterate over options*/}
