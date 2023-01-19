@@ -33,6 +33,7 @@ public class WalletService {
         dto.setId(wallet.getId());
         dto.setAppUserId(wallet.getAppUser().getId());
         dto.setBalance(wallet.getBalance());
+        return dto;
     }
 
     public Wallet getWalletById(Long walletId){
