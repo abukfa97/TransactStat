@@ -78,7 +78,7 @@ function App() {
                 <Login/>
               </Route>
               <Route exact path="/Register">
-                <Login/>
+                <Register/>
               </Route>
             </Switch>
           </div>
