@@ -29,12 +29,15 @@ function App() {
 
   const [wallets, setWallets] = useState(exampleWallets)
 
-  const [currentWallet, setCurrentWallet] = useState(wallets[0])
+  const [currentWallet, setCurrentWallet] = useState(() => wallets[0])
 
   const [incomes, setIncomes] = useState([])
   const [expenses, setExpenses] = useState([])
 
-  const userId = Cookies.get('userId');
+  const [userId, setUserId] = useState(undefined);
+  useEffect(() => {
+    setUserId(Cookies.get('userId'))
+  }, [])
   // const userId = user.id;
   // const userId = 2;
   const walletId = currentWallet.id;
@@ -52,20 +55,32 @@ function App() {
 
 
   useEffect( () => {
-    getApi(`/api/wallets/${userId}/`, setWallets).catch(console.error)
-  }, [wallets]);
+    if (userId === undefined){
+      return
+    }
+    getApi(`/api/wallets/user/${userId}`, setWallets).catch(console.error)
+  }, [userId]);
 
   useEffect( () => {
+    if (walletId === undefined){
+      return
+    }
     getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
-  }, [transactions]);
+  }, [walletId]);
 
   useEffect( () => {
+    if (walletId === undefined){
+      return
+    }
     getApi(`/api/transactions/${walletId}/expenses`, setExpenses).catch(console.error)
-  }, [expenses]);
+  }, [walletId]);
 
   useEffect( () => {
-    getApi(`/api/wallet/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
-  }, [incomes]);
+    if (walletId === undefined){
+      return
+    }
+    getApi(`/api/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
+  }, [walletId]);
 
   return (
       <Router>
@@ -76,7 +91,7 @@ function App() {
                 <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay}/>
               </Route>
               <Route exact path="/add">
-                <AddTransaction/>
+                <AddTransaction wallets={wallets} walletId={walletId}/>
               </Route>
               <Route exact path="/Login">
                 <Login/>

@@ -12,8 +12,8 @@ const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToD
             <div className="monthly-container">
                 <h3 className="this-month">This Month</h3>
                 <div className="expenses-and-incomes">
-                    <TransactionList  transactions={transactions} isMain={false} title="Expenses"/>
-                    <TransactionList  transactions={transactions} isMain={false} title="Incomes"/>
+                    <TransactionList  transactions={expenses} isMain={false} title="Expenses"/>
+                    <TransactionList  transactions={incomes} isMain={false} title="Incomes"/>
                 </div>
 
             </div>

@@ -12,6 +12,7 @@ const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallet }) => {
     const menuOptions = [
         "Profile", "Settings"
     ]
+    console.log(wallets)
 
 
 
@@ -30,8 +31,8 @@ const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallet }) => {
                             <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
                                 {/*iterate over wallets*/}
                                 <ul className='list-group'>
-                                    {wallets.map((wallet) =>
-                                        <NavDropdown.Item href="#action/3.1" data-id={wallet.id} onClick={() => setCurrentWallet(wallet)}>{wallet.name}</NavDropdown.Item>
+                                    {!wallets ? "Loading..." : wallets.map((wallet) =>
+                                        <NavDropdown.Item href="#action/3.1" data-id={wallet.id} onClick={() => setCurrentWallet(wallet)}>{wallet.title}</NavDropdown.Item>
                                     )}
                                 </ul>
                                 {/*iterate over options*/}

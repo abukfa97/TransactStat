@@ -7,7 +7,7 @@ const Login = ({  }) => {
     const handleStatus = async(e) => {
         e.preventDefault();
         const user = {"userName": userName};
-        let response = await fetch('/api/wallet/transactions',
+        let response = await fetch('/api/users/auth',
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -15,7 +15,7 @@ const Login = ({  }) => {
             } )
         if (response.status === 202) {
             // <Redirect to="/" />
-        } else if (response.status === 403) {
+        } else {
             setError("There is something wrong!")
         }
     }

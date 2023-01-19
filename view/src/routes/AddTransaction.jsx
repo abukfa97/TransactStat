@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import {Link, useHistory} from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
 
-const AddTransaction = () => {
+const AddTransaction = ({ wallets, walletId }) => {
     const menuRoute = '/Add'
     const urlRoute = '/add'
 
@@ -23,10 +23,10 @@ const AddTransaction = () => {
     const handleSubmit = async (e) => {
         // to prevent page refresh
         e.preventDefault();
-        const transfer = { title, amount, dateOfTransaction, transactionCategory, paymentType }
+        const transfer = { title, amount, dateOfTransaction, transactionCategory, paymentType, walletId }
         //TODO need to add wallet id
 
-        await fetch('/api/transactions/wallet',
+        await fetch('/api/transactions',
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -37,7 +37,8 @@ const AddTransaction = () => {
 
     return (
         <div>
-            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute}/>
+            {/*sidebar to app.jsx*/}
+            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets}/>
             <h5 className='transaction-header flex-container width-83 top-5'>Add New Transaction</h5>
             <div className='card-grey width-83 center'>
             <Form onSubmit={handleSubmit} className='width-83 center margin-10'>
