@@ -74,7 +74,7 @@ function App() {
               <Route exact path="/add">
                 <AddTransaction/>
               </Route>
-              <Route exact path="/login">
+              <Route exact path="/Login">
                 <Login/>
               </Route>
             </Switch>
