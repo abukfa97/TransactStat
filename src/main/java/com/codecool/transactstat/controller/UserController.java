@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -51,12 +52,11 @@ public class UserController {
     @PostMapping("/auth")
     @ResponseBody
     public ResponseEntity<?> authenticate(@RequestBody UserDTO user, HttpServletResponse response){
-        Long userId = userService.authenticate(user);
-        if (userId != null) {
-            Cookie cookie = new Cookie("userId",String.valueOf(userId));
+        Optional<Long> userId = userService.authenticate(user);
+        return userId.map((id) -> {
+            Cookie cookie = new Cookie("userId",String.valueOf(id));
             response.addCookie(cookie);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }).orElse(new ResponseEntity<>(HttpStatus.FORBIDDEN));
     }
 }
