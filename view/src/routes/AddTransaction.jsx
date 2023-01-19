@@ -23,7 +23,13 @@ const AddTransaction = ({ wallets, walletId }) => {
     const handleSubmit = async (e) => {
         // to prevent page refresh
         e.preventDefault();
-        const transfer = { title, amount, dateOfTransaction, transactionCategory, paymentType, walletId }
+        const transfer = {
+            "title":title,
+            "amount": amount,
+            "dateOfTransaction": dateOfTransaction,
+            "transactionCategory": transactionCategory,
+            "paymentType": paymentType,
+            "walletId": walletId }
         //TODO need to add wallet id
 
         await fetch('/api/transactions',

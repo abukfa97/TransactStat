@@ -8,7 +8,11 @@ const Register = () => {
 
     const createNewUser = async (e) => {
         e.preventDefault();
-        const user = [username, firstName, lastName];
+        const user = {
+            "userName": username,
+            "firstName": firstName,
+            "lastName": lastName
+        };
         await fetch('api/users', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
