@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WalletService {
@@ -23,9 +24,12 @@ public class WalletService {
         this.userRepository = userRepository;
     }
 
-    public List<Wallet> getWalletsByUserId(Long userId){
+    public List<WalletDTO> getWalletsByUserId(Long userId){
         AppUser appUser = userRepository.getReferenceById(userId);
-        return walletRepository.getWalletsByAppUser(appUser);
+        return walletRepository.getWalletsByAppUser(appUser)
+                .stream()
+                .map(this::createWalletDTO)
+                .collect(Collectors.toList());
     }
 
     public WalletDTO createWalletDTO(Wallet wallet){
