@@ -10,6 +10,7 @@ import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 import{Container,ListGroup,Col}from'react-bootstrap';
+import Login from "./routes/Login.jsx";
 
 function App() {
   const menuRoute = '/Dashboard'
@@ -72,6 +73,9 @@ function App() {
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>
+              </Route>
+              <Route exact path="/login">
+                <Login/>
               </Route>
             </Switch>
           </div>
