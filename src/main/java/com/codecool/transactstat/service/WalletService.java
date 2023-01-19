@@ -28,6 +28,13 @@ public class WalletService {
         return walletRepository.getWalletsByAppUser(appUser);
     }
 
+    public WalletDTO createWalletDTO(Wallet wallet){
+        WalletDTO dto = new WalletDTO();
+        dto.setId(wallet.getId());
+        dto.setAppUserId(wallet.getAppUser().getId());
+        dto.setBalance(wallet.getBalance());
+    }
+
     public Wallet getWalletById(Long walletId){
         return walletRepository.getReferenceById(walletId);
     }
