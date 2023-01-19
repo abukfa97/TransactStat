@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
-import { browserHistory } from 'react-router';
+import {Redirect} from 'react-router-dom';
+
 const Login = ({  }) => {
     const [userName, setUserName] = useState("")
     const [error, setError] = useState("")
@@ -13,12 +14,10 @@ const Login = ({  }) => {
                 body: JSON.stringify(user)
             } )
         if (response.status === 202) {
-            browserHistory.push("/");
+            // <Redirect to="/" />
         } else if (response.status === 403) {
             setError("There is something wrong!")
         }
-            //reponse.status ==403 or 202
-
     }
 
     return (
@@ -32,7 +31,7 @@ const Login = ({  }) => {
                 </div>
                 <div className="input-container">
                     <label>Password </label>
-                    <input type="password" name="password" required value={}/>
+                    <input type="password" name="password" required/>
                 </div>
                 <div className="button-container">
                     <input type="submit" />

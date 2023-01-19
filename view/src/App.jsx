@@ -34,10 +34,10 @@ function App() {
   const [incomes, setIncomes] = useState([])
   const [expenses, setExpenses] = useState([])
 
-  // const user = Cookies.get('user');
+  const userId = Cookies.get('userId');
   // const userId = user.id;
-  const userId = 2;
-  const walletId = 1;
+  // const userId = 2;
+  const walletId = currentWallet.id;
   // const walletId = currentWallet.id;
 
   // TODO get userId from cookies
@@ -73,7 +73,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay}/>
+                <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction/>
