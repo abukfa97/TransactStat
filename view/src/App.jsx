@@ -77,6 +77,9 @@ function App() {
               <Route exact path="/Login">
                 <Login/>
               </Route>
+              <Route exact path="/Register">
+                <Login/>
+              </Route>
             </Switch>
           </div>
         </div>
