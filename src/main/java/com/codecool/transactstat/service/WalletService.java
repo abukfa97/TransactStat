@@ -2,6 +2,7 @@ package com.codecool.transactstat.service;
 
 import com.codecool.transactstat.model.AppUser;
 import com.codecool.transactstat.model.Wallet;
+import com.codecool.transactstat.model.dto.DtoFactory;
 import com.codecool.transactstat.model.dto.WalletDTO;
 import com.codecool.transactstat.persistent.UserRepository;
 import com.codecool.transactstat.persistent.WalletRepository;
@@ -28,20 +29,14 @@ public class WalletService {
         AppUser appUser = userRepository.getReferenceById(userId);
         return walletRepository.getWalletsByAppUser(appUser)
                 .stream()
-                .map(this::createWalletDTO)
+                .map(DtoFactory::createDTO)
                 .collect(Collectors.toList());
     }
 
-    public WalletDTO createWalletDTO(Wallet wallet){
-        WalletDTO dto = new WalletDTO();
-        dto.setId(wallet.getId());
-        dto.setAppUserId(wallet.getAppUser().getId());
-        dto.setBalance(wallet.getBalance());
-        return dto;
-    }
+
 
     public WalletDTO getWalletById(Long walletId){
-        return createWalletDTO(walletRepository.getReferenceById(walletId));
+        return DtoFactory.createDTO(walletRepository.getReferenceById(walletId));
     }
 
 
