@@ -34,5 +34,4 @@ public class WalletController {
     public List<Wallet> getWalletsByUserId(@PathVariable Long userId){
         return walletService.getWalletsByUserId(userId);
     }
-
 }

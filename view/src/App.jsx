@@ -33,7 +33,7 @@ function App() {
 
   // const user = Cookies.get('user');
   // const userId = user.id;
-  const userId = 1;
+  const userId = 2;
   const walletId = 1;
   // const walletId = currentWallet.id;
 
@@ -43,22 +43,22 @@ function App() {
     setter([...data])
   }
 
-
+  //
   // useEffect( () => {
-  //   getApi(`/api/wallets/${userId}/`, setWallets).catch(console.error)
+  //   getApi(`/api/wallets/${userId}/`p, setWallets).catch(console.error)
   // }, [wallets]);
-
-  useEffect( () => {
-    getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
-  }, [transactions]);
-
-  useEffect( () => {
-    getApi(`/api/transactions/${walletId}/expenses`, setExpenses).catch(console.error)
-  }, [expenses]);
-
-  useEffect( () => {
-    getApi(`/api/wallet/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
-  }, [incomes]);
+  //
+  // useEffect( () => {
+  //   getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
+  // }, [transactions]);
+  //
+  // useEffect( () => {
+  //   getApi(`/api/transactions/${walletId}/expenses`, setExpenses).catch(console.error)
+  // }, [expenses]);
+  //
+  // useEffect( () => {
+  //   getApi(`/api/wallet/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
+  // }, [incomes]);
 
   return (
       <Router>
