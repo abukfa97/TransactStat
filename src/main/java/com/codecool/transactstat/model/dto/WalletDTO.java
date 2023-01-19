@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 public class WalletDTO {
 
     private Long id;
+    private String title;
 
     @NonNull
     private Long appUserId;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,8 +49,8 @@ public class UserService {
                .collect(Collectors.toList());
     }
 
-    public Long authenticate(UserDTO user){
+    public Optional<Long> authenticate(UserDTO user){
         AppUser searched = userRepository.getAppUserByUserName(user.getUserName());
-        return searched.getId();
+        return Optional.ofNullable(searched).map(AppUser::getId);
     }
 }
