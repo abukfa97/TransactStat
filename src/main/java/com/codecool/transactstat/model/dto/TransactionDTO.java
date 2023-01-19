@@ -10,8 +10,12 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class TransactionDTO {
+
+    private Long id;
+
     private String title;
 
     @NonNull

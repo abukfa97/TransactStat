@@ -21,18 +21,18 @@ public class TransactionController {
     }
 
     @GetMapping("/{walletId}/transactions")
-    public List<Transaction> getTransactions(@PathVariable Long walletId){
+    public List<TransactionDTO> getTransactions(@PathVariable Long walletId){
         return transactionService.getTransactions(walletId);
     }
 
     @GetMapping("/{walletId}/date/{date}")
-    public List<Transaction> getTransactionsByDate(@PathVariable Long walletId, @PathVariable String date){
+    public List<TransactionDTO> getTransactionsByDate(@PathVariable Long walletId, @PathVariable String date){
         var localDate = LocalDate.parse(date);
         return transactionService.getTransactionsByDate(walletId, localDate);
     }
 
     @PostMapping
-    public void addTransaction(@RequestBody Transaction transaction){
+    public void addTransaction(@RequestBody TransactionDTO transaction){
         transactionService.addTransaction(transaction);
     }
 
@@ -62,14 +62,14 @@ public class TransactionController {
     }
 
     @GetMapping("/{walletId}/biggest-transaction")
-    public Transaction getBiggestTransaction(@PathVariable Long walletId){
+    public TransactionDTO getBiggestTransaction(@PathVariable Long walletId){
         return transactionService.getBiggestTransaction(walletId);
     }
 
-    @PutMapping("/wallet")
+    /* @PutMapping("/wallet")
     public void addNewTransactionByWalletId(@RequestBody TransactionDTO transactionDTO){
         transactionService.addTransactionByWalletId(transactionDTO);
-    }
+    }*/
 
     @ExceptionHandler(TransactionNotFoundException.class)
     public ResponseEntity<?> handleMissingTransaction(){

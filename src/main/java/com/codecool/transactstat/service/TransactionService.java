@@ -2,6 +2,7 @@ package com.codecool.transactstat.service;
 
 import com.codecool.transactstat.controller.TransactionNotFoundException;
 import com.codecool.transactstat.model.Wallet;
+import com.codecool.transactstat.model.dto.DtoFactory;
 import com.codecool.transactstat.model.dto.TransactionDTO;
 import com.codecool.transactstat.persistent.TransactionRepository;
 import com.codecool.transactstat.model.Transaction;
@@ -27,8 +28,12 @@ public class TransactionService {
         this.walletRepository = walletRepository;
     }
 
-    public List<Transaction> getTransactions(Long walletId) {
-        return transactionRepository.getTransactionsByWallet(walletRepository.getReferenceById(walletId));
+    public List<TransactionDTO> getTransactions(Long walletId) {
+
+        return transactionRepository.getTransactionsByWallet(walletRepository.getReferenceById(walletId))
+                .stream()
+                .map((DtoFactory::createDTO))
+                .collect(Collectors.toList());
     }
 
     public Transaction getTransaction(Long id) {
@@ -36,11 +41,18 @@ public class TransactionService {
         return transaction.orElseThrow(TransactionNotFoundException::new);
     }
 
-    public void addTransaction(Transaction transaction) {
+    public void addTransaction(TransactionDTO dto) {
+        Transaction transaction = Transaction.builder()
+                .title(dto.getTitle())
+                .amount(dto.getAmount())
+                .wallet(walletRepository.getReferenceById(dto.getWalletId()))
+                .paymentType(dto.getPaymentType())
+                .dateOfTransaction(dto.getDateOfTransaction())
+                .transactionCategory(dto.getTransactionCategory()).build();
         transactionRepository.save(transaction);
     }
 
-    public void addTransactionByWalletId(TransactionDTO transactionDTO) {
+    /* public void addTransactionByWalletId(TransactionDTO transactionDTO) {
         Transaction newTransaction = Transaction.builder()
                 .title(transactionDTO.getTitle())
                 .amount(transactionDTO.getAmount())
@@ -49,8 +61,8 @@ public class TransactionService {
                 .paymentType(transactionDTO.getPaymentType())
                 .wallet(walletRepository.getReferenceById(transactionDTO.getWalletId()))
                 .build();
-        addTransaction(newTransaction);
-    }
+        transactionRepository.save(newTransaction);
+    } */
 
     public void updateTransaction(Transaction transaction, Long id) {
         Transaction transactionToUpdate = getTransaction(id);
@@ -76,7 +88,7 @@ public class TransactionService {
         return transactionRepository.getTransactionByWalletAndAmountGreaterThan(wallet, BigDecimal.ZERO);
     }
 
-    public List<Transaction> getTransactionsByDate(Long walletId, LocalDate date) {
+    public List<TransactionDTO> getTransactionsByDate(Long walletId, LocalDate date) {
         //TODO: FILTER in db-side
         return getTransactions(walletId)
                 .stream()
@@ -84,9 +96,9 @@ public class TransactionService {
                 .collect(Collectors.toList());
     }
 
-    public Transaction getBiggestTransaction(Long walletId) {
+    public TransactionDTO getBiggestTransaction(Long walletId) {
         Wallet wallet = walletRepository.getReferenceById(walletId);
-        return transactionRepository.findTopByWalletOrderByAmount(wallet);
+        return DtoFactory.createDTO(transactionRepository.findTopByWalletOrderByAmount(wallet));
     }
 
 }
