@@ -1,24 +1,23 @@
 import {useEffect, useState} from "react";
-import { browserHistory } from 'react-router';
+import {Redirect} from 'react-router-dom';
+
 const Login = ({  }) => {
     const [userName, setUserName] = useState("")
     const [error, setError] = useState("")
     const handleStatus = async(e) => {
         e.preventDefault();
         const user = {"userName": userName};
-        let response = await fetch('/api/wallet/transactions',
+        let response = await fetch('/api/users/auth',
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(user)
             } )
         if (response.status === 202) {
-            browserHistory.push("/");
-        } else if (response.status === 403) {
+            // <Redirect to="/" />
+        } else {
             setError("There is something wrong!")
         }
-            //reponse.status ==403 or 202
-
     }
 
     return (
@@ -32,7 +31,7 @@ const Login = ({  }) => {
                 </div>
                 <div className="input-container">
                     <label>Password </label>
-                    <input type="password" name="password" required value={}/>
+                    <input type="password" name="password" required/>
                 </div>
                 <div className="button-container">
                     <input type="submit" />

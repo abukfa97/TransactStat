@@ -3,22 +3,22 @@ import Sidebar from "../components/Sidebar.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 
-const Home = ({ transactions, expenses, incomes }) => {
+const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallet}) => {
     const menuRoute = '/DashBoard'
     const urlRoute = '/'
     return (
         <div>
-            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute}/>
+            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets} setCurrentWallets={setCurrentWallet}/>
             <div className="monthly-container">
                 <h3 className="this-month">This Month</h3>
                 <div className="expenses-and-incomes">
-                    <TransactionList  transactions={transactions} isMain={false} title="Expenses"/>
-                    <TransactionList  transactions={transactions} isMain={false} title="Incomes"/>
+                    <TransactionList  transactions={expenses} isMain={false} title="Expenses"/>
+                    <TransactionList  transactions={incomes} isMain={false} title="Incomes"/>
                 </div>
 
             </div>
             <div className="width-80">
-            <TransactionList  transactions={transactions} incomes={incomes} expenses={expenses} isMain={true} title="AllTransactions"/>
+            <TransactionList transactionTypeToDisplay={transactionTypeToDisplay} setTransactionTypeToDisplay={setTransactionTypesToDisplay} transactions={transactions} isMain={true} title="AllTransactions" expenses={expenses} incomes={incomes}/>
             </div>
         </div>
     )

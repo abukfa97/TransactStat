@@ -1,16 +1,23 @@
-import MenuOption from "./MenuOption.jsx";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Link} from "react-router-dom";
+import React from 'react';
+import Cookies from 'js-cookie';
 
 
-const Sidebar = ({ option, menuRoute, urlRoute }) => {
+const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallet }) => {
 
     const menuOptions = [
-        "Wallets" ,"Profile", "Settings"
+        "Profile", "Settings"
     ]
+    console.log(wallets)
+
+
+
+    // fetch wallets based on userId
+
 
     return (
         <div>
@@ -22,9 +29,16 @@ const Sidebar = ({ option, menuRoute, urlRoute }) => {
                         <Nav className="me-auto">
                             <Nav.Link><Link to='/'>Home</Link></Nav.Link>
                             <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
+                                {/*iterate over wallets*/}
                                 <ul className='list-group'>
-                                    {menuOptions.map((menuOption) =>
-                                        <NavDropdown.Item href="#action/3.1"><Link to={"/" + MenuOption}>{menuOption}</Link></NavDropdown.Item>
+                                    {!wallets ? "Loading..." : wallets.map((wallet) =>
+                                        <NavDropdown.Item href="#action/3.1" data-id={wallet.id} onClick={() => setCurrentWallet(wallet)}>{wallet.title}</NavDropdown.Item>
+                                    )}
+                                </ul>
+                                {/*iterate over options*/}
+                                <ul className='list-group'>
+                                    {menuOptions.map((option) =>
+                                        <NavDropdown.Item href="#action/3.1"><Link to={"/" + option}>{option}</Link></NavDropdown.Item>
                                     )}
                                 </ul>
                                 <NavDropdown.Divider />

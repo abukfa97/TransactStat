@@ -1,68 +1,86 @@
 import './App.css'
-import Transaction from "./components/Transaction";
-import TransactionList from "./components/TransactionList";
 import {useEffect, useState} from "react";
-import Sidebar from "./components/Sidebar.jsx";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
-import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 import{Container,ListGroup,Col}from'react-bootstrap';
 import Login from "./routes/Login.jsx";
 import Register from "./routes/Register.jsx";
+import React from 'react';
+import Cookies from "js-cookie";
+
 
 function App() {
-  const menuRoute = '/Dashboard'
-  const urlRoute = '/'
-  const exampleTransactions = [
+  const [transactions, setTransactions] = useState([])
+
+  const exampleWallets= [
     {
-      amount: 350000,
-      name: "Transaction 1"
-    },
-    {
-      amount: 6500,
-      name: "Transaction 2"
+      name: "Hello",
+      id: 1,
+      transactionList: transactions,
+      user: 1,
+      balance: 2000
     }
   ]
-  const [transactions, setTransactions] = useState([exampleTransactions])
-  const [incomes, setIncomes] = useState([exampleTransactions])
-  const [expenses, setExpenses] = useState([exampleTransactions])
-  const [user, setUser] = useState([])
 
+  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState([])
 
-  //get data from API and update transactions
-  const getApiTransactions = async (url) => {
+  const [wallets, setWallets] = useState(exampleWallets)
+
+  const [currentWallet, setCurrentWallet] = useState(() => wallets[0])
+
+  const [incomes, setIncomes] = useState([])
+  const [expenses, setExpenses] = useState([])
+
+  const [userId, setUserId] = useState(undefined);
+  useEffect(() => {
+    setUserId(Cookies.get('userId'))
+  }, [])
+  // const userId = user.id;
+  // const userId = 2;
+  const walletId = currentWallet.id;
+  // const walletId = currentWallet.id;
+
+  // TODO get userId from cookies
+  // dashboard -> choose which wallet
+  // wallet dashboard
+
+  const getApi = async(url, setter) => {
     let response = await fetch(url);
-    let savedTransactions = await response.json();
-    setTransactions([...savedTransactions])
-  }
-  const getApiExpenses = async (url) => {
-    let response = await fetch(url);
-    let savedExpenses = await response.json();
-    setExpenses([...savedExpenses])
-  }
-  const getApiIncomes = async (url) => {
-    let response = await fetch(url);
-    let savedIncomes = await response.json();
-    setIncomes([...sgavedIncomes])
+    let data = await response.json();
+    setter([...data])
   }
 
-  //get data from API and update transactions
 
-    useEffect( () => {
-      getApiTransactions('/api/transactions/{wallet-id}').catch(console.error)
-    }, [transactions]);
+  useEffect( () => {
+    if (userId === undefined){
+      return
+    }
+    getApi(`/api/wallets/user/${userId}`, setWallets).catch(console.error)
+  }, [userId]);
 
-    useEffect( () => {
-      getApiExpenses('/api/transactions/{wallet-id}/expenses').catch(console.error)
-    }, [expenses]);
+  useEffect( () => {
+    if (walletId === undefined){
+      return
+    }
+    getApi(`/api/transactions/${walletId}/transactions`, setTransactions).catch(console.error)
+  }, [walletId]);
 
-    useEffect( () => {
-      getApiIncomes('/api/wallet/transactions/{wallet-id}/incomes').catch(console.error)
-    }, [incomes]);
+  useEffect( () => {
+    if (walletId === undefined){
+      return
+    }
+    getApi(`/api/transactions/${walletId}/expenses`, setExpenses).catch(console.error)
+  }, [walletId]);
 
+  useEffect( () => {
+    if (walletId === undefined){
+      return
+    }
+    getApi(`/api/transactions/${walletId}/incomes`, setIncomes).catch(console.error)
+  }, [walletId]);
 
   return (
       <Router>
@@ -70,10 +88,10 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/">
-                <Home transactions={transactions} expenses={expenses} incomes={incomes}/>
+                <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay}/>
               </Route>
               <Route exact path="/add">
-                <AddTransaction/>
+                <AddTransaction wallets={wallets} walletId={walletId}/>
               </Route>
               <Route exact path="/Login">
                 <Login/>
@@ -90,9 +108,4 @@ function App() {
 
 export default App
 
-// register new user (insomnia)
-// get wallet-id (insomnia)
-// fetch with that wallet-id
-// wallet id -> as dataset to dropdown select
-// based on id, different fetch
 
