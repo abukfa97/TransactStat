@@ -30,9 +30,14 @@ public class WalletController {
         return walletService.getBalanceByWalletId(walletId);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public List<WalletDTO> getWalletsByUserId(@PathVariable Long userId){
         return walletService.getWalletsByUserId(userId);
+    }
+
+    @GetMapping("/{walletId}")
+    public WalletDTO getWalletById(@PathVariable Long walletId){
+        return walletService.getWalletById(walletId);
     }
 
 }

@@ -40,8 +40,8 @@ public class WalletService {
         return dto;
     }
 
-    public Wallet getWalletById(Long walletId){
-        return walletRepository.getReferenceById(walletId);
+    public WalletDTO getWalletById(Long walletId){
+        return createWalletDTO(walletRepository.getReferenceById(walletId));
     }
 
 
