@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 const Login = ({  }) => {
     const [userName, setUserName] = useState("")
@@ -14,7 +14,7 @@ const Login = ({  }) => {
                 body: JSON.stringify(user)
             } )
         if (response.status === 202) {
-            // <Redirect to="/" />
+            setError("Login Successful")
         } else {
             setError("There is something wrong!")
         }
@@ -33,8 +33,9 @@ const Login = ({  }) => {
                     <label>Password </label>
                     <input type="password" name="password" required/>
                 </div>
+                <p>If you are not registered, click <Link to="/register">here</Link></p>
                 <div className="button-container">
-                    <input type="submit" />
+                    <input value="Login" type="submit" />
                 </div>
             </form>
         </div>
