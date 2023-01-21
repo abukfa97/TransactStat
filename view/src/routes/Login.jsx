@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react";
 import {Link, Redirect} from 'react-router-dom';
+import {Alert, Snackbar} from "@mui/material";
 
 const Login = ({  }) => {
     const [userName, setUserName] = useState("")
-    const [error, setError] = useState("")
+    const [errorDisplay, setErrorDisplay] = useState(null)
     const handleStatus = async(e) => {
         e.preventDefault();
         const user = {"userName": userName};
@@ -14,16 +15,18 @@ const Login = ({  }) => {
                 body: JSON.stringify(user)
             } )
         if (response.status === 202) {
-            setError("Login Successful")
+            setErrorDisplay(<Alert severity="success">Yay! You are logged in!</Alert>)
         } else {
-            setError("There is something wrong!")
+            setErrorDisplay(<Alert severity="error">There is something wrong with the password or the name! Please try again!</Alert>)
         }
     }
+
+
 
     return (
 
         <div className="form">
-            <p className="error">{error}</p>
+            {errorDisplay}
             <form onSubmit={handleStatus}>
                 <div className="input-container">
                     <label>Username </label>
