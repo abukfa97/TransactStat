@@ -10,7 +10,7 @@ import Register from "./routes/Register.jsx";
 import React from 'react';
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router";
-import HomeNoUser from "./routes/HomeNoUser.jsx";
+import MainPage from "./routes/MainPage.jsx";
 import NavigationBar from "./components/NavigationBar.jsx";
 
 
@@ -104,7 +104,7 @@ function App() {
                 <Register/>
               </Route>
               <Route exact path='/'>
-                <HomeNoUser />
+                <MainPage />
               </Route>
             </Switch>
           </div>

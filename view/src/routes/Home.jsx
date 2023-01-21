@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Login.jsx";
 import Button from '@mui/material/Button';
-import HomeNoUser from "./HomeNoUser.jsx";
+import MainPage from "./MainPage.jsx";
 import {Typography} from "@mui/material";
 import {useState} from "react";
 
@@ -24,7 +24,7 @@ const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToD
 
     if (userId === undefined){
         return (
-            <HomeNoUser />
+            <MainPage />
         )
     }
     if (walletChosen === true){

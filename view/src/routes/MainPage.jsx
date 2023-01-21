@@ -3,7 +3,7 @@ import'bootstrap/dist/css/bootstrap.min.css';
 import {Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 
-const HomeNoUser = ({  }) => {
+const MainPage = ({  }) => {
     return (
         <div>
             <Typography>Please
@@ -14,4 +14,4 @@ const HomeNoUser = ({  }) => {
     )
 }
 
-export default HomeNoUser
+export default MainPage
