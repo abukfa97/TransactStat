@@ -19,7 +19,7 @@ const Login = () => {
             } )
         if (response.status === 202) {
             setErrorDisplay(<Alert severity="success">Yay! You are logged in!</Alert>)
-            history.push('/')
+            history.push('/home')
         } else {
             setErrorDisplay(<Alert severity="error">There is something wrong with the password or the name! Please try again!</Alert>)
         }

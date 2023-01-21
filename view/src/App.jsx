@@ -10,6 +10,7 @@ import Register from "./routes/Register.jsx";
 import React from 'react';
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router";
+import HomeNoUser from "./routes/HomeNoUser.jsx";
 
 
 function App() {
@@ -88,7 +89,7 @@ function App() {
         <div className="App">
           <div className="content">
             <Switch>
-              <Route exact path="/">
+              <Route exact path="/home">
                 <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
               </Route>
               <Route exact path="/add">
@@ -99,6 +100,9 @@ function App() {
               </Route>
               <Route exact path="/Register">
                 <Register/>
+              </Route>
+              <Route exact path='/'>
+                <HomeNoUser />
               </Route>
             </Switch>
           </div>

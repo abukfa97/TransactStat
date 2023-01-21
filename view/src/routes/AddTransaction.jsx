@@ -108,7 +108,7 @@ const AddTransaction = ({ wallets, walletId }) => {
                     <button className="group" onClick={() => {
                         history.goBack()
                     }}>Add Transaction</button>
-                    <Link className="group" to='/'>Back</Link>
+                    <Link className="group" to='/home'>Back</Link>
                 </div>
             </Form>
             </div>

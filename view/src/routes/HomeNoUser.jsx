@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import {Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 
-const HomeNoUser = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets, userId}) => {
+const HomeNoUser = ({ wallets, setCurrentWallets }) => {
     const menuRoute = '/Home'
     const urlRoute = '/'
     return (
