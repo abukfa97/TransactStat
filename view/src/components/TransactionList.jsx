@@ -2,6 +2,7 @@ import Transaction from "./Transaction.jsx";
 import{Container,ListGroup,Col}from'react-bootstrap';
 import DisplayOptions from "./DisplayOptions.jsx"
 function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDisplay, transactions, transactionTypeToDisplay}) {
+    console.log(transactionTypeToDisplay)
 
     return(
         <div className="transaction-list">
@@ -11,9 +12,11 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
             <Container className='p-4'>
                 <Col>
                     <ListGroup>
-                        {transactions.map((transaction, index) =>
+                        {isMain ? (transactionTypeToDisplay.map((transaction, index) =>
                             <Transaction key={index} name={transaction.title} amount={transaction.amount}/>
-                        )}
+                        )) : (transactions.map((transaction, index) =>
+                            <Transaction key={index} name={transaction.title} amount={transaction.amount}/>
+                        )) }
                     </ListGroup>
                 </Col>
             </Container>
