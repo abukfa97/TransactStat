@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react";
 import {Link, Redirect} from 'react-router-dom';
 import {Alert, Snackbar} from "@mui/material";
+import {useHistory} from "react-router-dom";
 
-const Login = ({  }) => {
+const Login = () => {
     const [userName, setUserName] = useState("")
     const [errorDisplay, setErrorDisplay] = useState(null)
+    let history = useHistory()
+
     const handleStatus = async(e) => {
         e.preventDefault();
         const user = {"userName": userName};
@@ -16,6 +19,7 @@ const Login = ({  }) => {
             } )
         if (response.status === 202) {
             setErrorDisplay(<Alert severity="success">Yay! You are logged in!</Alert>)
+            history.push('/')
         } else {
             setErrorDisplay(<Alert severity="error">There is something wrong with the password or the name! Please try again!</Alert>)
         }

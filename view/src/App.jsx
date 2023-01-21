@@ -1,19 +1,20 @@
 import './App.css'
 import {useEffect, useState} from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
-import{Container,ListGroup,Col}from'react-bootstrap';
 import Login from "./routes/Login.jsx";
 import Register from "./routes/Register.jsx";
 import React from 'react';
 import Cookies from "js-cookie";
+import {useNavigate} from "react-router";
 
 
 function App() {
   const [transactions, setTransactions] = useState([])
+
 
   const exampleWallets= [
     {

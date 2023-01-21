@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import {Link, useHistory} from "react-router-dom";
-import Sidebar from "../components/Sidebar.jsx";
+import NavigationBar from "../components/NavigationBar.jsx";
 
 const AddTransaction = ({ wallets, walletId }) => {
     const menuRoute = '/Add'
@@ -43,7 +43,7 @@ const AddTransaction = ({ wallets, walletId }) => {
     return (
         <div>
             {/*sidebar to app.jsx*/}
-            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets}/>
+            <NavigationBar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets}/>
             <h5 className='transaction-header flex-container width-83 top-5'>Add New Transaction</h5>
             <div className='card-grey width-83 center'>
             <Form onSubmit={handleSubmit} className='width-83 center margin-10'>

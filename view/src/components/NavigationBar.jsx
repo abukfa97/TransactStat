@@ -7,7 +7,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 
 
-const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
+const NavigationBar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
 
     const menuOptions = [
         "Profile", "Settings"
@@ -56,4 +56,4 @@ const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
     )
 }
 
-export default Sidebar
+export default NavigationBar

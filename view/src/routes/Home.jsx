@@ -1,21 +1,22 @@
 import TransactionList from "../components/TransactionList.jsx";
-import Sidebar from "../components/Sidebar.jsx";
+import NavigationBar from "../components/NavigationBar.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Login.jsx";
 import Button from '@mui/material/Button';
+import HomeNoUser from "./HomeNoUser.jsx";
 
 const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets, userId}) => {
     const menuRoute = '/DashBoard'
     const urlRoute = '/'
     if (userId === undefined){
         return (
-            <Login />
+            <HomeNoUser />
         )
     }
     return (
         <div>
-            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets} setCurrentWallets={setCurrentWallets}/>
+            <NavigationBar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets} setCurrentWallets={setCurrentWallets}/>
             <div className="monthly-container">
                 <h3 className="this-month">This Month</h3>
                 <div className="expenses-and-incomes">
