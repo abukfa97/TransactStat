@@ -11,6 +11,7 @@ import React from 'react';
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router";
 import HomeNoUser from "./routes/HomeNoUser.jsx";
+import NavigationBar from "./components/NavigationBar.jsx";
 
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
       <Router>
         <div className="App">
           <div className="content">
+            <NavigationBar wallets={wallets} setCurrentWallets={setCurrentWallet}/>
             <Switch>
               <Route exact path="/home">
                 <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>

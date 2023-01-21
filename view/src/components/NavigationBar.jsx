@@ -14,9 +14,6 @@ const NavigationBar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
     ]
     console.log(wallets)
 
-    const handleClick = (wallet) => {
-        setCurrentWallets(wallet);
-    }
 
     // fetch wallets based on userId
 
@@ -31,12 +28,6 @@ const NavigationBar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
                         <Nav className="me-auto">
                             <Nav.Link><Link to='/'>Home</Link></Nav.Link>
                             <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
-                                {/*iterate over wallets*/}
-                                <ul className='list-group'>
-                                    {!wallets ? "Loading..." : wallets.map((wallet) =>
-                                        <NavDropdown.Item href={"#" + wallet.title} data-id={wallet.id} onClick={() => handleClick(wallet)}>{wallet.title}</NavDropdown.Item>
-                                    )}
-                                </ul>
                                 {/*iterate over options*/}
                                 <ul className='list-group'>
                                     {menuOptions.map((option) =>
