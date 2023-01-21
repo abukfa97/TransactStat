@@ -30,6 +30,10 @@ const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToD
     if (walletChosen === true){
         return (
             <div>
+                {wallets.map((wallet) => (
+                    <div>
+                        <Button onClick={() => chooseWallet(wallet)}>{wallet.title}</Button>
+                    </div>))}
 
                 <div className="monthly-container">
                     <h3 className="this-month">This Month</h3>
