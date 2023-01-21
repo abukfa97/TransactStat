@@ -1,5 +1,6 @@
 import {Form} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import Button from '@mui/material/Button';
 
 function DisplayOptions({ isMain, transaction, expenses, incomes, setTransactionTypeToDisplay }) {
     if (isMain) {
@@ -11,10 +12,10 @@ function DisplayOptions({ isMain, transaction, expenses, incomes, setTransaction
         }
         return(
             <div className="displayOptions">
-                <button className="button simple-button active" onClick={() => {setTransactionTypeToDisplay(transaction)}}>All Transactions</button>
-                <button className="button simple-button" onClick={() => {setTransactionTypeToDisplay(expenses)}}>Expenses</button>
-                <button className="button simple-button" onClick={() => {setTransactionTypeToDisplay(incomes)}}>Incomes</button>
-                <button className="button add-transaction">{link}</button>
+                <Button variant="text" onClick={() => {setTransactionTypeToDisplay(transaction)}}>All Transactions</Button>
+                <Button variant="text" onClick={() => {setTransactionTypeToDisplay(expenses)}}>Expenses</Button>
+                <Button variant="text" onClick={() => {setTransactionTypeToDisplay(incomes)}}>Incomes</Button>
+                <Button variant="text">{link}</Button>
             </div>
         )
     } else {
