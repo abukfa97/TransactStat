@@ -25,7 +25,7 @@ function App() {
     }
   ]
 
-  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState([])
+  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState(() =>transactions)
 
   const [wallets, setWallets] = useState(exampleWallets)
 
