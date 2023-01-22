@@ -1,6 +1,6 @@
 import Transaction from "./Transaction.jsx";
 import{Container,ListGroup,Col}from'react-bootstrap';
-import DisplayOptions from "./DisplayOptions.jsx"
+import TransactionButtons from "./TransactionButtons.jsx"
 import {
     Box,
     List,
@@ -24,7 +24,7 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
             <Box m={6}>
             {/*    {isMain && <Header title='Transactions' subtitles="All your transactions in one place"></Header>}*/}
                 <Box>
-            <DisplayOptions transactionTypeToDisplay={transactionTypeToDisplay} isMain={isMain} transaction={transactions} expenses={expenses} incomes={incomes} setTransactionTypeToDisplay={setTransactionTypeToDisplay}></DisplayOptions>
+            <TransactionButtons transactionTypeToDisplay={transactionTypeToDisplay} isMain={isMain} transaction={transactions} expenses={expenses} incomes={incomes} setTransactionTypeToDisplay={setTransactionTypeToDisplay}></TransactionButtons>
             <TableContainer sx={{ maxHeight: '300px'}}>
                 <Table stickyHeader>
                     <TableHead>
