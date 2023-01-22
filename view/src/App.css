@@ -245,13 +245,19 @@ input[type="submit"]:hover {
 }
 
 .App{
-  background: #1c2323;
+  background: #e3f5d4  ;
 }
 
 .transaction-list{
   max-width: 100%;
 }
 
-.margin-5{
+.margin-5 {
   margin: 50px;
 }
+
+/*color*/
+/*#64207f*/
+/*#281f43*/
+/*#fddf4e*/
+/*#140a38*/

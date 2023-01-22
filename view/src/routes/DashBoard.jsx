@@ -10,6 +10,8 @@ import {useState} from "react";
 import Header from "../components/Header.jsx";
 import {Link} from "react-router-dom";
 import {LibraryAdd} from "@mui/icons-material";
+import {alignPropType} from "react-bootstrap/types";
+import WalletIcon from '@mui/icons-material/Wallet';
 
 
 const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets, userId, currentWallet}) => {
@@ -46,15 +48,37 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridTemplateColumns='repeat(12, 1fr)'
                     gridAutoRows='140px'
                     gap='20px'>
-                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
-                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
-                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
-                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center' justify-content='center' style={{ flexDirection: 'column'}}>
-                        <Link style={{color: 'white', margin: 'auto', textAlign: 'center'}} to="/add">
-                            <LibraryAdd style={{ marginRight : '5px', color : 'white'}}></LibraryAdd><div>Add New Transaction</div></Link>
+                    <Box gridColumn='span 2' backgroundColor='#ff708c' display='flex' align-items='center'>
+                        <Typography style={{ margin: 'auto', textAlign: 'center', color: 'white', fontSize: '0.85rem'}}>Current Balance:<div style={{ fontSize: '1.5rem'}}>350,040 HUF</div></Typography>
                     </Box>
-                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
-                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
+                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center'  justify-content='center' style={{ flexDirection: 'column'}}>
+                        <Link style={{color: 'black', margin: 'auto', textAlign: 'center'}} to="/add">
+                            <LibraryAdd style={{ marginRight : '5px', color : 'black'}}></LibraryAdd><div>Add New Transaction</div></Link>
+                    </Box>
+                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center' >
+                        <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
+                            Latest Contact: <div style={{ fontSize: '1.5rem' }}>Csenge Koppany</div>
+                        </Typography>
+                    </Box>
+                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center' justify-content='center' style={{ flexDirection: 'column'}}>
+                        <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
+                            Most Active Contact: <div style={{ fontSize: '1.5rem' }}>Csenge Koppany</div>
+                        </Typography>
+                    </Box>
+                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center'>
+                        <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
+                            Most Active Location: <div style={{ fontSize: '1.5rem' }}>Manna ABC</div>
+                        </Typography>
+                    </Box>
+                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center'>
+                        <div style={{margin: 'auto', display: 'flex', flexDirection: 'column'}}>
+                            {wallets.map((wallet) => (
+                                <Button variant='text' sx={{
+                                    color: '#ffffff'
+                                }} onClick={() => chooseWallet(wallet)}><WalletIcon></WalletIcon>{wallet.title}</Button>
+                            ))}
+                        </div>
+                    </Box>
                 </Box>
                 {/*SECOND ROW*/}
                 <Box
@@ -63,10 +87,10 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridAutoRows='425px'
                     gap='20px'
                 m={5}>
-                    <Box gridColumn='span 8' backgroundColor='#232f2f' >
+                    <Box gridColumn='span 8' backgroundColor='#bfebab' >
 
                     </Box>
-                    <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center' justify-content='center' >
+                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center' justify-content='center' >
                         <TransactionList transactionType='transactions' transactionTypeToDisplay={transactionTypeToDisplay} setTransactionTypeToDisplay={setTransactionTypesToDisplay} transactions={transactions} isMain={true} title="AllTransactions" expenses={expenses} incomes={incomes} className='transaction-list'/>
                     </Box>
                 </Box>
@@ -79,13 +103,13 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridTemplateColumns='repeat(12, 1fr)'
                     gridAutoRows='350px'
                     gap='20px'>
-                    <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center' justify-content='center' >
+                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center' justify-content='center' >
                         <TransactionList transactionType='incomes'  transactions={incomes} isMain={false} title="Incomes"/>
                     </Box>
-                    <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center'>
+                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center'>
                         <TransactionList transactionType='expenses'  transactions={expenses} isMain={false} title="Incomes"/>
                     </Box>
-                    <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center'>
+                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center'>
                         <Box style={{margin: "50px"}}>
                         <Typography color='white'>
                             This month you spent 15 Euros less compared to last month. Good Job. Also, if you keep spending like this we estimate you will spend 50 pounds less compared to last month.
@@ -102,7 +126,7 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
             Please choose between your wallets:
             <div>
             {wallets.map((wallet) => (
-                    <Button sx={{
+                    <Button variant='text' sx={{
                         color: '#000000'
                     }} onClick={() => chooseWallet(wallet)}>{wallet.title}</Button>
                 ))}

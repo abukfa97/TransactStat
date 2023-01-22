@@ -22,7 +22,7 @@ const NavigationBar = ({ menuRoute, urlRoute, wallets, user }) => {
 
     return (
         <div>
-                <AppBar style={{ background: '#232f2f' }}>
+                <AppBar style={{ background: '#281f43' }}>
                     <Toolbar>
                         <Typography sx={{
                             flexGrow: 1,

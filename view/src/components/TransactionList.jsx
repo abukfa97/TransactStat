@@ -30,11 +30,11 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
                     <TableHead>
                         <TableRow
                             style={{backgroundColor:'red', color: 'white',}}>
-                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>{(transactionType === 'expenses') ? 'Expenses' : ((transactionType === 'incomes') ? 'Incomes' : 'Transactions')}</TableCell>
-                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Amount</TableCell>
-                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Mode</TableCell>
-                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Date</TableCell>
-                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Category</TableCell>
+                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>{(transactionType === 'expenses') ? 'Expenses' : ((transactionType === 'incomes') ? 'Incomes' : 'Transactions')}</TableCell>
+                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Amount</TableCell>
+                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Mode</TableCell>
+                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Date</TableCell>
+                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Category</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
