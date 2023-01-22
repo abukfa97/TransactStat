@@ -9,6 +9,7 @@ import {Box, Grid, makeStyles, Paper, Typography} from "@mui/material";
 import {useState} from "react";
 import Header from "../components/Header.jsx";
 import {Link} from "react-router-dom";
+import {LibraryAdd} from "@mui/icons-material";
 
 
 const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets, userId, currentWallet}) => {
@@ -48,8 +49,9 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
                     <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
                     <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
-                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'>
-                        <Link  style={{color: 'black'}} to="/add">Add Transaction</Link>
+                    <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center' justify-content='center' style={{ flexDirection: 'column'}}>
+                        <Link style={{color: 'white', margin: 'auto', textAlign: 'center'}} to="/add">
+                            <LibraryAdd style={{ marginRight : '5px', color : 'white'}}></LibraryAdd><div>Add New Transaction</div></Link>
                     </Box>
                     <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
                     <Box gridColumn='span 2' backgroundColor='#232f2f' display='flex' align-items='center'></Box>
