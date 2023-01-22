@@ -22,12 +22,12 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
         <div className="transaction-list">
 
             <Box m={6}>
-                {isMain && <Header title='Transactions' subtitles="All your transactions in one place"></Header>}
+            {/*    {isMain && <Header title='Transactions' subtitles="All your transactions in one place"></Header>}*/}
                 <Box>
             <DisplayOptions transactionTypeToDisplay={transactionTypeToDisplay} isMain={isMain} transaction={transactions} expenses={expenses} incomes={incomes} setTransactionTypeToDisplay={setTransactionTypeToDisplay}></DisplayOptions>
-            <TableContainer component={Paper} sx={{ maxHeight: '300px'}}>
-                <Table>
-                    <TableHead stickyHeader>
+            <TableContainer sx={{ maxHeight: '300px'}}>
+                <Table stickyHeader>
+                    <TableHead>
                         <TableRow>
                             <TableCell>Transfer</TableCell>
                             <TableCell>Amount</TableCell>

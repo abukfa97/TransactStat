@@ -236,10 +236,22 @@ input[type="submit"]:hover {
   height: 64px;
 }
 
-.black{
-  color: black;
+.white{
+  color: white;
 }
 
 .black:hover{
   color: #213547;
+}
+
+.App{
+  background: #1c2323;
+}
+
+.transaction-list{
+  max-width: 100%;
+}
+
+.margin-5{
+  margin: 50px;
 }

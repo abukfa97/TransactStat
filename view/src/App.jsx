@@ -1,7 +1,7 @@
 import './App.css'
 import {useEffect, useState} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Home from "./routes/Home.jsx";
+import DashBoard from "./routes/DashBoard.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
@@ -94,7 +94,7 @@ function App() {
             <NavigationBar wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId}/>
             <Switch>
               <Route exact path="/home">
-                <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
+                <DashBoard currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
               </Route>
               <Route exact path="/add">
                 <AddTransaction wallets={wallets} walletId={walletId}/>

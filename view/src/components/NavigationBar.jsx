@@ -22,21 +22,21 @@ const NavigationBar = ({ menuRoute, urlRoute, wallets, user }) => {
 
     return (
         <div>
-                <AppBar style={{ background: '#7B8FA1' }}>
+                <AppBar style={{ background: '#232f2f' }}>
                     <Toolbar>
                         <Typography sx={{
                             flexGrow: 1,
-                            color: '#000'
+                            color: '#fff'
                         }}>
                             TransactStat
                         </Typography>
                             <div className='list-group' style={{ width: '8%', display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
                                 {menuOptions.map((option) =>
-                                    <Typography style={{ color: '#fff'}}><Link className='black' to={"/" + option.toLowerCase()}>{option}</Link></Typography>
+                                    <Typography style={{ color: '#fff'}}><Link className='white' to={"/" + option.toLowerCase()}>{option}</Link></Typography>
                                 )}
                             </div>
                         <Typography style={{
-                            color: '#000',
+                            color: '#fff',
                             marginLeft: '15px',
                             marginRight: '10px'
                         }}>

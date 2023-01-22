@@ -5,8 +5,12 @@ const Header = ({ title, subtitles}) => {
 
     return (
        <div>
-           <Typography variant='h6'>{title.toUpperCase()}</Typography>
-           <Typography >{subtitles}</Typography>
+           <Typography variant='h6' style={{
+               color: 'white'
+           }}>{title.toUpperCase()}</Typography>
+           <Typography style={{
+               color: 'white'
+           }}>{subtitles}</Typography>
 
        </div>
     )
