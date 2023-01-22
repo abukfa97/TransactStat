@@ -25,6 +25,7 @@ const Register = () => {
 
     return (
         <div className="form">
+            <div className="toolbar-height"></div>
             <form onSubmit={createNewUser}>
                 <div className="input-container">
                     <label>Email </label>

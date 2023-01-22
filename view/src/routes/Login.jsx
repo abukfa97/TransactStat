@@ -30,6 +30,7 @@ const Login = () => {
     return (
 
         <div className="form">
+            <div className="toolbar-height"></div>
             {errorDisplay}
             <form onSubmit={handleStatus}>
                 <div className="input-container">

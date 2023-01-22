@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 const MainPage = ({  }) => {
     return (
         <div>
+            <div className="toolbar-height"></div>
             <Typography>Please
                 <Link to="/login"> Log In </Link> or
                 <Link to="/register"> Sign Up </Link>

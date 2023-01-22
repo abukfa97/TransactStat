@@ -9,13 +9,15 @@ import Login from "./routes/Login.jsx";
 import Register from "./routes/Register.jsx";
 import React from 'react';
 import Cookies from "js-cookie";
-import {useNavigate} from "react-router";
 import MainPage from "./routes/MainPage.jsx";
 import NavigationBar from "./components/NavigationBar.jsx";
+import {makeStyles} from "@mui/material";
+
 
 
 function App() {
   const [transactions, setTransactions] = useState([])
+
 
 
   const exampleWallets= [
@@ -89,7 +91,7 @@ function App() {
       <Router>
         <div className="App">
           <div className="content">
-            <NavigationBar wallets={wallets} setCurrentWallets={setCurrentWallet}/>
+            <NavigationBar wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId}/>
             <Switch>
               <Route exact path="/home">
                 <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>

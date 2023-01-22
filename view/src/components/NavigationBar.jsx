@@ -4,10 +4,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Link} from "react-router-dom";
 import React from 'react';
-import Cookies from 'js-cookie';
+import {AppBar, Avatar, makeStyles, Toolbar, Typography} from "@mui/material";
 
 
-const NavigationBar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
+
+
+const NavigationBar = ({ menuRoute, urlRoute, wallets, user }) => {
 
     const menuOptions = [
         "Profile", "Settings"
@@ -20,29 +22,29 @@ const NavigationBar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
 
     return (
         <div>
-            <Navbar bg="light" expand="lg" className="sidebar">
-                <Container >
-                    <Navbar.Brand><Link to="/">TransactStat</Link><Link to={urlRoute}><span className='transparent'>{menuRoute}</span></Link></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link><Link to='/'>Home</Link></Nav.Link>
-                            <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
-                                {/*iterate over options*/}
-                                <ul className='list-group'>
-                                    {menuOptions.map((option) =>
-                                        <NavDropdown.Item href="#action/3.1"><Link to={"/" + option}>{option}</Link></NavDropdown.Item>
-                                    )}
-                                </ul>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Log Out
-                                </NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav>
-                    </Navbar>
-                </Container>
-            </Navbar>
+                <AppBar style={{ background: '#7B8FA1' }}>
+                    <Toolbar>
+                        <Typography sx={{
+                            flexGrow: 1,
+                            color: '#000'
+                        }}>
+                            TransactStat
+                        </Typography>
+                            <div className='list-group' style={{ width: '8%', display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
+                                {menuOptions.map((option) =>
+                                    <Typography style={{ color: '#fff'}}><Link className='black' to={"/" + option.toLowerCase()}>{option}</Link></Typography>
+                                )}
+                            </div>
+                        <Typography style={{
+                            color: '#000',
+                            marginLeft: '15px',
+                            marginRight: '10px'
+                        }}>
+                            {user}
+                        </Typography>
+                        <Avatar src='../images/amelie.jpg'  />
+                    </Toolbar>
+                </AppBar>
         </div>
     )
 }

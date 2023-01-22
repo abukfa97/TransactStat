@@ -5,8 +5,9 @@ import'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Login.jsx";
 import Button from '@mui/material/Button';
 import MainPage from "./MainPage.jsx";
-import {Box, Typography} from "@mui/material";
+import {Box, makeStyles, Typography} from "@mui/material";
 import {useState} from "react";
+
 
 const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets, userId, currentWallet}) => {
     const menuRoute = '/DashBoard'
@@ -30,9 +31,12 @@ const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToD
     if (walletChosen === true){
         return (
             <div>
-                <Box m={2} pt={3} align="center">
+                <div className="toolbar-height"></div>
+                <Box align="center" className="full-width">
                     {wallets.map((wallet) => (
-                            <Button className="wallets" onClick={() => chooseWallet(wallet)}>{wallet.title}</Button>
+                            <Button sx={{
+                                color:'#000'
+                            }} className="wallets" onClick={() => chooseWallet(wallet)}>{wallet.title}</Button>
                         ))}
                 </Box>
                 <div className="monthly-container">
@@ -50,12 +54,19 @@ const Home = ({ transactions, wallets, expenses, incomes, setTransactionTypesToD
         )
     }
     return (
+        <Box m={2} pt={3} align="center">
         <Typography align="center">
             Please choose between your wallets:
+            <div>
             {wallets.map((wallet) => (
-                    <Button sx={{ mx: 'auto' }} onClick={() => chooseWallet(wallet)}>{wallet.title}</Button>
+                    <Button sx={{
+                        color: '#000000'
+                    }} onClick={() => chooseWallet(wallet)}>{wallet.title}</Button>
                 ))}
+            </div>
+
         </Typography>
+        </Box>
     )
 
 

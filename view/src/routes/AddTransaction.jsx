@@ -42,6 +42,7 @@ const AddTransaction = ({ wallets, walletId }) => {
 
     return (
         <div>
+            <div className="toolbar-height"></div>
             {/*sidebar to app.jsx*/}
             <NavigationBar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets}/>
             <h5 className='transaction-header flex-container width-83 top-5'>Add New Transaction</h5>
