@@ -26,32 +26,33 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
                 <Box>
             <TransactionButtons transactionTypeToDisplay={transactionTypeToDisplay} isMain={isMain} transaction={transactions} expenses={expenses} incomes={incomes} setTransactionTypeToDisplay={setTransactionTypeToDisplay}></TransactionButtons>
             <TableContainer sx={{ maxHeight: '300px'}}>
-                <Table stickyHeader>
+                <Table stickyHeader >
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Transfer</TableCell>
-                            <TableCell>Amount</TableCell>
-                            <TableCell>Mode</TableCell>
-                            <TableCell>Date</TableCell>
-                            <TableCell>Category</TableCell>
+                        <TableRow
+                            style={{backgroundColor:'red', color: 'white',}}>
+                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Transfer</TableCell>
+                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Amount</TableCell>
+                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Mode</TableCell>
+                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Date</TableCell>
+                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Category</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {isMain ? (transactionTypeToDisplay.map((row) =>
                                 (<TableRow sx={{ '&:last-child td, &:last-child th': {border: 0} }}>
-                                        <TableCell>{row.title}</TableCell>
-                                        <TableCell>{row.amount}</TableCell>
-                                        <TableCell>{row.paymentType}</TableCell>
-                                        <TableCell>{row.dateOfTransaction}</TableCell>
-                                        <TableCell>{row.transactionCategory}</TableCell>
+                                        <TableCell style={{ color: 'white',}}>{row.title}</TableCell>
+                                        <TableCell style={{ color: 'white',}}>{row.amount}</TableCell>
+                                        <TableCell style={{ color: 'white',}}>{row.paymentType}</TableCell>
+                                        <TableCell style={{ color: 'white',}}>{row.dateOfTransaction}</TableCell>
+                                        <TableCell style={{ color: 'white',}}>{row.transactionCategory}</TableCell>
                                     </TableRow>))) :
                         (transactions.map((row) =>
                             (<TableRow>
-                                <TableCell>{row.title}</TableCell>
-                                <TableCell>{row.amount}</TableCell>
-                                <TableCell>{row.paymentType}</TableCell>
-                                <TableCell>{row.dateOfTransaction}</TableCell>
-                                <TableCell>{row.transactionCategory}</TableCell>
+                                <TableCell style={{ color: 'white',}}>{row.title}</TableCell>
+                                <TableCell style={{ color: 'white',}}>{row.amount}</TableCell>
+                                <TableCell style={{ color: 'white',}}>{row.paymentType}</TableCell>
+                                <TableCell style={{ color: 'white',}}>{row.dateOfTransaction}</TableCell>
+                                <TableCell style={{ color: 'white',}}>{row.transactionCategory}</TableCell>
                             </TableRow>)))}
 
                     </TableBody>
