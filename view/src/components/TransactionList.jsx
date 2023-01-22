@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import Header from "./Header.jsx";
-function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDisplay, transactions, transactionTypeToDisplay}) {
+function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDisplay, transactions, transactionTypeToDisplay, transactionType}) {
     console.log(transactionTypeToDisplay)
 
     return(
@@ -30,7 +30,7 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
                     <TableHead>
                         <TableRow
                             style={{backgroundColor:'red', color: 'white',}}>
-                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Transfer</TableCell>
+                            <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>{(transactionType === 'expenses') ? 'Expenses' : ((transactionType === 'incomes') ? 'Incomes' : 'Transactions')}</TableCell>
                             <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Amount</TableCell>
                             <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Mode</TableCell>
                             <TableCell style={{backgroundColor:'#1c2323', color: 'white',}}>Date</TableCell>

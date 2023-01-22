@@ -65,7 +65,7 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
 
                     </Box>
                     <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center' justify-content='center' >
-                        <TransactionList transactionTypeToDisplay={transactionTypeToDisplay} setTransactionTypeToDisplay={setTransactionTypesToDisplay} transactions={transactions} isMain={true} title="AllTransactions" expenses={expenses} incomes={incomes} className='transaction-list'/>
+                        <TransactionList transactionType='transactions' transactionTypeToDisplay={transactionTypeToDisplay} setTransactionTypeToDisplay={setTransactionTypesToDisplay} transactions={transactions} isMain={true} title="AllTransactions" expenses={expenses} incomes={incomes} className='transaction-list'/>
                     </Box>
                 </Box>
                 <Box style={{ margin: '50px'}}>
@@ -78,10 +78,10 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridAutoRows='350px'
                     gap='20px'>
                     <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center' justify-content='center' >
-                        <TransactionList  transactions={incomes} isMain={false} title="Incomes"/>
+                        <TransactionList transactionType='incomes'  transactions={incomes} isMain={false} title="Incomes"/>
                     </Box>
                     <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center'>
-                        <TransactionList  transactions={expenses} isMain={false} title="Incomes"/>
+                        <TransactionList transactionType='expenses'  transactions={expenses} isMain={false} title="Incomes"/>
                     </Box>
                     <Box gridColumn='span 4' backgroundColor='#232f2f' display='flex' align-items='center'>
                         <Box style={{margin: "50px"}}>
