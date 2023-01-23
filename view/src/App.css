@@ -281,9 +281,9 @@ input[type="submit"]:hover {
 
 .container-login{
   width: 30%;
-  margin: 5% auto auto;
+  margin: 2% auto auto;
   background: #281f43;
-  height: 700px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
