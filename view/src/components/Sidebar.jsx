@@ -77,12 +77,12 @@ const Sidebar = ({}) => {
                     <Typography style={{ color: '#94cdbf', margin: 'auto 17%', marginBottom: '35%' }}><Link style={{ color: '#94cdbf'}} to="/home"><VillaIcon style={{marginRight: '5%'}}></VillaIcon>Dashboard</Link></Typography>
                     <div style={{ marginBottom: '35%'}}>
                     {menuOptions.map((option) =>
-                        <Typography style={{ color: '#fff', margin: '17%'}}>{option.icon}<Link className='white' to={"/" + option.name.toLowerCase()}>{option.name}</Link></Typography>
+                        <Typography style={{ color: '#fff', margin: '17%'}}><Link className='white' to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
                     )}
                     </div>
                     <div>
                     {settings.map((option) =>
-                        <Typography style={{ color: '#fff', margin: '17%'}}>{option.icon}<Link className='white' to={"/" + option.name.toLowerCase()}>{option.name}</Link></Typography>
+                        <Typography style={{ color: '#fff', margin: '17%'}}><Link className='white' to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
                     )}
                     </div>
                 </div>

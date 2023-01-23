@@ -237,6 +237,10 @@ input[type="submit"]:hover {
   color: white;
 }
 
+.white:hover{
+  color: #94cdbf ;
+}
+
 .black:hover{
   color: #213547;
 }
