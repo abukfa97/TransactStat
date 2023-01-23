@@ -11,6 +11,9 @@ import React from 'react';
 import Cookies from "js-cookie";
 import MainPage from "./routes/MainPage.jsx";
 import NavigationBar from "./components/NavigationBar.jsx";
+import {ProSidebarProvider} from "react-pro-sidebar";
+import TheSidebar from "./components/Sidebar.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 
 function App() {
 
@@ -89,8 +92,9 @@ function App() {
   return (
         <Router>
             <div className="App">
+              <Sidebar></Sidebar>
               <div className="content">
-                <NavigationBar wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId} mode={darkMode} setDarkMode={setDarkMode}/>
+                <NavigationBar className='position-relative' wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId} mode={darkMode} setDarkMode={setDarkMode}/>
                 <Switch>
                   <Route exact path="/home">
                     <DashBoard currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>

@@ -6,15 +6,15 @@ import {Link} from "react-router-dom";
 import React from 'react';
 import {AppBar, Avatar, makeStyles, Toolbar, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
 
 
 
 const NavigationBar = ({ wallets, user  }) => {
 
-    const menuOptions = [
-        "Profile", "Settings"
-    ]
+
     console.log(wallets)
 
 
@@ -23,27 +23,12 @@ const NavigationBar = ({ wallets, user  }) => {
 
     return (
         <div>
-                <AppBar style={{ background: '#281f43' }}>
-                    <Toolbar>
-                        <Typography sx={{
-                            flexGrow: 1,
-                            color: '#fff'
-                        }}>
-                            TransactStat
-                        </Typography>
-                            <div className='list-group' style={{ width: '8%', display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
-                                {menuOptions.map((option) =>
-                                    <Typography style={{ color: '#fff'}}><Link className='white' to={"/" + option.toLowerCase()}>{option}</Link></Typography>
-                                )}
-                            </div>
-                        <Typography style={{
-                            color: '#fff',
-                            marginLeft: '15px',
-                            marginRight: '10px'
-                        }}>
-                            {user}
-                        </Typography>
-                        <Avatar src='../images/amelie.jpg'  />
+                <AppBar style={{ background: '#140a38', border: 'none' }}>
+                    <Toolbar sx={{ display: 'flex', justifyContent: 'right'}}>
+                    <div className='icon-pocket'>
+                        <a href="#"><WbSunnyIcon style={{color: 'white', margin: '5px'}}></WbSunnyIcon ></a>
+                        <a href='#'><KeyboardDoubleArrowUpIcon style={{color: 'white', margin: '5px'}} className='icon'></KeyboardDoubleArrowUpIcon></a>
+                    </div>
                     </Toolbar>
                 </AppBar>
         </div>
