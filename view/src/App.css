@@ -125,9 +125,9 @@ html, :root{
 }
 
 .displayOptions {
-  margin: 0 auto;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .button{
@@ -265,7 +265,7 @@ body{
 /*#140a38*/
 
 .hover8:hover{
-  opacity: 0.9;
+  opacity: 0.8;
   cursor: pointer;
 }
 
@@ -382,4 +382,5 @@ input[type=button], input[type=submit], input[type=reset] {
   padding-top: 5px;
   margin-top: 7%
 }
+
 

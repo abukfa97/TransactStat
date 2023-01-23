@@ -65,17 +65,17 @@ const Sidebar = ({}) => {
                 <div className='ltp-5 text-align'>
                     <h5>Nightingale Co.</h5>
                 </div>
-                <Avatar style={{margin: '70px auto 10px auto', height: '90px', width:'90px'}}></Avatar>
+                <Avatar style={{margin: '70px auto 10px auto', height: '120px', width:'120px'}} src="images/elon.jpg"></Avatar>
                 <h6 style={{
                     color: '#fff',
                     textAlign: 'center'
                 }}>
-                    Domi
+                    Elon
                 </h6>
 
                 <div style={{ textAlign: "left", marginTop: '140px'}}>
-                    <Typography style={{ color: '#fff', margin: 'auto 17%', marginBottom: '25%' }}><VillaIcon style={{marginRight: '5%'}}></VillaIcon><Link className='white' to="/home">Dashboard</Link></Typography>
-                    <div style={{ marginBottom: '25%'}}>
+                    <Typography style={{ color: '#94cdbf', margin: 'auto 17%', marginBottom: '35%' }}><Link style={{ color: '#94cdbf'}} to="/home"><VillaIcon style={{marginRight: '5%'}}></VillaIcon>Dashboard</Link></Typography>
+                    <div style={{ marginBottom: '35%'}}>
                     {menuOptions.map((option) =>
                         <Typography style={{ color: '#fff', margin: '17%'}}>{option.icon}<Link className='white' to={"/" + option.name.toLowerCase()}>{option.name}</Link></Typography>
                     )}
