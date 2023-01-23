@@ -57,25 +57,6 @@ const Login = () => {
                 </form>
             </div>
         </div>
-
-        // <div className="form">
-        //
-        //     {errorDisplay}
-        //     <form onSubmit={handleStatus}>
-        //         <div className="input-container">
-        //             <label>Username </label>
-        //             <input type="text" name="uname" required value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
-        //         </div>
-        //         <div className="input-container">
-        //             <label>Password </label>
-        //             <input type="password" name="password" required/>
-        //         </div>
-        //         <p>If you are not registered, click <Link to="/register">here</Link></p>
-        //         <div className="button-container">
-        //             <input value="Login" type="submit" />
-        //         </div>
-        //     </form>
-        // </div>
     )
 }
 
