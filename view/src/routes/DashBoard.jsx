@@ -14,6 +14,8 @@ import {alignPropType} from "react-bootstrap/types";
 import WalletIcon from '@mui/icons-material/Wallet';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
+import CategoryIcon from '@mui/icons-material/Category';
+import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
 
 const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTypesToDisplay, transactionTypeToDisplay, setCurrentWallets, userId, currentWallet}) => {
     const menuRoute = '/DashBoard'
@@ -69,18 +71,18 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                         </div>
                     </Box>
                     <Box sx={{ borderRadius: '7px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center' >
-                        <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
-                            Latest Contact: <div style={{ fontSize: '1.2rem' }}>Csenge Koppany</div>
-                        </Typography>
+                        <Link style={{margin: 'auto', fontSize: '1rem', color:'white', textAlign:'center'}} to='/transactions'>
+                            <CategoryIcon style={{ marginRight:'5px'}}></CategoryIcon> Most Expensive Categories
+                        </Link>
                     </Box>
                     <Box sx={{ borderRadius: '7px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center' justify-content='center' style={{ flexDirection: 'column'}}>
                         <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
-                            Most Active Contact: <div style={{ fontSize: '1.2rem' }}>Csenge Koppany</div>
+                            Cash-flow this month: <div style={{ fontSize: '1.2rem' }}>120,000 HUF</div>
                         </Typography>
                     </Box>
                     <Box sx={{ borderRadius: '7px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center'>
-                        <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
-                            Most Active Location: <div style={{ fontSize: '1.2rem' }}>Manna ABC</div>
+                        <Typography style={{margin: 'auto', fontSize: '1.2rem', color:'white', textAlign:'center', fontWeight: 'bold'}}>
+                            Set / Manage <br/> Goals <EmojiNatureIcon style={{marginLeft: '5px'}}></EmojiNatureIcon>
                         </Typography>
                     </Box>
 
