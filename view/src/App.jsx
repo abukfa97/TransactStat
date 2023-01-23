@@ -11,13 +11,12 @@ import React from 'react';
 import Cookies from "js-cookie";
 import MainPage from "./routes/MainPage.jsx";
 import NavigationBar from "./components/NavigationBar.jsx";
-import {makeStyles} from "@mui/material";
-
-
 
 function App() {
-  const [transactions, setTransactions] = useState([])
 
+  const [darkMode, setDarkMode] = useState(false)
+
+  const [transactions, setTransactions] = useState([])
 
 
   const exampleWallets= [
@@ -88,30 +87,30 @@ function App() {
   }, [walletId]);
 
   return (
-      <Router>
-        <div className="App">
-          <div className="content">
-            <NavigationBar wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId}/>
-            <Switch>
-              <Route exact path="/home">
-                <DashBoard currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
-              </Route>
-              <Route exact path="/add">
-                <AddTransaction wallets={wallets} walletId={walletId}/>
-              </Route>
-              <Route exact path="/Login">
-                <Login/>
-              </Route>
-              <Route exact path="/Register">
-                <Register/>
-              </Route>
-              <Route exact path='/'>
-                <MainPage />
-              </Route>
-            </Switch>
-          </div>
-        </div>
-      </Router>
+        <Router>
+            <div className="App">
+              <div className="content">
+                <NavigationBar wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId} mode={darkMode} setDarkMode={setDarkMode}/>
+                <Switch>
+                  <Route exact path="/home">
+                    <DashBoard currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
+                  </Route>
+                  <Route exact path="/add">
+                    <AddTransaction wallets={wallets} walletId={walletId}/>
+                  </Route>
+                  <Route exact path="/Login">
+                    <Login/>
+                  </Route>
+                  <Route exact path="/Register">
+                    <Register/>
+                  </Route>
+                  <Route exact path='/'>
+                    <MainPage />
+                  </Route>
+                </Switch>
+              </div>
+            </div>
+          </Router>
   )
 }
 

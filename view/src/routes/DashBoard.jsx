@@ -37,7 +37,7 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
         return (
 
             <div>
-                <div className="toolbar-height"></div>
+                        <div className="toolbar-height"></div>
                 <Box style={{ margin: '50px'}}>
                     <Header  title='Dashboard' subtitles={`Welcome, ${userId}`}></Header>
                 </Box>
@@ -48,29 +48,29 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridTemplateColumns='repeat(12, 1fr)'
                     gridAutoRows='140px'
                     gap='20px'>
-                    <Box gridColumn='span 2' backgroundColor='#ff708c' display='flex' align-items='center'>
+                    <Box sx={{ borderRadius: '12px' }}  gridColumn='span 2' backgroundColor='#64207f' display='flex' align-items='center'>
                         <Typography style={{ margin: 'auto', textAlign: 'center', color: 'white', fontSize: '0.85rem'}}>Current Balance:<div style={{ fontSize: '1.5rem'}}>350,040 HUF</div></Typography>
                     </Box>
-                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center'  justify-content='center' style={{ flexDirection: 'column'}}>
-                        <Link style={{color: 'black', margin: 'auto', textAlign: 'center'}} to="/add">
-                            <LibraryAdd style={{ marginRight : '5px', color : 'black'}}></LibraryAdd><div>Add New Transaction</div></Link>
+                    <Box className='hover8' sx={{ borderRadius: '12px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center'  justify-content='center' style={{ flexDirection: 'column'}}>
+                        <Link style={{color: 'white', margin: 'auto', textAlign: 'center'}} to="/add">
+                            <LibraryAdd style={{ marginRight : '5px', color : 'white'}}></LibraryAdd><div>Add New Transaction</div></Link>
                     </Box>
-                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center' >
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center' >
                         <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
                             Latest Contact: <div style={{ fontSize: '1.5rem' }}>Csenge Koppany</div>
                         </Typography>
                     </Box>
-                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center' justify-content='center' style={{ flexDirection: 'column'}}>
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center' justify-content='center' style={{ flexDirection: 'column'}}>
                         <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
                             Most Active Contact: <div style={{ fontSize: '1.5rem' }}>Csenge Koppany</div>
                         </Typography>
                     </Box>
-                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center'>
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center'>
                         <Typography style={{margin: 'auto', fontSize: '0.85rem', color:'white', textAlign:'center'}}>
                             Most Active Location: <div style={{ fontSize: '1.5rem' }}>Manna ABC</div>
                         </Typography>
                     </Box>
-                    <Box gridColumn='span 2' backgroundColor='#bfebab' display='flex' align-items='center'>
+                    <Box className='hover8' sx={{ borderRadius: '12px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center'>
                         <div style={{margin: 'auto', display: 'flex', flexDirection: 'column'}}>
                             {wallets.map((wallet) => (
                                 <Button variant='text' sx={{
@@ -87,10 +87,10 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridAutoRows='425px'
                     gap='20px'
                 m={5}>
-                    <Box gridColumn='span 8' backgroundColor='#bfebab' >
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 8' backgroundColor='#281f43' >
 
                     </Box>
-                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center' justify-content='center' >
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 4' backgroundColor='#281f43' display='flex' align-items='center' justify-content='center' >
                         <TransactionList transactionType='transactions' transactionTypeToDisplay={transactionTypeToDisplay} setTransactionTypeToDisplay={setTransactionTypesToDisplay} transactions={transactions} isMain={true} title="AllTransactions" expenses={expenses} incomes={incomes} className='transaction-list'/>
                     </Box>
                 </Box>
@@ -103,13 +103,13 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridTemplateColumns='repeat(12, 1fr)'
                     gridAutoRows='350px'
                     gap='20px'>
-                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center' justify-content='center' >
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 4' backgroundColor='#281f43' display='flex' align-items='center' justify-content='center' >
                         <TransactionList transactionType='incomes'  transactions={incomes} isMain={false} title="Incomes"/>
                     </Box>
-                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center'>
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 4' backgroundColor='#281f43' display='flex' align-items='center'>
                         <TransactionList transactionType='expenses'  transactions={expenses} isMain={false} title="Incomes"/>
                     </Box>
-                    <Box gridColumn='span 4' backgroundColor='#bfebab' display='flex' align-items='center'>
+                    <Box sx={{ borderRadius: '12px' }} gridColumn='span 4' backgroundColor='#281f43' display='flex' align-items='center'>
                         <Box style={{margin: "50px"}}>
                         <Typography color='white'>
                             This month you spent 15 Euros less compared to last month. Good Job. Also, if you keep spending like this we estimate you will spend 50 pounds less compared to last month.

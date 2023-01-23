@@ -5,11 +5,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Link} from "react-router-dom";
 import React from 'react';
 import {AppBar, Avatar, makeStyles, Toolbar, Typography} from "@mui/material";
+import Button from "@mui/material/Button";
 
 
 
 
-const NavigationBar = ({ menuRoute, urlRoute, wallets, user }) => {
+const NavigationBar = ({ wallets, user  }) => {
 
     const menuOptions = [
         "Profile", "Settings"

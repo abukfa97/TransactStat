@@ -43,6 +43,8 @@ html, body, #app, #app>div {
   font-size: 19px;
 }
 
+
+
 /*positioning*/
 
 .thirty {
@@ -86,12 +88,12 @@ html, body, #app, #app>div {
   width: 95%;
 }
 
-html{
-  background-color: #1a1a1a;
+html, :root{
+  background-color: #140a38;
 }
 
 .dark {
-  background-color: #242424;
+  background-color: #140a38;
 }
 
 .light-text {
@@ -245,7 +247,7 @@ input[type="submit"]:hover {
 }
 
 .App{
-  background: #e3f5d4  ;
+  background: #140a38 ;
 }
 
 .transaction-list{
@@ -258,6 +260,11 @@ input[type="submit"]:hover {
 
 /*color*/
 /*#64207f*/
-/*#281f43*/
+  /*#281f43*/
 /*#fddf4e*/
 /*#140a38*/
+
+.hover8:hover{
+  opacity: 0.9;
+  cursor: pointer;
+}

@@ -25,16 +25,16 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
             {/*    {isMain && <Header title='Transactions' subtitles="All your transactions in one place"></Header>}*/}
                 <Box>
             <TransactionButtons transactionTypeToDisplay={transactionTypeToDisplay} isMain={isMain} transaction={transactions} expenses={expenses} incomes={incomes} setTransactionTypeToDisplay={setTransactionTypeToDisplay}></TransactionButtons>
-            <TableContainer sx={{ maxHeight: '300px'}}>
+            <TableContainer sx={{ maxHeight: '280px'}}>
                 <Table stickyHeader >
                     <TableHead>
                         <TableRow
                             style={{backgroundColor:'red', color: 'white',}}>
-                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>{(transactionType === 'expenses') ? 'Expenses' : ((transactionType === 'incomes') ? 'Incomes' : 'Transactions')}</TableCell>
-                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Amount</TableCell>
-                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Mode</TableCell>
-                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Date</TableCell>
-                            <TableCell style={{backgroundColor:'#bfebab', color: 'white',}}>Category</TableCell>
+                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>{(transactionType === 'expenses') ? 'Expenses' : ((transactionType === 'incomes') ? 'Incomes' : 'Transactions')}</TableCell>
+                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Amount</TableCell>
+                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Mode</TableCell>
+                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Date</TableCell>
+                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Category</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
