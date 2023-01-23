@@ -290,7 +290,7 @@ input[type="submit"]:hover {
   border-radius: 13px;
 }
 .socials{
-  margin: auto;
+  text-align: center;
 }
 
 .input-field,
@@ -332,4 +332,8 @@ input[type=button], input[type=submit], input[type=reset] {
   border-radius: 5px;
   cursor: pointer;
 
+}
+
+.social-button:hover{
+  color: #fddf4e;
 }

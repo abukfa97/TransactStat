@@ -10,6 +10,8 @@ const Login = () => {
     const [errorDisplay, setErrorDisplay] = useState(null)
     let history = useHistory()
 
+    console.log(userName)
+
     const handleStatus = async(e) => {
         e.preventDefault();
         const user = {"userName": userName};
@@ -32,25 +34,27 @@ const Login = () => {
     return (
         <div>
             <div className="toolbar-height"></div>
+            {errorDisplay}
             <div className='container-login'>
-                <form onSubmit={handleStatus()}></form>
-                <h4 style={{color: 'white', margin: '100px auto 50px auto'}}>Sign In</h4>
-                    <div className="socials">
-                        <Link to='google.com' className='social-button'><GoogleIcon></GoogleIcon></Link>
-                        <Link to='google.com' className='social-button'><FacebookIcon></FacebookIcon></Link>
-                        <Link to='google.com' className='social-button'><GitHubIcon></GitHubIcon></Link>
-                    </div>
-                    <div className='email-sign-in-form'>
-                        <Typography>
-                            Sign In With Email
-                        </Typography>
-                        <input type="text" placeholder='Name' className='input-field'/>
-                        <input type="email" placeholder='Email'  className='input-field'/>
-                        <input type="password" placeholder='Password'  className='input-field'/>
-                        <Link className='forgot-your-password'>Forgot your password?</Link>
-                        <input type="submit" value='Sign In' className='submit-button'/>
-                    </div>
-                <div className='container-right'></div>
+                <form onSubmit={handleStatus}>
+                    <h4 style={{color: 'white', margin: '100px auto 50px auto', textAlign:'center'}}>Sign In</h4>
+                        <div className="socials">
+                            <Link to='google.com' className='social-button'><GoogleIcon></GoogleIcon></Link>
+                            <Link to='google.com' className='social-button'><FacebookIcon></FacebookIcon></Link>
+                            <Link to='google.com' className='social-button'><GitHubIcon></GitHubIcon></Link>
+                        </div>
+                        <div className='email-sign-in-form'>
+                            <Typography>
+                                Sign In With Email
+                            </Typography>
+                            <input type="text" placeholder='Name' className='input-field' name="uname" required value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+                            <input type="email" placeholder='Email'  className='input-field'/>
+                            <input type="password" placeholder='Password'  className='input-field'/>
+                            <Link to='gmail.com' className='forgot-your-password'>Forgot your password?</Link>
+                            <input type="submit" value='Sign In' className='submit-button'/>
+                        </div>
+                    <div className='container-right'></div>
+                </form>
             </div>
         </div>
 
