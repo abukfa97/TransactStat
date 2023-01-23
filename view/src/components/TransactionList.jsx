@@ -11,7 +11,7 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow
+    TableRow, Typography
 } from "@mui/material";
 import React from "react";
 import Header from "./Header.jsx";
@@ -20,45 +20,47 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
 
     return(
         <div className="transaction-list">
-
-            <Box m={6}>
-            {/*    {isMain && <Header title='Transactions' subtitles="All your transactions in one place"></Header>}*/}
-                <Box>
             <TransactionButtons transactionTypeToDisplay={transactionTypeToDisplay} isMain={isMain} transaction={transactions} expenses={expenses} incomes={incomes} setTransactionTypeToDisplay={setTransactionTypeToDisplay}></TransactionButtons>
-            <TableContainer sx={{ maxHeight: '280px'}}>
-                <Table stickyHeader >
-                    <TableHead>
-                        <TableRow
-                            style={{backgroundColor:'red', color: 'white',}}>
-                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>{(transactionType === 'expenses') ? 'Expenses' : ((transactionType === 'incomes') ? 'Incomes' : 'Transactions')}</TableCell>
-                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Amount</TableCell>
-                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Mode</TableCell>
-                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Date</TableCell>
-                            <TableCell style={{backgroundColor:'#281f43', color: 'white',}}>Category</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {isMain ? (transactionTypeToDisplay.map((row) =>
-                                (<TableRow sx={{ '&:last-child td, &:last-child th': {border: 0} }}>
-                                        <TableCell style={{ color: 'white',}}>{row.title}</TableCell>
-                                        <TableCell style={{ color: 'white',}}>{row.amount}</TableCell>
-                                        <TableCell style={{ color: 'white',}}>{row.paymentType}</TableCell>
-                                        <TableCell style={{ color: 'white',}}>{row.dateOfTransaction}</TableCell>
-                                        <TableCell style={{ color: 'white',}}>{row.transactionCategory}</TableCell>
-                                    </TableRow>))) :
-                        (transactions.map((row) =>
-                            (<TableRow>
-                                <TableCell style={{ color: 'white',}}>{row.title}</TableCell>
-                                <TableCell style={{ color: 'white',}}>{row.amount}</TableCell>
-                                <TableCell style={{ color: 'white',}}>{row.paymentType}</TableCell>
-                                <TableCell style={{ color: 'white',}}>{row.dateOfTransaction}</TableCell>
-                                <TableCell style={{ color: 'white',}}>{row.transactionCategory}</TableCell>
-                            </TableRow>)))}
+            <Box display='flex' flexDirection='column' justifyContent='space-between' alignItems='center' >
+                {isMain ? (transactionTypeToDisplay.map((transaction) => (
+                    <Box
+                        style={{width: '100%'}}
+                        display='flex'
+                        flexDirection='row'
+                        justifyContent='space-between'
+                        alignItems='center'
+                        borderBottom='5px solid #140a38'
+                        p='15px'
+                    >
+                        <Box>
+                            <Typography color='white'>{transaction.dateOfTransaction}</Typography>
+                            <Typography color='white' style={{fontSize: '12px'}}>{transaction.title}</Typography>
+                        </Box>
+                        <Box>
+                            <Typography color='white'>{transaction.amount}</Typography>
+                        </Box>
 
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            </Box>
+                    </Box>
+                ))) : (transactions.map((transaction) => (
+                    <Box
+                        style={{width: '100%'}}
+                        display='flex'
+                        flexDirection='row'
+                        justifyContent='space-between'
+                        alignItems='center'
+                        borderBottom='5px solid #140a38'
+                        p='15px'
+                    >
+                        <Box>
+                            <Typography color='white'>{transaction.dateOfTransaction}</Typography>
+                            <Typography color='white' style={{fontSize: '12px'}}>{transaction.title}</Typography>
+                        </Box>
+                        <Box>
+                            <Typography color='white'>{transaction.amount}</Typography>
+                        </Box>
+
+                    </Box>)))
+                }
             </Box>
 
 

@@ -89,7 +89,7 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     <Box sx={{ borderRadius: '7px' }} gridColumn='span 7' gridRow='span 3' backgroundColor='#281f43' >
 
                     </Box>
-                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 5' gridRow='span 3' backgroundColor='#281f43' display='flex' align-items='center' justify-content='center' >
+                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 5' gridRow='span 3' backgroundColor='#281f43' display='flex' align-items='center' justify-content='center' overflow='auto'>
                         <TransactionList transactionType='transactions' transactionTypeToDisplay={transactionTypeToDisplay} setTransactionTypeToDisplay={setTransactionTypesToDisplay} transactions={transactions} isMain={true} title="AllTransactions" expenses={expenses} incomes={incomes} className='transaction-list'/>
                     </Box>
                 </Box>
@@ -103,17 +103,19 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     gridTemplateColumns='repeat(12, 1fr)'
                     gridAutoRows='350px'
                     gap='20px'>
-                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 5' backgroundColor='#281f43' display='flex' align-items='center' justify-content='center' >
+                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 4' backgroundColor='#281f43' display='flex' flexDirection='column' alignItems='center' overflow='auto'>
+                        <p style={{ color: '#727272', marginTop: '2%'}}  color='#727272' >JANUARY INCOMES</p>
                         <TransactionList transactionType='incomes'  transactions={incomes} isMain={false} title="Incomes"/>
                     </Box>
-                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 5' backgroundColor='#281f43' display='flex' align-items='center'>
-                        <TransactionList transactionType='expenses'  transactions={expenses} isMain={false} title="Incomes"/>
+                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 4' backgroundColor='#281f43' display='flex' flexDirection='column' alignItems='center' overflow='auto'>
+                        <p style={{ color: '#727272', marginTop: '2%'}} >JANUARY EXPENSES</p>
+                        <TransactionList transactionType='expenses'  transactions={expenses} isMain={false}   title="Incomes"/>
                     </Box>
-                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center'>
+                    <Box sx={{ borderRadius: '7px' }} gridColumn='span 4' backgroundColor='#281f43' display='flex' flexDirection='column' align-items='center'>
                         <Box style={{margin: "50px"}}>
-                        <Typography color='white'>
+                        <p style={{ color: 'white'}}>
                             This month you spent 15 Euros less compared to last month. Good Job. Also, if you keep spending like this we estimate you will spend 50 pounds less compared to last month.
-                        </Typography>
+                        </p>
                         </Box>
                     </Box>
                 </Box>
