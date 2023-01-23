@@ -281,9 +281,9 @@ input[type="submit"]:hover {
 
 .container-login{
   width: 30%;
-  margin: 8% auto auto;
+  margin: 5% auto auto;
   background: #281f43;
-  height: 600px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -291,7 +291,12 @@ input[type="submit"]:hover {
 }
 .socials{
   text-align: center;
-}
+  background: #140a38;
+  border-radius: 5px;
+  padding: 40px 12px;
+  margin: auto;
+  width: 40%;
+  }
 
 .input-field,
 .submit-button{
@@ -320,20 +325,49 @@ input[type="submit"]:hover {
 }
 
 .forgot-your-password{
- padding: 20px;
+  padding-top: 20px;
   text-align: center;
   color: white;
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-  background-color:#140a38;
+  background-color:#fddf4e;
   border: none;
-  color: #fddf4e;
+  color: #140a38;
   border-radius: 5px;
   cursor: pointer;
 
 }
 
 .social-button:hover{
+  color: #fddf4e;
+}
+
+.white-color{
+  color: white;
+  opacity: 0.7;
+  font-size: 0.7rem;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding-left: 5px;
+  text-align: center;
+}
+
+.sign-up{
+  padding-bottom: 15px;
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+.sign-up-sign{
+  color: #fddf4e;
+}
+
+.sign-up-sign:hover{
+  color: #e8e8e8;
+}
+
+.forgot-your-password:hover{
   color: #fddf4e;
 }

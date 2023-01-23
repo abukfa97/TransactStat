@@ -44,13 +44,14 @@ const Login = () => {
                             <Link to='google.com' className='social-button'><GitHubIcon></GitHubIcon></Link>
                         </div>
                         <div className='email-sign-in-form'>
-                            <Typography>
+                            <p className='white-color'>
                                 Sign In With Email
-                            </Typography>
+                            </p>
                             <input type="text" placeholder='Name' className='input-field' name="uname" required value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
                             <input type="email" placeholder='Email'  className='input-field'/>
                             <input type="password" placeholder='Password'  className='input-field'/>
                             <Link to='gmail.com' className='forgot-your-password'>Forgot your password?</Link>
+                            <p className='sign-up'>Don't have and account? Sign Up <Link to='/register' className='sign-up-sign'>here</Link>!</p>
                             <input type="submit" value='Sign In' className='submit-button'/>
                         </div>
                     <div className='container-right'></div>
@@ -59,7 +60,5 @@ const Login = () => {
         </div>
     )
 }
-
-// fetch /auth -> if Response: ACCEPTED -> redirect to homepage
 
 export default Login
