@@ -7,6 +7,9 @@ html, body, #app, #app>div {
   height: 100%
 }
 
+html *{
+  font-family: 'Montserrat', sans-serif;
+}
 
 
 .group {
@@ -267,4 +270,66 @@ input[type="submit"]:hover {
 .hover8:hover{
   opacity: 0.9;
   cursor: pointer;
+}
+
+.email-sign-in-form{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: 0 auto 55px;
+}
+
+.container-login{
+  width: 30%;
+  margin: 8% auto auto;
+  background: #281f43;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 13px;
+}
+.socials{
+  margin: auto;
+}
+
+.input-field,
+.submit-button{
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.social-button{
+  color: white;
+  margin: 0 10px;
+}
+
+.input-field{
+  outline: none !important;
+  border: none;
+  background: #140a38;
+  color: white;
+  padding: 15px;
+}
+
+.submit-button{
+  background-color: #140a38;
+  color: #fddf4e;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forgot-your-password{
+ padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color:#140a38;
+  border: none;
+  color: #fddf4e;
+  border-radius: 5px;
+  cursor: pointer;
+
 }
