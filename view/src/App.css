@@ -158,6 +158,10 @@ a {
   color: #e8e8e8;
 }
 
+.active-menu-item:focus{
+  color: #94cdbf
+}
+
 
 input[type="text"],
 input[type="password"] {

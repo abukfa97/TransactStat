@@ -7,6 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import {useState} from "react";
 
 const useStyles = makeStyles({
     drawer: {
@@ -21,6 +22,7 @@ const useStyles = makeStyles({
 
 const Sidebar = ({}) => {
     const classes= useStyles();
+    const [active, setActive] = useState("");
     const settings = [
         {
             icon: <Person4Icon style={{marginRight: '5%'}} ></Person4Icon> ,
@@ -49,6 +51,10 @@ const Sidebar = ({}) => {
 
     ]
 
+    const handleClick =(event) => {
+        setActive(event.target.name)
+    }
+
     return (
             <Drawer
                 PaperProps={{
@@ -74,15 +80,15 @@ const Sidebar = ({}) => {
                 </h6>
 
                 <div style={{ textAlign: "left", marginTop: '140px'}}>
-                    <Typography style={{ color: '#94cdbf', margin: 'auto 17%', marginBottom: '35%' }}><Link style={{ color: '#94cdbf'}} to="/home"><VillaIcon style={{marginRight: '5%'}}></VillaIcon>Dashboard</Link></Typography>
+                    <Typography onClick={handleClick} key='dashboard' style={{ color: '#fff', margin: 'auto 17%', marginBottom: '35%' }}><Link  className="active-menu-item white" to="/home"><VillaIcon style={{marginRight: '5%'}}></VillaIcon>Dashboard</Link></Typography>
                     <div style={{ marginBottom: '35%'}}>
                     {menuOptions.map((option) =>
-                        <Typography style={{ color: '#fff', margin: '17%'}}><Link className='white' to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
+                        <Typography onClick={handleClick} key={option.name} className="active-menu-item" style={{ color: '#fff', margin: '17%'}}><Link  className="active-menu-item white"  to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
                     )}
                     </div>
                     <div>
                     {settings.map((option) =>
-                        <Typography style={{ color: '#fff', margin: '17%'}}><Link className='white' to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
+                        <Typography onClick={handleClick} key={option.name} className="active-menu-item"  style={{ color: '#fff', margin: '17%'}}><Link  className="active-menu-item white"  to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
                     )}
                     </div>
                 </div>
