@@ -96,6 +96,9 @@ function App() {
               <div className="content">
                 <NavigationBar className='position-relative' wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId} mode={darkMode} setDarkMode={setDarkMode}/>
                 <Switch>
+                  <Route exact path='/'>
+                    <MainPage />
+                  </Route>
                   <Route exact path="/home">
                     <DashBoard currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
                   </Route>
@@ -107,9 +110,6 @@ function App() {
                   </Route>
                   <Route exact path="/Register">
                     <Register/>
-                  </Route>
-                  <Route exact path='/'>
-                    <MainPage />
                   </Route>
                 </Switch>
               </div>
