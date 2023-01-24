@@ -32,7 +32,7 @@ function App() {
     }
   ]
 
-  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState(() =>transactions)
+  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState(undefined)
 
   const [wallets, setWallets] = useState(exampleWallets)
 
