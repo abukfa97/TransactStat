@@ -42,7 +42,7 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
             <div>
                         <div className="toolbar-height"></div>
                 <Box style={{ margin: '50px'}}>
-                    <Header  title='Dashboard' subtitles={`Welcome, ${userId}`} titleSize='large'></Header>
+                    <Header  title={`Dashboard - ${currentWallet.title} `} subtitles={`Welcome, ${userId}`} titleSize='large'></Header>
                 </Box>
 
                 {/*FIRST ROW*/}
@@ -82,7 +82,7 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
                     </Box>
                     <Box sx={{ borderRadius: '7px' }} gridColumn='span 2' backgroundColor='#281f43' display='flex' align-items='center'>
                         <Typography style={{margin: 'auto', fontSize: '1.2rem', color:'white', textAlign:'center', fontWeight: 'bold'}}>
-                            Set / Manage <br/> Goals <EmojiNatureIcon style={{marginLeft: '5px'}}></EmojiNatureIcon>
+                            Manage <br/> Goals <EmojiNatureIcon style={{marginLeft: '5px'}}></EmojiNatureIcon>
                         </Typography>
                     </Box>
 
