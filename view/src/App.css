@@ -162,7 +162,6 @@ a {
   color: #94cdbf
 }
 
-
 input[type="text"],
 input[type="password"] {
   height: 25px;
@@ -229,10 +228,10 @@ input[type="submit"]:hover {
 .navbar{
   margin-bottom: 0;
 }
+
 .logo{
   flex-grow: 1;
 }
-
 .toolbar-height{
   height: 64px;
 }
@@ -253,11 +252,11 @@ input[type="submit"]:hover {
   background: #140a38 ;
   height: 145vh;
 }
+
 html,
 body{
   height: 100%;
 }
-
 .transaction-list{
   max-width: 100%;
 }
@@ -267,11 +266,11 @@ body{
 }
 
 /*color*/
+
 /*#64207f*/
-  /*#281f43*/
+/*#281f43*/
 /*#fddf4e*/
 /*#140a38*/
-
 .hover8:hover{
   opacity: 0.8;
   cursor: pointer;
@@ -298,6 +297,7 @@ body{
   justify-content: center;
   border-radius: 13px;
 }
+
 .socials{
   text-align: center;
   background: #140a38;
@@ -306,7 +306,6 @@ body{
   margin: auto;
   width: 40%;
   }
-
 .input-field,
 .submit-button{
   margin: 10px 0;
@@ -390,5 +389,28 @@ input[type=button], input[type=submit], input[type=reset] {
   padding-top: 5px;
   margin-top: 7%
 }
+
+.transaction-button{
+  background: transparent;
+  color: darkgrey;
+}
+
+.active-transaction{
+  color: #844a9b;
+  background: transparent;
+}
+.active-transaction,
+.transaction-button,
+.transaction-button:hover,
+.transaction-button:focus,
+.transaction-button:active,
+.active-transaction:active,
+.active-transaction:focus,
+.active-transaction:hover
+{
+  outline: none;
+  border: none;
+}
+
 
 
