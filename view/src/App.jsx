@@ -1,6 +1,6 @@
 import './App.css'
 import {useEffect, useState} from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import DashBoard from "./routes/DashBoard.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'

@@ -1,11 +1,12 @@
-import {useState} from "react";
-import {Alert, Typography} from "@mui/material";
-import {Link, useHistory} from "react-router-dom";
+import React, {useState} from "react";
+import {Alert} from "@mui/material";
+import {Link, redirect, useHistory} from "react-router-dom";
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import {useNavigate} from "react-router";
 import {Home} from "@mui/icons-material";
+
 
 const Login = () => {
     const [userName, setUserName] = useState("")
@@ -23,12 +24,12 @@ const Login = () => {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(user)
-            } )
+            })
         if (response.status === 202) {
-            setErrorDisplay(<Alert severity="success">Yay! You are logged in!</Alert>)
-            history.push('/home')
+            setErrorDisplay(<Alert severity="success">Yay! You are logged in!</Alert>);
+            return redirect('/home');
         } else {
-            setErrorDisplay(<Alert severity="error">There is something wrong with the password or the name! Please try again!</Alert>)
+            setErrorDisplay(<Alert severity="error">There is something wrong with the password or the name! Please try again!</Alert>);
         }
     }
 

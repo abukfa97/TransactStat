@@ -29,7 +29,8 @@ function TransactionList({ isMain, expenses, incomes, setTransactionTypeToDispla
                         flexDirection='row'
                         justifyContent='space-between'
                         alignItems='center'
-                        borderBottom='5px solid #140a38'
+                        borderBottom='5px solid'
+                        borderBottomColor='rgb(20,10,56)'
                         p='15px'
                     >
                         <Box>

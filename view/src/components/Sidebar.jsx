@@ -26,7 +26,7 @@ const Sidebar = ({}) => {
     const settings = [
         {
             icon: <Person4Icon style={{marginRight: '5%'}} ></Person4Icon> ,
-            name: "Profile"
+            name: "Account"
         },
         {
             icon: <SettingsIcon style={{marginRight: '5%'}}></SettingsIcon>,
