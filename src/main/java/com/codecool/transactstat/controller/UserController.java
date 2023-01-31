@@ -36,7 +36,7 @@ public class UserController {
 
     @GetMapping("/{userName}")
     public UserDTO getUserByUsername(@PathVariable String userName){
-        return userService.
+        return userService.getUserByUsername(userName);
     }
 
     @PostMapping
@@ -52,17 +52,5 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public void deleteUserById(@PathVariable Long userId){
         userService.deleteUserById(userId);
-    }
-
-    @PostMapping("/auth")
-    @ResponseBody
-    public ResponseEntity<?> authenticate(@RequestBody UserDTO user, HttpServletResponse response){
-        Optional<Long> userId = userService.authenticate(user);
-        return userId.map((id) -> {
-            Cookie cookie = new Cookie("userId",String.valueOf(id));
-            cookie.setPath("/");
-            response.addCookie(cookie);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }).orElse(new ResponseEntity<>(HttpStatus.FORBIDDEN));
     }
 }
