@@ -34,6 +34,11 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+    @GetMapping("/{userName}")
+    public UserDTO getUserByUsername(@PathVariable String userName){
+        return userService.
+    }
+
     @PostMapping
     public void registerNewUser(@RequestBody UserEntity userEntity){
         userService.addUser(userEntity);

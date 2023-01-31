@@ -37,6 +37,11 @@ public class UserService implements UserDetailsService {
         return DtoFactory.createDTO(searchedUser);
     }
 
+    public UserDTO getUserByUsername(String username){
+        return DtoFactory.createDTO(userRepository.getUserEntityByUserName(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username)));
+    }
+
     public void addUser(UserEntity userEntity){
         boolean isExisting = userRepository.existsUserEntityByUserName(userEntity.getUserName());
         if (!isExisting) {
