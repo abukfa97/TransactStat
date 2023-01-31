@@ -2,10 +2,7 @@ package com.codecool.transactstat.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -22,9 +19,13 @@ public class UserEntity {
 
     private String userName;
 
+    private String password;
+
     private String firstName;
 
     private String lastName;
+    @Enumerated(EnumType.STRING)
+    private UserRoles role;
 
     @OneToMany(mappedBy = "userEntity")
     private List<Wallet> wallets;
