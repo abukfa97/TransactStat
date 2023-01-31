@@ -27,7 +27,7 @@ public class WalletService {
 
     public List<WalletDTO> getWalletsByUserId(Long userId){
         UserEntity userEntity = userRepository.getReferenceById(userId);
-        return walletRepository.getWalletsByAppUser(userEntity)
+        return walletRepository.getWalletsByUserEntity(userEntity)
                 .stream()
                 .map(DtoFactory::createDTO)
                 .collect(Collectors.toList());
