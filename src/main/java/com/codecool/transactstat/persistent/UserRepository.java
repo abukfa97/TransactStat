@@ -1,11 +1,11 @@
 package com.codecool.transactstat.persistent;
 
-import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<AppUser,Long> {
+public interface UserRepository extends JpaRepository<UserEntity,Long> {
     boolean existsAppUserByUserName(String userName);
-    AppUser getAppUserByUserName(String username);
+    UserEntity getAppUserByUserName(String username);
 }

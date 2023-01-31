@@ -1,6 +1,6 @@
 package com.codecool.transactstat.service;
 
-import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.UserEntity;
 import com.codecool.transactstat.model.Wallet;
 import com.codecool.transactstat.model.dto.DtoFactory;
 import com.codecool.transactstat.model.dto.WalletDTO;
@@ -26,8 +26,8 @@ public class WalletService {
     }
 
     public List<WalletDTO> getWalletsByUserId(Long userId){
-        AppUser appUser = userRepository.getReferenceById(userId);
-        return walletRepository.getWalletsByAppUser(appUser)
+        UserEntity userEntity = userRepository.getReferenceById(userId);
+        return walletRepository.getWalletsByAppUser(userEntity)
                 .stream()
                 .map(DtoFactory::createDTO)
                 .collect(Collectors.toList());
@@ -46,7 +46,7 @@ public class WalletService {
 
     public void addWalletByUserId(WalletDTO walletDTO) {
         Wallet wallet = Wallet.builder()
-                .appUser(userRepository.getReferenceById(walletDTO.getAppUserId()))
+                .userEntity(userRepository.getReferenceById(walletDTO.getAppUserId()))
                 .balance(walletDTO.getBalance()).build();
         walletRepository.save(wallet);
     }

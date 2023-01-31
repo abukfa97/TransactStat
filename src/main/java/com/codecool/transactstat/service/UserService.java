@@ -1,6 +1,6 @@
 package com.codecool.transactstat.service;
 
-import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.UserEntity;
 import com.codecool.transactstat.model.dto.DtoFactory;
 import com.codecool.transactstat.model.dto.UserDTO;
 import com.codecool.transactstat.persistent.UserRepository;
@@ -22,13 +22,13 @@ public class UserService {
     }
 
     public UserDTO getUserById(Long id){
-        AppUser searchedUser = userRepository.getReferenceById(id);
+        UserEntity searchedUser = userRepository.getReferenceById(id);
         return DtoFactory.createDTO(searchedUser);
     }
 
-    public void addUser(AppUser appUser){
-        boolean isExisting = userRepository.existsAppUserByUserName(appUser.getUserName());
-        if (!isExisting) userRepository.save(appUser);
+    public void addUser(UserEntity userEntity){
+        boolean isExisting = userRepository.existsAppUserByUserName(userEntity.getUserName());
+        if (!isExisting) userRepository.save(userEntity);
     }
 
     public void deleteUserById(Long userId){
@@ -36,10 +36,10 @@ public class UserService {
     }
 
     public void updateUserById(Long id, UserDTO appUser){
-        AppUser appUserToUpdate = userRepository.getReferenceById(id);
-        appUserToUpdate.setUserName(appUser.getUserName());
-        appUserToUpdate.setFirstName(appUser.getFirstName());
-        appUserToUpdate.setLastName(appUser.getLastName());
+        UserEntity userEntityToUpdate = userRepository.getReferenceById(id);
+        userEntityToUpdate.setUserName(appUser.getUserName());
+        userEntityToUpdate.setFirstName(appUser.getFirstName());
+        userEntityToUpdate.setLastName(appUser.getLastName());
     }
 
     public List<UserDTO> getUsers() {
@@ -50,7 +50,7 @@ public class UserService {
     }
 
     public Optional<Long> authenticate(UserDTO user){
-        AppUser searched = userRepository.getAppUserByUserName(user.getUserName());
-        return Optional.ofNullable(searched).map(AppUser::getId);
+        UserEntity searched = userRepository.getAppUserByUserName(user.getUserName());
+        return Optional.ofNullable(searched).map(UserEntity::getId);
     }
 }

@@ -1,6 +1,6 @@
 package com.codecool.transactstat.controller;
 
-import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.UserEntity;
 import com.codecool.transactstat.model.dto.UserDTO;
 import com.codecool.transactstat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +35,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void registerNewUser(@RequestBody AppUser appUser){
-        userService.addUser(appUser);
+    public void registerNewUser(@RequestBody UserEntity userEntity){
+        userService.addUser(userEntity);
     }
 
     @PutMapping("/{userId}")
