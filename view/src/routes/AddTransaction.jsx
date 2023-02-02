@@ -1,18 +1,12 @@
-import TransactionList from "../components/TransactionList.jsx";
 import {useState} from "react";
-import {Form} from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
-
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
-import {Link, useHistory} from "react-router-dom";
-import Sidebar from "../components/Sidebar.jsx";
+import {Link} from "react-router-dom";
+import NavigationBar from "../components/NavigationBar.jsx";
 
 const AddTransaction = ({ wallets, walletId }) => {
     const menuRoute = '/Add'
     const urlRoute = '/add'
-
-    const history = useHistory()
 
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState('');
@@ -42,14 +36,15 @@ const AddTransaction = ({ wallets, walletId }) => {
 
     return (
         <div>
+            <div className="toolbar-height"></div>
             {/*sidebar to app.jsx*/}
-            <Sidebar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets}/>
+            <NavigationBar menuRoute={menuRoute} urlRoute={urlRoute} wallets={wallets}/>
             <h5 className='transaction-header flex-container width-83 top-5'>Add New Transaction</h5>
             <div className='card-grey width-83 center'>
-            <Form onSubmit={handleSubmit} className='width-83 center margin-10'>
-                <Form.Group className="group">
-                    <Form.Label>Transaction Title</Form.Label>
-                    <Form.Control
+            <form onSubmit={handleSubmit} className='width-83 center margin-10'>
+                <div className="group">
+                    <label>Transaction Title</label>
+                    <input
                         type="text"
                         required
                         value={title}
@@ -57,10 +52,10 @@ const AddTransaction = ({ wallets, walletId }) => {
                             setTitle(e.target.value)}
                         }
                     />
-                </Form.Group>
-                <Form.Group className="group">
-                    <Form.Label>Amount</Form.Label>
-                    <Form.Control
+                </div>
+                <div className="group">
+                    <label>Amount</label>
+                    <input
                         type="number"
                         required
                         value={amount}
@@ -68,10 +63,10 @@ const AddTransaction = ({ wallets, walletId }) => {
                         setAmount(e.target.value)}
                         }
                     />
-                </Form.Group>
-                <Form.Group className="group">
-                <Form.Label>Date Of Transaction</Form.Label>
-                <Form.Control
+                </div>
+                <div className="group">
+                <label>Date Of Transaction</label>
+                <input
                     type="date"
                     required
                     value={dateOfTransaction}
@@ -79,9 +74,9 @@ const AddTransaction = ({ wallets, walletId }) => {
                         setDate(e.target.value)}
                     }
                 />
-                </Form.Group>
-                <Form.Group className="group">
-                    <div> <Form.Label>Payment Type</Form.Label></div>
+                </div>
+                <div className="group">
+                <label>Payment Type</label>
 
                 <select className='select'
                     value={paymentType}
@@ -90,11 +85,11 @@ const AddTransaction = ({ wallets, walletId }) => {
                     <option value="CASH">Cash</option>
                     <option value="CARD">Card</option>
                 </select>
-                </Form.Group>
-                <Form.Group className="group">
+                </div>
+                <div className="group">
 
-                <Form.Label>Category</Form.Label>
-                <Form.Control
+                <label>Category</label>
+                <input
                     type="text"
                     required
                     value={transactionCategory}
@@ -103,14 +98,13 @@ const AddTransaction = ({ wallets, walletId }) => {
                     }
                 />
 
-                </Form.Group>
-                <div className='flex-container top-2'>
-                    <button className="group" onClick={() => {
-                        history.goBack()
-                    }}>Add Transaction</button>
-                    <Link className="group" to='/'>Back</Link>
                 </div>
-            </Form>
+                <div className='flex-container top-2'>
+                    <button className="group"
+                    >Add Transaction</button>
+                    <Link className="group" to='/home'>Back</Link>
+                </div>
+            </form>
             </div>
         </div>
     )

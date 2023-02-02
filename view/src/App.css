@@ -7,6 +7,10 @@ html, body, #app, #app>div {
   height: 100%
 }
 
+html *{
+  font-family: 'Montserrat', sans-serif;
+}
+
 
 
 .group {
@@ -21,6 +25,8 @@ html, body, #app, #app>div {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .sidebar{
@@ -42,6 +48,8 @@ html, body, #app, #app>div {
   color: rgba(2, 1, 1, 0.19);
   font-size: 19px;
 }
+
+
 
 /*positioning*/
 
@@ -86,12 +94,12 @@ html, body, #app, #app>div {
   width: 95%;
 }
 
-html{
-  background-color: #1a1a1a;
+html, :root{
+  background-color: #140a38;
 }
 
 .dark {
-  background-color: #242424;
+  background-color: #140a38;
 }
 
 .light-text {
@@ -117,9 +125,9 @@ html{
 }
 
 .displayOptions {
-  margin: 0 auto;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .button{
@@ -150,16 +158,8 @@ a {
   color: #e8e8e8;
 }
 
-.app {
-  font-family: sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  height: 100vh;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  background-color: #f8f9fd;
+.active-menu-item:focus{
+  color: #94cdbf
 }
 
 input[type="text"],
@@ -213,3 +213,205 @@ input[type="submit"]:hover {
   gap: 8px;
   margin: 10px;
 }
+
+.wallets{
+  margin: 0 auto;
+}
+
+.full-width {
+  width: 100%;
+  background: #c5c5c5;
+  padding-bottom: 5px;
+  padding-top: 15px;
+}
+
+.navbar{
+  margin-bottom: 0;
+}
+
+.logo{
+  flex-grow: 1;
+}
+.toolbar-height{
+  height: 64px;
+}
+
+.white{
+  color: white;
+}
+
+.white:hover{
+  color: #94cdbf ;
+}
+
+.black:hover{
+  color: #213547;
+}
+
+.App{
+  background: #140a38 ;
+  height: 145vh;
+}
+
+html,
+body{
+  height: 100%;
+}
+.transaction-list{
+  max-width: 100%;
+}
+
+.margin-5 {
+  margin: 50px;
+}
+
+/*color*/
+
+/*#64207f*/
+/*#281f43*/
+/*#fddf4e*/
+/*#140a38*/
+.hover8:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.email-sign-in-form{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: 0 auto 55px;
+}
+
+.content{
+  width: 100%;
+}
+
+.container-login{
+  width: 40%;
+  margin: 2% auto auto;
+  background: #281f43;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 13px;
+}
+
+.socials{
+  text-align: center;
+  background: #140a38;
+  border-radius: 5px;
+  padding: 40px 12px;
+  margin: auto;
+  width: 40%;
+  }
+.input-field,
+.submit-button{
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.social-button{
+  color: white;
+  margin: 0 10px;
+}
+
+.input-field{
+  outline: none !important;
+  border: none;
+  background: #140a38;
+  color: white;
+  padding: 15px;
+}
+
+.submit-button{
+  background-color: #140a38;
+  color: #fddf4e;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forgot-your-password{
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color:#fddf4e;
+  border: none;
+  color: #140a38;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.social-button:hover{
+  color: #fddf4e;
+}
+
+.white-color{
+  color: white;
+  opacity: 0.7;
+  font-size: 0.7rem;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding-left: 5px;
+  text-align: center;
+}
+
+.sign-up{
+  padding-bottom: 15px;
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+.sign-up-sign{
+  color: #fddf4e;
+}
+
+.sign-up-sign:hover{
+  color: #e8e8e8;
+}
+
+.forgot-your-password:hover{
+  color: #fddf4e;
+}
+
+.text-align {
+  text-align: center;
+}
+
+.ltp-5{
+  padding-left: 5px;
+  padding-top: 5px;
+  margin-top: 7%
+}
+
+.transaction-button{
+  background: transparent;
+  color: darkgrey;
+}
+
+.active-transaction{
+  color: #844a9b;
+  background: transparent;
+}
+.active-transaction,
+.transaction-button,
+.transaction-button:hover,
+.transaction-button:focus,
+.transaction-button:active,
+.active-transaction:active,
+.active-transaction:focus,
+.active-transaction:hover
+{
+  outline: none;
+  border: none;
+}
+
+
+
+
