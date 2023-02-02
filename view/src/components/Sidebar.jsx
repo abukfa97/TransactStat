@@ -1,59 +1,84 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import {Avatar, Divider, Drawer, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
-import React from 'react';
-import Cookies from 'js-cookie';
+import VillaIcon from '@mui/icons-material/Villa';
+import Person4Icon from '@mui/icons-material/Person4';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import {useState} from "react";
 
+const Sidebar = ({}) => {
+    const [active, setActive] = useState("");
+    const settings = [
+        {
+            icon: <Person4Icon style={{marginRight: '5%'}} ></Person4Icon> ,
+            name: "Account"
+        },
+        {
+            icon: <SettingsIcon style={{marginRight: '5%'}}></SettingsIcon>,
+            name: "Settings"
+        },
 
-const Sidebar = ({ menuRoute, urlRoute, wallets, setCurrentWallets }) => {
+    ]
 
     const menuOptions = [
-        "Profile", "Settings"
-    ]
-    console.log(wallets)
+        {
+            icon: <AccountBalanceWalletIcon style={{marginRight: '5%'}}></AccountBalanceWalletIcon>,
+            name: "Wallets"
+        },
+        {
+            icon: <AccountBalanceIcon style={{marginRight: '5%'}} ></AccountBalanceIcon> ,
+            name: "Transactions"
+        },
+        {
+            icon: <BarChartIcon style={{marginRight: '5%'}}></BarChartIcon>,
+            name: "Statistics"
+        },
 
-    const handleClick = (wallet) => {
-        setCurrentWallets(wallet);
+    ]
+
+    const handleClick =(event) => {
+        setActive(event.target.name)
     }
 
-    // fetch wallets based on userId
-
-
     return (
-        <div>
-            <Navbar bg="light" expand="lg" className="sidebar">
-                <Container >
-                    <Navbar.Brand><Link to="/">TransactStat</Link><Link to={urlRoute}><span className='transparent'>{menuRoute}</span></Link></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link><Link to='/'>Home</Link></Nav.Link>
-                            <NavDropdown title="Menu" id="basic-nav-dropdown" className=''>
-                                {/*iterate over wallets*/}
-                                <ul className='list-group'>
-                                    {!wallets ? "Loading..." : wallets.map((wallet) =>
-                                        <NavDropdown.Item href={"#" + wallet.title} data-id={wallet.id} onClick={() => handleClick(wallet)}>{wallet.title}</NavDropdown.Item>
-                                    )}
-                                </ul>
-                                {/*iterate over options*/}
-                                <ul className='list-group'>
-                                    {menuOptions.map((option) =>
-                                        <NavDropdown.Item href="#action/3.1"><Link to={"/" + option}>{option}</Link></NavDropdown.Item>
-                                    )}
-                                </ul>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Log Out
-                                </NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav>
-                    </Navbar>
-                </Container>
-            </Navbar>
-        </div>
+            <Drawer
+                PaperProps={{
+                    sx: {
+                        backgroundColor: "#281f43",
+                        color: "white",
+                        borderRight: '1px solid black'
+                    }
+                }}
+                variant='permanent'
+                anchor='left' >
+                <div className='ltp-5 text-align'>
+                    <h5>Nightingale Co.</h5>
+                </div>
+                <Avatar style={{margin: '70px auto 10px auto', height: '120px', width:'120px'}} src="images/elon.jpg"></Avatar>
+                <h6 style={{
+                    color: '#fff',
+                    textAlign: 'center'
+                }}>
+                    Elon
+                </h6>
+
+                <div style={{ textAlign: "left", marginTop: '140px'}}>
+                    <Typography onClick={handleClick} key='dashboard' style={{ color: '#fff', margin: 'auto 17%', marginBottom: '35%' }}><Link  className="active-menu-item white" to="/home"><VillaIcon style={{marginRight: '5%'}}></VillaIcon>Dashboard</Link></Typography>
+                    <div style={{ marginBottom: '35%'}}>
+                    {menuOptions.map((option) =>
+                        <Typography onClick={handleClick} key={option.name} className="active-menu-item" style={{ color: '#fff', margin: '17%'}}><Link  className="active-menu-item white"  to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
+                    )}
+                    </div>
+                    <div>
+                    {settings.map((option) =>
+                        <Typography onClick={handleClick} key={option.name} className="active-menu-item"  style={{ color: '#fff', margin: '17%'}}><Link  className="active-menu-item white"  to={"/" + option.name.toLowerCase()}>{option.icon}{option.name}</Link></Typography>
+                    )}
+                    </div>
+                </div>
+            </Drawer>
     )
 }
 
-export default Sidebar
+export default Sidebar;

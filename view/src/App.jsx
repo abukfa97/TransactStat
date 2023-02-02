@@ -1,19 +1,24 @@
 import './App.css'
 import {useEffect, useState} from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Home from "./routes/Home.jsx";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import DashBoard from "./routes/DashBoard.jsx";
 import AddTransaction from "./routes/AddTransaction.jsx";
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import'bootstrap/dist/css/bootstrap.min.css';
-import{Container,ListGroup,Col}from'react-bootstrap';
 import Login from "./routes/Login.jsx";
 import Register from "./routes/Register.jsx";
 import React from 'react';
 import Cookies from "js-cookie";
-
+import MainPage from "./routes/MainPage.jsx";
+import NavigationBar from "./components/NavigationBar.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 
 function App() {
+
+  const [darkMode, setDarkMode] = useState(false)
+
   const [transactions, setTransactions] = useState([])
+
 
   const exampleWallets= [
     {
@@ -25,7 +30,7 @@ function App() {
     }
   ]
 
-  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState([])
+  const [transactionTypeToDisplay, setTransactionTypesToDisplay] = useState(undefined)
 
   const [wallets, setWallets] = useState(exampleWallets)
 
@@ -83,26 +88,35 @@ function App() {
   }, [walletId]);
 
   return (
-      <Router>
-        <div className="App">
-          <div className="content">
-            <Switch>
-              <Route exact path="/">
-                <Home currentWallet={currentWallet} setCurrentWallets={setCurrentWallet} transactions={transactions} expenses={expenses} incomes={incomes} wallets={wallets} setTransactionTypesToDisplay={setTransactionTypesToDisplay} transactionTypeToDisplay={transactionTypeToDisplay} userId={userId}/>
-              </Route>
-              <Route exact path="/add">
-                <AddTransaction wallets={wallets} walletId={walletId}/>
-              </Route>
-              <Route exact path="/Login">
-                <Login/>
-              </Route>
-              <Route exact path="/Register">
-                <Register/>
-              </Route>
-            </Switch>
-          </div>
-        </div>
-      </Router>
+        <Router>
+            <div className="App">
+              <Sidebar></Sidebar>
+              <div className="content">
+                <NavigationBar className='position-relative' wallets={wallets} setCurrentWallets={setCurrentWallet} user={userId} mode={darkMode} setDarkMode={setDarkMode}/>
+                <Routes>
+                  <Route exact path='/'
+                         element={ <MainPage />} />
+                  <Route exact path="/home"
+                         element={ <DashBoard
+                                      currentWallet={currentWallet}
+                                      setCurrentWallets={setCurrentWallet}
+                                      transactions={transactions}
+                                      expenses={expenses}
+                                      incomes={incomes}
+                                      wallets={wallets}
+                                      setTransactionTypesToDisplay={setTransactionTypesToDisplay}
+                                      transactionTypeToDisplay={transactionTypeToDisplay} userId={userId} />} />
+                  <Route exact path="/add"
+                         element={<AddTransaction wallets={wallets} walletId={walletId}/>} />
+                  <Route exact path="/Login"
+                         element={<Login/>} />
+
+                  <Route exact path="/Register"
+                         element={<Register />} />
+                </Routes>
+              </div>
+            </div>
+          </Router>
   )
 }
 
