@@ -9,13 +9,16 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [password, setPassword] = useState("");
+
 
     const createNewUser = async (e) => {
         e.preventDefault();
         const user = {
             "userName": username,
             "firstName": firstName,
-            "lastName": lastName
+            "lastName": lastName,
+            "password": password
         };
         await fetch('api/users', {
             method: 'POST',
@@ -47,7 +50,8 @@ const Register = () => {
                         <input type="email" placeholder='Email' className='input-field' name="email" required/>
                         <input type="text" placeholder='First Name'  className='input-field' required onChange={(event) => {setFirstName(event.target.value)}} value={firstName}/>
                         <input type="text" placeholder='Last Name'  className='input-field' required onChange={(event) => {setLastName(event.target.value)}} value={lastName}/>
-                        <input type="password" placeholder='Password'  className='input-field' required/>
+                        <input type="password" placeholder='****'  className='input-field' required onChange={(event) => {setPassword((event.target.value))}
+                        } value={password}/>
                         <p className='sign-up'>Already have an account? Sign In <Link to='/login' className='sign-up-sign'>here</Link>!</p>
                         <input type="submit" value='Sign Up' className='submit-button'/>
                     </div>

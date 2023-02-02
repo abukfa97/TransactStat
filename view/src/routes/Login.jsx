@@ -9,14 +9,16 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Login = () => {
     const [userName, setUserName] = useState("")
+    const [password, setPassword] = useState("")
+
     const [errorDisplay, setErrorDisplay] = useState(null)
 
     console.log(userName)
 
     const handleStatus = async(e) => {
         e.preventDefault();
-        const user = {"userName": userName};
-        let response = await fetch('/api/users/auth',
+        const user = {"userName": userName, "password": password};
+        let response = await fetch('/api/users/login',
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -50,7 +52,10 @@ const Login = () => {
                             </p>
                             <input type="text" placeholder='Name' className='input-field' name="uname" required value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
                             <input type="email" placeholder='Email'  className='input-field'/>
-                            <input type="password" placeholder='Password'  className='input-field'/>
+                            <input type="password" placeholder='Password'  className='input-field' value={password} onChange={(event) => {
+                                setPassword(event.target.value);
+                            }
+                            }/>
                             <Link to='gmail.com' className='forgot-your-password'>Forgot your password?</Link>
                             <p className='sign-up'>Don't have and account? Sign Up <Link to='/register' className='sign-up-sign'>here</Link>!</p>
                             <input type="submit" value='Sign In' className='submit-button'/>
