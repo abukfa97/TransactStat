@@ -1,6 +1,6 @@
 package com.codecool.transactstat.model.dto;
 
-import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.UserEntity;
 import com.codecool.transactstat.model.Transaction;
 import com.codecool.transactstat.model.Wallet;
 
@@ -22,12 +22,12 @@ public class DtoFactory {
         WalletDTO dto = new WalletDTO();
         dto.setId(wallet.getId());
         dto.setTitle(wallet.getTitle());
-        dto.setAppUserId(wallet.getAppUser().getId());
+        dto.setAppUserId(wallet.getUserEntity().getId());
         dto.setBalance(wallet.getBalance());
         return dto;
     }
 
-    public static UserDTO createDTO(AppUser user){
+    public static UserDTO createDTO(UserEntity user){
         UserDTO dto = new UserDTO();
         dto.setId(user.getId());
         dto.setUserName(user.getUserName());

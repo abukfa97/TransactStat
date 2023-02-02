@@ -24,7 +24,7 @@ public class Wallet {
     private List<Transaction> transactionList;
 
     @ManyToOne
-    private AppUser appUser;
+    private UserEntity userEntity;
 
     private BigDecimal balance;
 
