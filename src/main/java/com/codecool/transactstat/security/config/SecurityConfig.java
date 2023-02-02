@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/api/v1/users").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/users/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/wallets").permitAll()
                 .anyRequest().authenticated();
         http.addFilter(new LoginAuthFilter(authenticationManagerBean()))
