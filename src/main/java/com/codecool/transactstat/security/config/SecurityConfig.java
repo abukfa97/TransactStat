@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -40,17 +41,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/api/users**").hasRole("USER")
+                .antMatchers("/api/users/**").hasRole("USER")
                 .antMatchers("/api/transactions**").hasRole("USER")
-                .antMatchers("/api/wallets**").hasRole("USER")
+                .antMatchers("/api/wallets/**").hasRole("USER")
                 .antMatchers("/api/v1/users**").hasRole("USER")
                 .antMatchers(HttpMethod.POST,"/api/v1/users").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/users/auth").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/wallets").permitAll()
                 .anyRequest().authenticated();
         http.addFilter(new LoginAuthFilter(authenticationManagerBean()))
                 .addFilterBefore(new JwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.formLogin()
-                .loginProcessingUrl("/api/users/auth");
+
     }
 
 }
