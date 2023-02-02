@@ -1,4 +1,3 @@
-import {makeStyles} from "@mui/styles";
 import {Avatar, Divider, Drawer, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import VillaIcon from '@mui/icons-material/Villa';
@@ -9,19 +8,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import {useState} from "react";
 
-const useStyles = makeStyles({
-    drawer: {
-      width: 250,
-      background: '#000'
-    },
-    drawerPaper:{
-        width: 250,
-        background: '#000'
-    }
-})
-
 const Sidebar = ({}) => {
-    const classes= useStyles();
     const [active, setActive] = useState("");
     const settings = [
         {
@@ -64,10 +51,8 @@ const Sidebar = ({}) => {
                         borderRight: '1px solid black'
                     }
                 }}
-                className= {classes.drawer}
                 variant='permanent'
-                anchor='left'
-                classes={{paper: classes.drawerPaper}}>
+                anchor='left' >
                 <div className='ltp-5 text-align'>
                     <h5>Nightingale Co.</h5>
                 </div>

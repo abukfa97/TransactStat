@@ -1,16 +1,13 @@
 import TransactionList from "../components/TransactionList.jsx";
 import NavigationBar from "../components/NavigationBar.jsx";
-import 'bootstrap/dist/css/bootstrap-grid.min.css'
-import'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Login.jsx";
 import Button from '@mui/material/Button';
 import MainPage from "./MainPage.jsx";
 import {Box, Grid, makeStyles, Paper, Typography} from "@mui/material";
 import {useState} from "react";
 import Header from "../components/Header.jsx";
-import {Link, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {LibraryAdd} from "@mui/icons-material";
-import {alignPropType} from "react-bootstrap/types";
 import WalletIcon from '@mui/icons-material/Wallet';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
@@ -24,16 +21,12 @@ const DashBoard = ({ transactions, wallets, expenses, incomes, setTransactionTyp
     console.log("Wallets: " + wallets[0])
 
     const [walletChosen, setWalletChosen] = useState(false);
-    let history = useHistory()
 
     const chooseWallet = (walletToDisplay) => {
         setCurrentWallets(walletToDisplay)
         setWalletChosen(true);
     }
 
-    if (userId === undefined){
-        history.push('/')
-    }
 
     if (walletChosen === true){
         return (

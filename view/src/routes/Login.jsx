@@ -1,18 +1,15 @@
 import React, {useState} from "react";
 import {Alert} from "@mui/material";
-import {Link, redirect, useHistory} from "react-router-dom";
+import {Link, redirect} from "react-router-dom";
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import {useNavigate} from "react-router";
-import {Home} from "@mui/icons-material";
+
 
 
 const Login = () => {
     const [userName, setUserName] = useState("")
     const [errorDisplay, setErrorDisplay] = useState(null)
-    let history = useHistory()
-
 
     console.log(userName)
 
