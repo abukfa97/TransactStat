@@ -1,6 +1,6 @@
 package com.codecool.transactstat.controller;
 
-import com.codecool.transactstat.model.AppUser;
+import com.codecool.transactstat.model.UserEntity;
 import com.codecool.transactstat.model.dto.UserDTO;
 import com.codecool.transactstat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +34,14 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+    @GetMapping("/{userName}")
+    public UserDTO getUserByUsername(@PathVariable String userName){
+        return userService.getUserByUsername(userName);
+    }
+
     @PostMapping
-    public void registerNewUser(@RequestBody AppUser appUser){
-        userService.addUser(appUser);
+    public void registerNewUser(@RequestBody UserEntity userEntity){
+        userService.addUser(userEntity);
     }
 
     @PutMapping("/{userId}")
@@ -47,17 +52,5 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public void deleteUserById(@PathVariable Long userId){
         userService.deleteUserById(userId);
-    }
-
-    @PostMapping("/auth")
-    @ResponseBody
-    public ResponseEntity<?> authenticate(@RequestBody UserDTO user, HttpServletResponse response){
-        Optional<Long> userId = userService.authenticate(user);
-        return userId.map((id) -> {
-            Cookie cookie = new Cookie("userId",String.valueOf(id));
-            cookie.setPath("/");
-            response.addCookie(cookie);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }).orElse(new ResponseEntity<>(HttpStatus.FORBIDDEN));
     }
 }
