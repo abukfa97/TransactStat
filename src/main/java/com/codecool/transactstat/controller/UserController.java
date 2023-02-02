@@ -53,4 +53,9 @@ public class UserController {
     public void deleteUserById(@PathVariable Long userId){
         userService.deleteUserById(userId);
     }
+
+    @GetMapping("/login")
+    public ResponseEntity<?> authenticate(HttpServletResponse response){
+        return new ResponseEntity<>("Authenticated",HttpStatus.ACCEPTED);
+    }
 }
