@@ -5,6 +5,7 @@ import com.codecool.transactstat.security.filter.LoginAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,9 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/transactions**").hasRole("USER")
                 .antMatchers("/api/wallets**").hasRole("USER")
                 .antMatchers("/api/v1/users**").hasRole("USER")
+                .antMatchers(HttpMethod.POST,"/api/v1/users").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/users/auth").permitAll()
                 .anyRequest().authenticated();
         http.addFilter(new LoginAuthFilter(authenticationManagerBean()))
                 .addFilterBefore(new JwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.formLogin()
+                .loginProcessingUrl("/api/users/auth");
     }
 
 }
