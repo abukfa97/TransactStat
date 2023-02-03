@@ -41,7 +41,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         } else {
             if (!token.equals("")){
                 try {
-                    Algorithm algorithm = Algorithm.HMAC256("D4d5|nv3nt0ry");
+                    Algorithm algorithm = Algorithm.HMAC256("TR4N5ACt57aT");
                     JWTVerifier verifier = JWT.require(algorithm).build();
                     DecodedJWT decodedJWT = verifier.verify(token);
                     String username = decodedJWT.getSubject();
