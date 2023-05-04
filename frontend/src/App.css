@@ -1,0 +1,417 @@
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+html, body, #app, #app>div {
+  height: 100%
+}
+
+html *{
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.group {
+  margin-top: 20px;
+}
+
+.select{
+  padding: 5px 15px
+}
+
+.App{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar{
+  width: 100%;
+  height: 100%  ;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.red{
+  color: indianred;
+  font-weight: bold;
+}
+
+.transparent {
+  color: rgba(2, 1, 1, 0.19);
+  font-size: 19px;
+}
+
+
+
+/*positioning*/
+
+.thirty {
+  margin-left: 17%;
+  margin-top: 5%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.width-83 {
+  width: 66%;
+}
+
+.width-20 {
+  width: 20%;
+}
+
+.top-5 {
+  margin-top: 5%;
+}
+.top-2 {
+  margin-top: 2%;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.card-grey {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+}
+
+.margin-10 {
+  padding: 3%;
+  margin: 5%;
+  width: 95%;
+}
+
+html, :root{
+  background-color: #140a38;
+}
+
+.dark {
+  background-color: #140a38;
+}
+
+.light-text {
+  color: #e8e8e8;
+}
+
+.expenses-and-incomes{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-top: 55px;
+}
+
+.transaction-list {
+  width: 100%;
+}
+
+.width-80{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.displayOptions {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.button{
+    margin: 5px;
+    color: #000;
+}
+
+.this-month{
+  text-align: center;
+  color: #e8e8e8;
+  margin-top: 4%;
+}
+
+.simple-button{
+  background: #e8e8e8;
+}
+
+.add-transaction{
+  background: #c2efc8;
+}
+
+a {
+  color: black;
+}
+
+.active{
+  background: black;
+  color: #e8e8e8;
+}
+
+.active-menu-item:focus{
+  color: #94cdbf
+}
+
+input[type="text"],
+input[type="password"] {
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #01d28e;
+  border: 1px solid #01d28e;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+input[type="submit"]:hover {
+  background: #6cf0c2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.list-container {
+  display: flex;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
+
+.wallets{
+  margin: 0 auto;
+}
+
+.full-width {
+  width: 100%;
+  background: #c5c5c5;
+  padding-bottom: 5px;
+  padding-top: 15px;
+}
+
+.navbar{
+  margin-bottom: 0;
+}
+
+.logo{
+  flex-grow: 1;
+}
+.toolbar-height{
+  height: 64px;
+}
+
+.white{
+  color: white;
+}
+
+.white:hover{
+  color: #94cdbf ;
+}
+
+.black:hover{
+  color: #213547;
+}
+
+.App{
+  background: #140a38 ;
+  height: 145vh;
+}
+
+html,
+body{
+  height: 100%;
+}
+.transaction-list{
+  max-width: 100%;
+}
+
+.margin-5 {
+  margin: 50px;
+}
+
+/*color*/
+
+/*#64207f*/
+/*#281f43*/
+/*#fddf4e*/
+/*#140a38*/
+.hover8:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.email-sign-in-form{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: 0 auto 55px;
+}
+
+.content{
+  width: 100%;
+}
+
+.container-login{
+  width: 40%;
+  margin: 2% auto auto;
+  background: #281f43;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 13px;
+}
+
+.socials{
+  text-align: center;
+  background: #140a38;
+  border-radius: 5px;
+  padding: 40px 12px;
+  margin: auto;
+  width: 40%;
+  }
+.input-field,
+.submit-button{
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.social-button{
+  color: white;
+  margin: 0 10px;
+}
+
+.input-field{
+  outline: none !important;
+  border: none;
+  background: #140a38;
+  color: white;
+  padding: 15px;
+}
+
+.submit-button{
+  background-color: #140a38;
+  color: #fddf4e;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forgot-your-password{
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color:#fddf4e;
+  border: none;
+  color: #140a38;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.social-button:hover{
+  color: #fddf4e;
+}
+
+.white-color{
+  color: white;
+  opacity: 0.7;
+  font-size: 0.7rem;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding-left: 5px;
+  text-align: center;
+}
+
+.sign-up{
+  padding-bottom: 15px;
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+.sign-up-sign{
+  color: #fddf4e;
+}
+
+.sign-up-sign:hover{
+  color: #e8e8e8;
+}
+
+.forgot-your-password:hover{
+  color: #fddf4e;
+}
+
+.text-align {
+  text-align: center;
+}
+
+.ltp-5{
+  padding-left: 5px;
+  padding-top: 5px;
+  margin-top: 7%
+}
+
+.transaction-button{
+  background: transparent;
+  color: darkgrey;
+}
+
+.active-transaction{
+  color: #844a9b;
+  background: transparent;
+}
+.active-transaction,
+.transaction-button,
+.transaction-button:hover,
+.transaction-button:focus,
+.transaction-button:active,
+.active-transaction:active,
+.active-transaction:focus,
+.active-transaction:hover
+{
+  outline: none;
+  border: none;
+}
+
+
+
+
