@@ -17,7 +17,7 @@ const Register = () => {
             "firstName": firstName,
             "lastName": lastName,
             "password": password
-        };
+        }; 
         await fetch('api/users', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
