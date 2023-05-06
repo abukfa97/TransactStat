@@ -5,15 +5,11 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-
-
 const Login = () => {
-    const [userName, setUserName] = useState("")
-    const [password, setPassword] = useState("")
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
 
-    const [errorDisplay, setErrorDisplay] = useState(null)
-
-    console.log(userName)
+    const [errorDisplay, setErrorDisplay] = useState(null);
 
     const handleStatus = async(e) => {
         e.preventDefault();
@@ -32,10 +28,8 @@ const Login = () => {
         }
     }
 
-
-
     return (
-        <div>
+        <>
             <div className="toolbar-height"></div>
             {errorDisplay}
             <div className='container-login'>
@@ -50,21 +44,28 @@ const Login = () => {
                             <p className='white-color'>
                                 Sign In With Email
                             </p>
-                            <input type="text" placeholder='Name' className='input-field' name="uname" required value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+                            <input type="text" placeholder='Name'
+                                   className='input-field' name="uname" required
+                                   value={userName}
+                                   onChange={(e) => setUserName(e.target.value)}/>
                             <input type="email" placeholder='Email'  className='input-field'/>
-                            <input type="password" placeholder='Password'  className='input-field' value={password} onChange={(event) => {
-                                setPassword(event.target.value);
-                            }
-                            }/>
-                            <Link to='gmail.com' className='forgot-your-password'>Forgot your password?</Link>
-                            <p className='sign-up'>Don't have and account? Sign Up <Link to='/register' className='sign-up-sign'>here</Link>!</p>
+                            <input type="password" placeholder='Password'  className='input-field'
+                                   value={password}
+                                   onChange={(event) => setPassword(event.target.value)}/>
+                            <Link to='gmail.com' className='forgot-your-password'>
+                                Forgot your password?
+                            </Link>
+                            <p className='sign-up'>
+                                Don't have and account? Sign Up
+                                <Link to='/register' className='sign-up-sign'>here</Link>!
+                            </p>
                             <input type="submit" value='Sign In' className='submit-button'/>
                         </div>
                     <div className='container-right'></div>
                 </form>
             </div>
-        </div>
+        </>
     )
 }
 
-export default Login
+export default Login;
